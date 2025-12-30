@@ -1,5 +1,43 @@
-# push_swap
-A 42 School group project. The goal: sorting data on a stack with a limited set of instructions and the minimum number of moves. Features multiple sorting strategies ($O(n^2)$ to $O(n \log n)$) and a benchmark mode.
+This project has been created as part of the 42 curriculum by               
+
+
+## 📝 Description
+
+**Push_swap** est un projet d'algorithmique avancé qui consiste à trier des données sur une pile (stack), avec un jeu d'instructions limité et en un nombre de coups strictement optimisé.
+
+Le défi principal n'est pas seulement de trier, mais de le faire avec une **efficacité mathématique**. Le programme ne se contente pas d'appliquer une méthode unique : il est conçu pour être **intelligent et adaptatif**, analysant les données avant d'agir.
+
+### 🎮 Les Règles du Jeu
+
+Le projet fonctionne avec deux piles : **Stack A** et **Stack B**.
+
+1.  **État Initial :**
+    * **Stack A** : Contient une liste aléatoire d'entiers (positifs ou négatifs), sans doublons.
+    * **Stack B** : Est vide.
+2.  **Objectif :**
+    * Trier les nombres de la **Stack A** par ordre croissant (le plus petit au sommet).
+    * La **Stack B** doit être vide à la fin de l'exécution.
+
+### 🚀 Le Défi de la Complexité
+
+Pour atteindre le grade "Excellent", ce programme implémente une **stratégie adaptative**. Avant de trier, il calcule le **taux de désordre** de la liste pour sélectionner l'algorithme le plus performant :
+
+* **Faible désordre / Petite liste (< 0.2)** :
+    * *Stratégie :* Réparation locale ou tri simple ($O(n)$ ou $O(n^2)$).
+* **Désordre moyen (0.2 - 0.5)** :
+    * *Stratégie :* Algorithme par "Chunks" / Tronçons ($O(n\sqrt{n})$).
+* **Grandes listes / Chaos total (≥ 0.5)** :
+    * *Stratégie :* Algorithmes divisés type Radix ou Quick Sort ($O(n \log n)$).
+
+### ⚡ Modes de Fonctionnement
+
+Afin de faciliter le contrôle des performances, le programme intègre plusieurs modes d'exécution activables via des drapeaux (flags) :
+
+* **Mode Automatique (Par défaut)** : Le programme est autonome. Il scanne la pile et choisit la meilleure stratégie pour minimiser les coups.
+* **Modes Forcés (`--simple`, `--medium`, `--complex`)** : Ces options permettent de désactiver l'intelligence artificielle du programme pour forcer l'utilisation d'un algorithme spécifique, quelle que soit la taille de la liste. C'est idéal pour vérifier la robustesse de chaque méthode individuellement.
+* **Mode Benchmark (`--bench`)** : Transforme le programme en outil d'analyse scientifique. En plus de trier, il calcule et affiche des statistiques précises sur la **sortie d'erreur** (taux de désordre, stratégie utilisée, compteurs d'opérations détaillés), permettant une validation rigoureuse sans perturber le checker.
+
+
 
 
 
