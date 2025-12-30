@@ -37,7 +37,108 @@ Afin de faciliter le contrôle des performances, le programme intègre plusieurs
 * **Modes Forcés (`--simple`, `--medium`, `--complex`)** : Ces options permettent de désactiver l'intelligence artificielle du programme pour forcer l'utilisation d'un algorithme spécifique, quelle que soit la taille de la liste. C'est idéal pour vérifier la robustesse de chaque méthode individuellement.
 * **Mode Benchmark (`--bench`)** : Transforme le programme en outil d'analyse scientifique. En plus de trier, il calcule et affiche des statistiques précises sur la **sortie d'erreur** (taux de désordre, stratégie utilisée, compteurs d'opérations détaillés), permettant une validation rigoureuse sans perturber le checker.
 
+## 💻 Insttructions
 
+### 🔧 Compilation
+
+Le projet est écrit en C et utilise un `Makefile` pour la compilation. Assurez-vous d'avoir `gcc` et `make` installés sur votre machine.
+
+1.  **Cloner le dépôt :**
+    ```bash
+    git clone [https://github.com/votre-username/push_swap.git](https://github.com/votre-username/push_swap.git)
+    cd push_swap
+    ```
+
+2.  **Compiler le programme :**
+    Cette commande génère l'exécutable `push_swap`.
+    ```bash
+    make
+    ```
+
+---
+
+### 🚀 Exécution
+
+Le programme prend en argument une liste d'entiers à trier.
+
+**Syntaxe de base :**
+```bash
+./push_swap [NOMBRES...]
+```
+**Exemple simple :**
+```bash
+./push_swap 42 1337 -21 0 5
+```
+Utilisation avec une variable (Recommandé) : Pour tester facilement la même liste avec le programme et le checker.
+```bash
+ARG="4 67 3 87 23"; ./push_swap $ARG
+```
+
+### 🚩 Options & Drapeaux
+
+Vous pouvez ajouter un drapeau **avant** la liste de nombres pour modifier le comportement du programme.
+
+#### 1. Forcer une stratégie spécifique
+Par défaut, le programme est adaptatif. Pour tester manuellement un algorithme précis :
+
+##### Force l'algorithme quadratique (Simple)
+```bash
+./push_swap --simple 4 2 5 1
+```
+##### Force l'algorithme par chunks (Moyen)
+```bash
+push_swap --medium $ARG
+```
+##### Force l'algorithme optimisé (Complexe)
+```bash
+./push_swap --complex $ARG
+```
+#### 2. Activer le mode Benchmark
+Pour obtenir les statistiques de tri (désordre, complexité, compteurs) sur la sortie d'erreur (`stderr`) :
+
+```bash
+./push_swap --bench $ARG
+```
+### ✅ Vérification (Checker)
+
+Le programme est conçu pour être utilisé en "pipe" avec le binaire de vérification (`checker_linux` ou votre propre bonus checker).
+
+**Commande standard :**
+```bash
+ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker_linux $ARG
+```
+*La sortie doit afficher `OK` si le tri est valide.*
+
+**Vérification avec le Benchmark actif :**
+Comme le benchmark écrit sur la sortie d'erreur (`stderr`), il ne perturbe pas le checker qui lit uniquement la sortie standard (`stdout`) :
+
+```bash
+./push_swap --bench $ARG | ./checker_linux $ARG
+```
+### 🧹 Nettoyage
+
+* **`make clean`** : Supprime les fichiers objets (`.o`).
+* **`make fclean`** : Supprime les fichiers objets et l'exécutable `push_swap`.
+* **`make re`** : Recompile tout depuis zéro.
+
+## 📚 Ressources & Références
+
+Voici une sélectionde ressources techniques pour comprendre les algorithmes implémentés et les outils utilisés pour valider le projet.
+
+### 🧠 Algorithmes & Stratégies
+
+* **[Push_swap: The least amount of moves with two stacks](https://medium.com/@ayogun/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a)** : L'article de référence pour l'algorithme "Turk" (Mechanical Turk). C'est actuellement l'une des approches les plus efficaces (Greedy) pour viser le haut du classement.
+* **[Push_swap — A journey to find the optimal sorting algorithm](https://medium.com/nerd-for-tech/push-swap-v2-comprehensive-guide-434f86d60661)** : Une excellente explication du **Radix Sort** (tri par base), l'alternative mathématique binaire pour garantir une complexité $O(n \log n)$.
+* **[Big O Cheat Sheet](https://www.bigocheatsheet.com/)** : Le tableau de référence pour visualiser graphiquement les différences de performance entre $O(n^2)$ (Simple), $O(n\sqrt{n})$ (Moyen) et $O(n \log n)$ (Complexe).
+
+### 🛠️ Outils de Test & Visualisation
+
+* **[push_swap_visualizer (o-reo)](https://github.com/o-reo/push_swap_visualizer)** : Un outil graphique indispensable pour **voir** les piles bouger en temps réel. Il permet de comprendre visuellement la logique de tri et de débugger les boucles infinies.
+* **[push_swap_tester (SimonCROS)](https://github.com/SimonCROS/push_swap_tester)** : Un script de benchmark complet pour lancer des milliers de tests aléatoires, vérifier la gestion des erreurs et calculer la moyenne de coups. Essentiel pour calibrer le mode adaptatif.
+
+### 🎓 Théorie
+
+* **[CS50 - Asymptotic Notation](https://www.youtube.com/watch?v=iOq5kSKjRGI)** : (Vidéo) L'explication la plus claire et pédagogique sur la complexité algorithmique et le "Big O", issue du cours d'Harvard.
 
 
 
