@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:36:44 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/06 11:50:25 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/06 14:13:00 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,46 +41,49 @@ static long	ft_atol(char *s)
 	return (nb);
 }
 
-static char	**free_tab_and_return(char **tab, int index)
-//en cas de pb de malloc lors de la construction du tableau, 
-//on libere tt ce qui existe deja
-//(comme dans le split!)
+char	*from_args_to_big_str(int argc, char **argv)
 {
-	int	i;
-
-	i = 0;
-	while (i < index)
+	char	*s;
+	char	*temp;
+	int		i;
+	//transforme les arguments en une grande string 
+//ou les nb sont separes par un espace
+//regle le pb "12 22" 4 qui n etait pas gere si on split seulement qd argc <= 2
+//ce qui etait ma premiere idee...
+	i = 1;
+	s = ft_strdup("");
+	if (!s)
+		return (NULL);
+	while (i < argc)
 	{
-		free(tab[i]);
+		temp = ft_strjoin(s, argv[i]);
+		free(s);
+		s = temp;
+		temp = ft_strjoin(s, " ");
+		free(s);
+		s = temp;
 		i++;
 	}
-	free(tab);
-	return (NULL);
+	return (s);
 }
 
 char	**put_args_in_array(int argc, char **argv)
 {
 	char	**tab;
-	int		i;
-	//gere les deux types d arguments : un seul entre guillemets qu on split 
-	//ou plusieurs arguments separes
-	//on met les strings dans un tableau
+	char	*big_string;
+
 	if (argc < 2)
 		return (NULL);
-	if (argc == 2)
-		return (ft_split(argv[1], ' '));
-	tab = malloc(sizeof(char *) * argc);
-	if (!tab)
+	big_string = from_args_to_big_str(argc, argv);
+	if (!big_string)
 		return (NULL);
-	i = 1;
-	while (i < argc)
+	tab = ft_split(big_string, ' ');
+	if (!tab)
 	{
-		tab[i - 1] = ft_strdup(argv[i]);
-		if (!tab[i - 1])
-			return (free_tab_and_return(tab, i - 1));
-		i++;
+		free(big_string);
+		return (NULL);
 	}
-	tab[i - 1] = NULL;
+	free(big_string);
 	return (tab);
 }
 
