@@ -6,11 +6,11 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 08:41:27 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/12 10:25:13 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/12 10:50:28 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	*sort_numbers(int *tab, int size)
 {
@@ -67,7 +67,7 @@ void	index_stack(t_stack_node *stack)
 	int					size;
 	int					i;
 
-	size = ft_lstsize(stack);
+	size = lstsize(stack);
 	tab = malloc(sizeof(int) * size);
 	if (!tab)
 		return ;
@@ -78,7 +78,7 @@ void	index_stack(t_stack_node *stack)
 		tab[i++] = ptr->number;
 		ptr = ptr->next;
 	}
-	sort_int_tab(tab, size);
+	sort_numbers(tab, size);
 	ptr = stack;
 	find_index(stack, tab, size);
 	free(tab);

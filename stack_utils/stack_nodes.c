@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 17:47:02 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/12 08:37:24 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/12 10:49:06 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,18 @@ t_stack_node	*lstlast(t_stack_node *lst)
 	return (lst);
 //fonction adaptee a la structure t_stack_node, 
 //sinon c est la meme que ft_lstlast de la libft
+}
+int	lstsize(t_stack_node *lst)
+{
+	int		count;
+
+	count = 0;
+	while (lst)
+	{
+		count ++;
+		lst = lst->next;
+	}
+	return (count);
 }
 
 void	append_node(t_stack_node **stack, int nb)
