@@ -360,7 +360,11 @@ On parcourt l'arbre en suivant la règle stricte : **Gauche ➔ Racine ➔ Droit
 * **Statégie choisie :**
 *A COMPLETER*
 
-### 4. Complément : Tri stable et tri instable
+### 4. Complément : Algorithme adaptatif
+*A COMPLETER*
+
+
+### 5. Complément : Tri stable et tri instable
 
 La notion de stabilité est fondamentale en algorithmique. Elle désigne la capacité d'un tri à préserver l'ordre relatif des éléments ayant la même valeur (doublons).
 
@@ -404,7 +408,7 @@ Exemples : Quick Sort, Selection Sort, Heap Sort.
 	struct s_stack_node	*next;
 }						t_stack_node;
 ```
-* **index*** : *A FAIRE* il s'agit d'associer un index à chaque valeur pour travailler ensuite sur les index, ce qui règle le problème des nombres négatifs et simplifie beaucoup le traitement. Cet index doit être ajouté à la structure qui devient alors :
+* **index*** : Il s'agit d'associer un index à chaque valeur (!!!une fois la liste chaînée complétée) pour travailler ensuite sur les index, ce qui règle le problème des nombres négatifs et simplifie beaucoup le traitement. On a a priori bsoin des index pour les algo moyens et complexes. Cet index doit être ajouté à la structure qui devient alors :
 
 ```{
 	/* data to complete */
@@ -414,3 +418,7 @@ Exemples : Quick Sort, Selection Sort, Heap Sort.
 	struct s_stack_node	*next;
 }						t_stack_node;
 ```
+* **Pour compléter ce champ index :** *
+* **fonction index_stack**(dans le fichier sort_numbers) : On commence par mesurer la taille de la liste chaînée pour allouer la mémoire d'un tableau, dans lequel on copie les entiers. On travaille avec une copie du noeud pour eviter de perdre l adresse de la liste. Dans ce tableau, on trie les entiers avec un bubble sort(* **fonction sort_numbers** *)(NB on se moque de la performance de ce pré-tri, c'est la performance des algos qui sera ensuite évaluée). 
+Enfin, la fonction * **find_index** * cherche la correspondance entre l´entier stocké dans la liste chaînée et les valeurs du tableau trié (ex : tableau trié [2, 14, 22]) > je cherche dans quel noeud se trouve stockée la valeur "2" et j'associe à ce noeud l'index 0... etc...
+
