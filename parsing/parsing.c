@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:36:44 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/06 14:13:00 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/12 09:00:36 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ t_stack_node	*build_stack(char **tab)
 		append_node(&stack, (int)nb);
 		i++;
 	}
+	//une fois que la liste complete est creee, on ajoute les index des differents noeuds.
+	index_stack(stack);
 	free_tab(tab);
 	return (stack);
 }

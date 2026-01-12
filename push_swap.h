@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/08 10:43:50 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/12 10:28:18 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_stack_node
 {
 	/* data to complete */
 	int					number;
+	int					index;
 	struct s_stack_node	*prev;
 	struct s_stack_node	*next;
 }						t_stack_node;
@@ -46,5 +47,8 @@ t_stack_node	*free_if_error(t_stack_node **stack, char **tab);
 /* -----------------------------STACK_UTILS-------------------------------*/
 t_stack_node	*lstlast(t_stack_node *lst);
 void			append_node(t_stack_node **stack, int nb);
+int				*sort_numbers(int *tab, int size);
+void			find_index(t_stack_node *stack, int *tab, int size);
+void			index_stack(t_stack_node *stack)
 
 #endif

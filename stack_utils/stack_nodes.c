@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 17:47:02 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/06 11:58:43 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/12 08:37:24 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	append_node(t_stack_node **stack, int nb)
 	if (!node)
 		return ;
 	node->number = nb;
+	node->index = -1;
 	node->next = NULL;
 	//autres champs de la structure a initialiser!!!
 	if (*stack == NULL) // cas 1 = la liste est vide
