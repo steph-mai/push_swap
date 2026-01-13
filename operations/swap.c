@@ -6,7 +6,7 @@
 /*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 17:08:26 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/13 19:11:33 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/13 19:17:48 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,24 @@ void	swap(t_stack_node **head)
 	if (node_a->next != NULL)
 		node_a->next->prev = *head;
 	*head = node_b;
+	return ;
+}
+void	sa(t_stack_node **head)
+{
+	swap(head);
+	ft_printf("sa");
+	return ;
+}
+void	sb(t_stack_node **head)
+{
+	swap(head);
+	ft_printf("sb");
+	return ;
+}
+void	ss(t_stack_node **head_a, t_stack_node **head_b)
+{
+	swap(head_a);
+	swap(head_b);
+	ft_printf("ss");
 	return ;
 }
