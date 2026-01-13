@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/13 15:18:05 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/13 16:23:47 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,8 @@ void			append_node(t_stack_node **stack, int nb);
 int				*sort_numbers(int *tab, int size);
 void			find_index(t_stack_node *stack, int *tab, int size);
 void			index_stack(t_stack_node *stack);
+
+/* ----------------------------- CORE -------------------------------*/
+float			compute_disorder(t_stack_node *a);
 
 #endif

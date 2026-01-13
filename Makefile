@@ -11,7 +11,8 @@ SRCS        = main.c \
 			  parsing/free.c \
 			  parsing/check_args.c \
               stack_utils/stack_nodes.c \
-			  stack_utils/sort_numbers.c
+			  stack_utils/sort_numbers.c \
+			  core/disorder.c
               
 OBJS        = $(SRCS:.c=.o)
 
