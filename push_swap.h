@@ -6,7 +6,7 @@
 /*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/13 16:23:47 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/13 18:39:57 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,8 @@ void			index_stack(t_stack_node *stack);
 
 /* ----------------------------- CORE -------------------------------*/
 float			compute_disorder(t_stack_node *a);
+
+/* ----------------------------- CORE -------------------------------*/
+void			swap(t_stack_node **head);
 
 #endif

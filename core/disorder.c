@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   disorder.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/13 17:08:11 by marberge          #+#    #+#             */
+/*   Updated: 2026/01/13 19:07:08 by marberge         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 float    compute_disorder(t_stack_node *a)
@@ -7,6 +19,9 @@ float    compute_disorder(t_stack_node *a)
     t_stack_node    *temp_node_a;
     t_stack_node    *temp_node_b;
 
+	// Pour gérer le cas ou la liste est nulle ou de longeur < a 2
+	if (!a || lstsize(a) < 2)
+		return (0.0);
     mistakes = 0;
     total_pairs = 0;
     temp_node_a = a;
