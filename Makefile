@@ -3,8 +3,8 @@ NAME        = push_swap
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror -g3 -MMD -MP
 
-LIBFT_PATH  = ./libft
-PRINTF_PATH = ./printf
+LIBFT_PATH  = ./lib/libft
+PRINTF_PATH = ./lib/printf
 
 SRCS        = main.c \
               parsing/parsing.c \
