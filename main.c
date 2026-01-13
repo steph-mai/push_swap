@@ -1,5 +1,5 @@
 #include "push_swap.h"
-// #include <stdio.h> #TODO: a retirer
+#include <stdio.h> // #TODO: a retirer
 
 /* Fonction de debug temporaire.
    Elle parcourt la liste et affiche chaque nombre.
@@ -43,7 +43,9 @@ int	main(int argc, char **argv)
 
 	// 4. TEST : On affiche le résultat
 	print_stack(stack_a);
-	printf("disorder = %.2f\n", compute_disorder(stack_a));
+	printf("disorder = %.2f\n\n", compute_disorder(stack_a));
+	swap(&stack_a);
+	print_stack(stack_a);
 
 	// 5. Nettoyage final (très important pour Valgrind)
 	free_stack(&stack_a);
