@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 14:51:14 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/14 16:43:10 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/14 18:10:31 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 void	rotate(t_stack_node **head)
 {
@@ -27,4 +26,26 @@ void	rotate(t_stack_node **head)
 	current_node->next = head_temp;
 	head_temp->prev = current_node;
 	head_temp->next = NULL;
+}
+
+void	ra(t_stack_node **a)
+{
+	rotate(a);
+	ft_printf("ra\n");
+	return ;
+}
+
+void	rb(t_stack_node **b)
+{
+	rotate(b);
+	ft_printf("rb\n");
+	return ;
+}
+
+void	rr(t_stack_node **a, t_stack_node **b)
+{
+	rotate(a);
+	rotate(b);
+	ft_printf("rr\n");
+	return ;
 }
