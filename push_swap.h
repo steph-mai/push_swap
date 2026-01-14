@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/13 18:39:57 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/14 10:10:58 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,13 @@ void			index_stack(t_stack_node *stack);
 /* ----------------------------- CORE -------------------------------*/
 float			compute_disorder(t_stack_node *a);
 
-/* ----------------------------- CORE -------------------------------*/
+/* ----------------------------- OPERATIONS -------------------------------*/
 void			swap(t_stack_node **head);
+void			sa(t_stack_node **head);
+void			sb(t_stack_node **head);
+void			ss(t_stack_node **head_a, t_stack_node **head_b);
+void			push(t_stack_node **dest, t_stack_node **src);
+void			pa(t_stack_node **stack_a, t_stack_node **stack_b);
+void			pb(t_stack_node **stack_b, t_stack_node **stack_a);
 
 #endif
