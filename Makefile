@@ -14,7 +14,9 @@ SRCS        = main.c \
 			  stack_utils/sort_numbers.c \
 			  core/disorder.c \
 			  operations/swap.c\
-			  operations/push.c
+			  operations/push.c \
+			  operations/rotate.c
+
               
 OBJS        = $(SRCS:.c=.o)
 

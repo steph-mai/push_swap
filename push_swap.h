@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/14 10:10:58 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/14 15:28:02 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ void			ss(t_stack_node **head_a, t_stack_node **head_b);
 void			push(t_stack_node **dest, t_stack_node **src);
 void			pa(t_stack_node **stack_a, t_stack_node **stack_b);
 void			pb(t_stack_node **stack_b, t_stack_node **stack_a);
+void			rotate(t_stack_node **head);
 
 #endif
