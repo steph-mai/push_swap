@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 	// 4. TEST : On affiche le résultat
 	print_stack(stack_a);
 	printf("disorder = %.2f\n\n", compute_disorder(stack_a));
-	rotate(&stack_a);
+	reverse_rotate(&stack_a);
 	print_stack(stack_a);
 
 	// 5. Nettoyage final (très important pour Valgrind)
