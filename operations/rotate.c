@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 14:51:14 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/14 16:06:22 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/14 16:43:10 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	rotate(t_stack_node **head)
 	t_stack_node	*head_temp;
 	t_stack_node	*current_node;
 
+	if (!head || !*head || lstsize(*head) < 2)
+		return ;
 	head_temp = *head;
 	*head = head_temp->next;
 	(*head)->prev = NULL;
