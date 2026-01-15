@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 17:08:26 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/14 08:58:06 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/15 15:50:53 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,21 @@ void	swap(t_stack_node **head)
 	*head = node_b;
 	return ;
 }
+
 void	sa(t_stack_node **head)
 {
 	swap(head);
 	ft_printf("sa\n");
 	return ;
 }
+
 void	sb(t_stack_node **head)
 {
 	swap(head);
 	ft_printf("sb\n");
 	return ;
 }
+
 void	ss(t_stack_node **head_a, t_stack_node **head_b)
 {
 	swap(head_a);
