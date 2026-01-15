@@ -4,7 +4,7 @@
 /* Fonction de debug temporaire.
    Elle parcourt la liste et affiche chaque nombre.
 */
-static void	print_stack(t_stack_node *stack)
+void	print_stack(t_stack_node *stack)
 {
 	ft_printf("\n--- VISUALISATION STACK A ---\n");
 	if (!stack)
@@ -23,8 +23,11 @@ static void	print_stack(t_stack_node *stack)
 int	main(int argc, char **argv)
 {
 	t_stack_node	*stack_a;
+	t_stack_node	*stack_b;
 	char			**tab;
-	t_stack_node	*node_max;
+
+	stack_b = NULL;
+	// t_stack_node	*node_max;
 	// 1. Si aucun argument n'est donné, le programme doit rendre le prompt sans rien afficher
 	if (argc < 2)
 		return (0);
@@ -42,15 +45,19 @@ int	main(int argc, char **argv)
 		return (1);
 
 	// 4. TEST : On affiche le résultat
-	print_stack(stack_a);
-	printf("disorder = %.2f\n\n", compute_disorder(stack_a));
-	node_max = find_max(stack_a);
-	printf("node_max = %p\n", node_max);
-	printf("index_max = %u\n", node_max->index);
-	printf("value_max = %d\n", node_max->number);
-		
-	three_sort(&stack_a);
-	print_stack(stack_a);
+	// print_stack(stack_a);
+	// print_stack(stack_b);
+	// printf("\ndisorder = %.2f\n\n", compute_disorder(stack_a));
+	// node_max = find_max(stack_a);
+	// printf("node_max = %p\n", node_max);
+	// printf("index_max = %u\n", node_max->index);
+	// printf("value_max = %d\n", node_max->number);
+
+	insertion_sort(&stack_a, &stack_b);
+
+
+	// print_stack(stack_a);
+	// print_stack(stack_b);
 
 	// 5. Nettoyage final (très important pour Valgrind)
 	free_stack(&stack_a);

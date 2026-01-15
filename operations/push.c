@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 08:55:24 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/14 10:17:18 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/15 14:25:24 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	pa(t_stack_node **stack_a, t_stack_node **stack_b)
 	return ;
 }
 
-void	pb(t_stack_node **stack_b, t_stack_node **stack_a)
+void	pb(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	push(stack_b, stack_a);
 	ft_printf("pb\n");

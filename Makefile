@@ -16,8 +16,9 @@ SRCS        = main.c \
 			  operations/swap.c\
 			  operations/push.c \
 			  operations/rotate.c \
-			  operations/reverse_rotate.c\
-			  core/three_sort.c
+			  operations/reverse_rotate.c \
+			  core/algo/simple/insertion_sort.c
+# 			  core/three_sort.c
 
 
               
