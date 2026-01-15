@@ -13,13 +13,14 @@ SRCS        = main.c \
               stack_utils/stack_nodes.c \
 			  stack_utils/sort_numbers.c \
 			  core/disorder.c \
-			  operations/swap.c\
+			  operations/swap.c \
 			  operations/push.c \
 			  operations/rotate.c \
-			  operations/reverse_rotate.c\
-			  core/three_sort.c
-
-
+			  operations/reverse_rotate.c \
+			  core/three_sort.c \
+			  core/algo/simple/selection_sort.c \
+			  core/algo/simple/insertion_sort.c
+			  
               
 OBJS        = $(SRCS:.c=.o)
 

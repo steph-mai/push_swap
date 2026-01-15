@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/15 10:10:25 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/15 18:44:42 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,19 @@ int				*sort_numbers(int *tab, int size);
 void			find_index(t_stack_node *stack, int *tab, int size);
 void			index_stack(t_stack_node *stack);
 t_stack_node	*find_max(t_stack_node *stack);
+t_stack_node	*find_min(t_stack_node *stack);
 
 /* ----------------------------- CORE -------------------------------*/
 float			compute_disorder(t_stack_node *a);
 void			three_sort(t_stack_node **stack_a);
+/*------------  ALGO SIMPLE  ---------------*/
+void			selection_sort(t_stack_node **a, t_stack_node **b);
+void			insertion_sort(t_stack_node **a, t_stack_node **b);
+/*------------  ALGO MEDIUM  ---------------*/
+
+/*------------  ALGO COMPLEX  ---------------*/
+
+
 
 /* ----------------------------- OPERATIONS -------------------------------*/
 /*------------  SWAP  ---------------*/
@@ -66,7 +75,7 @@ void			ss(t_stack_node **head_a, t_stack_node **head_b);
 /*------------  PUSH  ---------------*/
 void			push(t_stack_node **dest, t_stack_node **src);
 void			pa(t_stack_node **stack_a, t_stack_node **stack_b);
-void			pb(t_stack_node **stack_b, t_stack_node **stack_a);
+void			pb(t_stack_node **stack_a, t_stack_node **stack_b);
 /*------------  ROTATE  ---------------*/
 void			rotate(t_stack_node **head);
 void			ra(t_stack_node **a);
@@ -77,6 +86,5 @@ void			reverse_rotate(t_stack_node **head);
 void			rra(t_stack_node **a);
 void			rrb(t_stack_node **b);
 void			rrr(t_stack_node **a, t_stack_node **b);
-
 
 #endif
