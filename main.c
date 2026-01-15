@@ -4,30 +4,30 @@
 /* Fonction de debug temporaire.
    Elle parcourt la liste et affiche chaque nombre.
 */
-static void	print_stack(t_stack_node *stack)
-{
-	//ft_printf("\n--- VISUALISATION STACK ---\n");
-	if (!stack)
-	{
-		ft_printf("(La pile est vide)\n");
-		return ;
-	}
-	while (stack)
-	{
-		ft_printf("  %d\t|   %d\n", stack->index, stack->number);
-		stack = stack->next;
-	}
-	ft_printf("-----------------------------\n\n");
-}
+// static void	print_stack(t_stack_node *stack)
+// {
+// 	//ft_printf("\n--- VISUALISATION STACK ---\n");
+// 	if (!stack)
+// 	{
+// 		ft_printf("(La pile est vide)\n");
+// 		return ;
+// 	}
+// 	while (stack)
+// 	{
+// 		ft_printf("  %d\t|   %d\n", stack->index, stack->number);
+// 		stack = stack->next;
+// 	}
+// 	ft_printf("-----------------------------\n\n");
+// }
 
 int	main(int argc, char **argv)
 {
 	t_stack_node	*stack_a;
 	t_stack_node	*stack_b;
 	char			**tab;
-	t_stack_node	*node_max;
-	t_stack_node	*node_min;
-	long			size;
+	// t_stack_node	*node_max;
+	// t_stack_node	*node_min;
+	// long			size;
 
 
 	// 1. Si aucun argument n'est donné, le programme doit rendre le prompt sans rien afficher
@@ -49,28 +49,28 @@ int	main(int argc, char **argv)
 		return (1);
 
 	// 4. TEST : On affiche le résultat
-	printf("********** STACK A AVANT LE TRI **********\n");
-	print_stack(stack_a);
-	printf("********** STACK B AVANT LE TRI **********\n");
-	print_stack(stack_b);
-	size = lstsize(stack_a);
-	printf("size de la stack a = %ld\n", size);
-	printf("disorder = %.2f\n\n", compute_disorder(stack_a));
-    node_max = find_max(stack_a);
-	printf("*********** la VALEUR MAX de la stack a ************\n");
-	printf("adresse du node_max = %p\n", node_max);
-    printf("index_max = %u\n", node_max->index);
-    printf("value_max = %d\n", node_max->number);
-	printf("*********** la VALEUR MIN de la stack a ************\n");
-	node_min = find_min(stack_a);
-    printf("node_min = %p\n", node_min);
-    printf("index_min = %u\n", node_min->index);
-    printf("value_min = %d\n", node_min->number);
-	simple_algo(&stack_a, &stack_b); 
-	printf("********** STACK A APRES LE TRI **********\n");
-	print_stack(stack_a);
-	printf("********** STACK B APRES LE TRI **********\n");
-	print_stack(stack_b);
+	// printf("********** STACK A AVANT LE TRI **********\n");
+	// print_stack(stack_a);
+	// printf("********** STACK B AVANT LE TRI **********\n");
+	// print_stack(stack_b);
+	// size = lstsize(stack_a);
+	// printf("size de la stack a = %ld\n", size);
+	// printf("disorder = %.2f\n\n", compute_disorder(stack_a));
+    // node_max = find_max(stack_a);
+	// printf("*********** la VALEUR MAX de la stack a ************\n");
+	// printf("adresse du node_max = %p\n", node_max);
+    // printf("index_max = %u\n", node_max->index);
+    // printf("value_max = %d\n", node_max->number);
+	// printf("*********** la VALEUR MIN de la stack a ************\n");
+	// node_min = find_min(stack_a);
+    // printf("node_min = %p\n", node_min);
+    // printf("index_min = %u\n", node_min->index);
+    // printf("value_min = %d\n", node_min->number);
+	selection_sort(&stack_a, &stack_b); 
+	// printf("********** STACK A APRES LE TRI **********\n");
+	// print_stack(stack_a);
+	// printf("********** STACK B APRES LE TRI **********\n");
+	// print_stack(stack_b);
 	free_stack(&stack_a);
 	free_stack(&stack_b);
 

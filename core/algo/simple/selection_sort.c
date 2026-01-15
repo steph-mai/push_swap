@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   simple_algo.c                                      :+:      :+:    :+:   */
+/*   selection_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 09:11:56 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/15 15:48:50 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/15 18:34:47 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	get_position(t_stack_node *stack, t_stack_node *target_node)
 	return (0);
 }
 
-void	simple_algo(t_stack_node **a, t_stack_node **b)
+void	selection_sort(t_stack_node **a, t_stack_node **b)
 {
 	long			size;
 	t_stack_node	*min_node;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/15 16:06:52 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/15 18:34:55 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,14 @@ t_stack_node	*find_min(t_stack_node *stack);
 /* ----------------------------- CORE -------------------------------*/
 float			compute_disorder(t_stack_node *a);
 void			three_sort(t_stack_node **stack_a);
-void			simple_algo(t_stack_node **a, t_stack_node **b);
+/*------------  ALGO SIMPLE  ---------------*/
+void			selection_sort(t_stack_node **a, t_stack_node **b);
+void			insertion_sort(t_stack_node **a, t_stack_node **b);
+/*------------  ALGO MEDIUM  ---------------*/
+
+/*------------  ALGO COMPLEX  ---------------*/
+
+
 
 /* ----------------------------- OPERATIONS -------------------------------*/
 /*------------  SWAP  ---------------*/
