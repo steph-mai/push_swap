@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/14 18:19:33 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/15 15:12:09 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,13 @@ void			append_node(t_stack_node **stack, int nb);
 int				*sort_numbers(int *tab, int size);
 void			find_index(t_stack_node *stack, int *tab, int size);
 void			index_stack(t_stack_node *stack);
+t_stack_node    *find_max(t_stack_node *stack);
+t_stack_node    *find_min(t_stack_node *stack);
 
 /* ----------------------------- CORE -------------------------------*/
 float			compute_disorder(t_stack_node *a);
+void			three_sort(t_stack_node **stack_a);
+void			simple_algo(t_stack_node **a, t_stack_node **b);
 
 /* ----------------------------- OPERATIONS -------------------------------*/
 /*------------  SWAP  ---------------*/
@@ -64,7 +68,7 @@ void			ss(t_stack_node **head_a, t_stack_node **head_b);
 /*------------  PUSH  ---------------*/
 void			push(t_stack_node **dest, t_stack_node **src);
 void			pa(t_stack_node **stack_a, t_stack_node **stack_b);
-void			pb(t_stack_node **stack_b, t_stack_node **stack_a);
+void			pb(t_stack_node **stack_a, t_stack_node **stack_b);
 /*------------  ROTATE  ---------------*/
 void			rotate(t_stack_node **head);
 void			ra(t_stack_node **a);
