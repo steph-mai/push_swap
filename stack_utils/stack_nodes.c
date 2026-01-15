@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 17:47:02 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/13 09:42:34 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/15 11:14:03 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,24 @@ void	append_node(t_stack_node **stack, int nb)
 	//met number->nb et initialise à 0 
 	//tous les autres éléments de la structure, 
 	//ce dernier point est a completer.
+}
+t_stack_node	*find_max(t_stack_node *stack) //TODO A supprimer si ne sert pas ! 
+{
+	t_stack_node	*max_node;
+	long			max_index;
+
+	max_index = -1;
+	max_node = stack;
+	if (!stack)
+		return (NULL);
+	while (stack)
+	{
+		if (stack->index > max_index)
+		{
+			max_index = stack->index;
+			max_node = stack;
+		}
+		stack = stack->next;
+	}
+	return (max_node);	
 }

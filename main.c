@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 {
 	t_stack_node	*stack_a;
 	char			**tab;
-
+	t_stack_node	*node_max;
 	// 1. Si aucun argument n'est donné, le programme doit rendre le prompt sans rien afficher
 	if (argc < 2)
 		return (0);
@@ -44,7 +44,12 @@ int	main(int argc, char **argv)
 	// 4. TEST : On affiche le résultat
 	print_stack(stack_a);
 	printf("disorder = %.2f\n\n", compute_disorder(stack_a));
-	reverse_rotate(&stack_a);
+	node_max = find_max(stack_a);
+	printf("node_max = %p\n", node_max);
+	printf("index_max = %u\n", node_max->index);
+	printf("value_max = %d\n", node_max->number);
+		
+	three_sort(&stack_a);
 	print_stack(stack_a);
 
 	// 5. Nettoyage final (très important pour Valgrind)
