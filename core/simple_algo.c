@@ -6,21 +6,21 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 09:11:56 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/15 15:12:26 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/15 15:48:50 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int  get_position(t_stack_node *stack, t_stack_node *target_node)
+static int	get_position(t_stack_node *stack, t_stack_node *target_node)
 {
 	long	i;
 
 	i = 0;
-    while (stack)
-    {
+	while (stack)
+	{
 		if (stack == target_node)
-        	return (i);
+			return (i);
 		stack = stack->next;
 		i++;
 	}
@@ -30,15 +30,15 @@ static int  get_position(t_stack_node *stack, t_stack_node *target_node)
 void	simple_algo(t_stack_node **a, t_stack_node **b)
 {
 	long			size;
-	t_stack_node 	*min_node;
+	t_stack_node	*min_node;
 	long			position;
-		
+
 	size = lstsize(*a);
 	while (size > 3)
 	{
 		min_node = find_min(*a);
 		position = get_position(*a, min_node);
-		if (position <= size / 2 )
+		if (position <= size / 2)
 		{
 			while (*a != min_node)
 				ra(a);

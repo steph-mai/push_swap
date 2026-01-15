@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 17:47:02 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/15 14:41:52 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/15 16:12:08 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_stack_node	*lstlast(t_stack_node *lst)
 //fonction adaptee a la structure t_stack_node, 
 //sinon c est la meme que ft_lstlast de la libft
 }
+
 int		lstsize(t_stack_node *lst)
 {
 	int		count;
@@ -66,41 +67,43 @@ void	append_node(t_stack_node **stack, int nb)
 	//tous les autres éléments de la structure, 
 	//ce dernier point est a completer.
 }
-t_stack_node    *find_max(t_stack_node *stack)
+
+t_stack_node	*find_max(t_stack_node *stack)
 {
 	t_stack_node	*max_node;
-    long			max_index;
+	long			max_index;
 
 	if (!stack)
 		return (NULL);
 	max_index = -1;
 	while (stack)
- 	{
+	{
 		if (stack->index > max_index)
 		{
 			max_index = stack->index;
 			max_node = stack;
 		}
 		stack = stack->next;
-    }
-	return (max_node);  
+	}
+	return (max_node);
 }
-t_stack_node    *find_min(t_stack_node *stack)
+
+t_stack_node	*find_min(t_stack_node *stack)
 {
 	t_stack_node	*min_node;
-    long			min_index;
+	long			min_index;
 
 	if (!stack)
 		return (NULL);
 	min_index = LONG_MAX;
 	while (stack)
- 	{
+	{
 		if (stack->index < min_index)
 		{
 			min_index = stack->index;
 			min_node = stack;
 		}
 		stack = stack->next;
-    }
-	return (min_node);  
+	}
+	return (min_node);
 }

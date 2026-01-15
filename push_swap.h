@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/15 15:12:09 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/15 16:06:52 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void			append_node(t_stack_node **stack, int nb);
 int				*sort_numbers(int *tab, int size);
 void			find_index(t_stack_node *stack, int *tab, int size);
 void			index_stack(t_stack_node *stack);
-t_stack_node    *find_max(t_stack_node *stack);
-t_stack_node    *find_min(t_stack_node *stack);
+t_stack_node	*find_max(t_stack_node *stack);
+t_stack_node	*find_min(t_stack_node *stack);
 
 /* ----------------------------- CORE -------------------------------*/
 float			compute_disorder(t_stack_node *a);
@@ -79,6 +79,5 @@ void			reverse_rotate(t_stack_node **head);
 void			rra(t_stack_node **a);
 void			rrb(t_stack_node **b);
 void			rrr(t_stack_node **a, t_stack_node **b);
-
 
 #endif
