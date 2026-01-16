@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hazefury <hazefury@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/15 18:44:42 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/16 17:57:57 by hazefury         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void			insertion_sort(t_stack_node **a, t_stack_node **b);
 /*------------  ALGO MEDIUM  ---------------*/
 
 /*------------  ALGO COMPLEX  ---------------*/
+void radix_sort(t_stack_node **a, t_stack_node **b);
 
 
 
