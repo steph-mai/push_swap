@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 09:35:15 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/16 11:31:17 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/16 12:13:02 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@
 
 void	range_based_sort(t_stack_node **a, t_stack_node **b)
 {
-	long	size;
-	long	i;
-	long	range;
-	int		position;
+	int				size;
+	long			i;
+	long			range;
+	int				position;
+	t_stack_node	*max_node;
 	
 	size = lstsize(*a);
 	i = 0;
@@ -40,17 +41,24 @@ void	range_based_sort(t_stack_node **a, t_stack_node **b)
 		if ((*b) == find_max(*b) || (*b)->index == ((find_max(*b)->index) - 1))
 		{
 			pa(a, b);
-			if ((*a)->index > (*a)->next->index)
+			if ((*a)->next != NULL && (*a)->index > (*a)->next->index)
 				sa(a);
 		}
 		else
 		{
-			min_node = find_min(*a);
-		position = get_position(*a, min_node);
+			max_node = find_max(*b);
+			position = get_position(*b, max_node);
+			size = lstsize(*b);
+			if (position < (size / 2))
+				rb(b);
+			else
+			{
+				while (*b != max_node)
+					rrb(b);
+				pa(a, b);
+			}
 		}
-			
 	}
-	
 }
 
 // on compte le nombre d elements de la stack a = size
@@ -71,9 +79,9 @@ void	range_based_sort(t_stack_node **a, t_stack_node **b)
 // 				sa
 // 	si non
 // 		on regarde a quelle position se trouve index_max
-// 			si index < size/2 (s il est encore de le haut de la pile) !!! recalculer size a chaque tour
+// 			si position < size/2 (s il est encore de le haut de la pile) !!! recalculer size a chaque tour
 // 				rb
-// 			sinon index > size/2 ( s il est dans le bas de la pile)
+// 			sinon position > size/2 ( s il est dans le bas de la pile)
 // 				on le fait remonter avec des rrb
 				
 	

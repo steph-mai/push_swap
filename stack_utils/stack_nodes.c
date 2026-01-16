@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_nodes.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 17:47:02 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/15 18:47:58 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/16 11:59:31 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ t_stack_node	*lstlast(t_stack_node *lst)
 //sinon c est la meme que ft_lstlast de la libft
 }
 
-int		lstsize(t_stack_node *lst)
+int	lstsize(t_stack_node *lst)
 {
-	int		count;
+	long		count;
 
 	count = 0;
 	while (lst)
