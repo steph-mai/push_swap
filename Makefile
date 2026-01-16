@@ -19,9 +19,9 @@ SRCS        = main.c \
 			  operations/reverse_rotate.c \
 			  core/three_sort.c \
 			  core/algo/simple/selection_sort.c \
-			  core/algo/simple/insertion_sort.c
-			  
-              
+			  core/algo/simple/insertion_sort.c \
+			  core/algo/medium/range_based_sort.c
+			                
 OBJS        = $(SRCS:.c=.o)
 
 DEPS        = $(OBJS:.o=.d)
@@ -39,7 +39,7 @@ all: $(NAME)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(NAME): $(OBJS) $(LIBFT) $(PRINTF)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBS_FLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBS_FLAGS) -o $(NAME) -lm 
 
 $(LIBFT):
 	@make -C $(LIBFT_PATH)
