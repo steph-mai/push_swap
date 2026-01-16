@@ -66,18 +66,11 @@ Afin de faciliter le contrôle des performances, le programme intègre plusieurs
 ### 🔧 Compilation
 
 Le projet est écrit en C et utilise un `Makefile` pour la compilation. Assurez-vous d'avoir `gcc` et `make` installés sur votre machine.
+Cette commande génère l'exécutable `push_swap`.
 
-1.  **Cloner le dépôt :**
-    ```bash
-    git clone [https://github.com/votre-username/push_swap.git](https://github.com/votre-username/push_swap.git)
-    cd push_swap
-    ```
-
-2.  **Compiler le programme :**
-    Cette commande génère l'exécutable `push_swap`.
-    ```bash
+```bash
     make
-    ```
+```
 
 ---
 
@@ -170,10 +163,6 @@ Voici une sélectionde ressources techniques pour comprendre les algorithmes imp
 * **[push_swap_visualizer (o-reo)](https://github.com/o-reo/push_swap_visualizer)** : Un outil graphique indispensable pour **voir** les piles bouger en temps réel. Il permet de comprendre visuellement la logique de tri et de débugger les boucles infinies.
 * **[push_swap_tester (SimonCROS)](https://github.com/SimonCROS/push_swap_tester)** : Un script de benchmark complet pour lancer des milliers de tests aléatoires, vérifier la gestion des erreurs et calculer la moyenne de coups. Essentiel pour calibrer le mode adaptatif.
 
-### 🎓 Théorie
-
-* **[CS50 - Asymptotic Notation](https://www.youtube.com/watch?v=iOq5kSKjRGI)** : (Vidéo) Explication sur la complexité algorithmique et le "Big O", issue du cours d'Harvard.
-
 ## 🧠 Stratégies Algorithmiques & Complexité
 
 Pour résoudre efficacement le problème de tri quelle que soit la taille de l'entrée, ce projet implémente trois approches algorithmiques distinctes, allant de la méthode naïve à la plus optimisée, conformément aux exigences du sujet.
@@ -191,9 +180,6 @@ Pour résoudre efficacement le problème de tri quelle que soit la taille de l'e
 
 -- **L'Extraction Min/Max (Extraction Method) :**
 C'est une version plus "flexible" du tri par sélection, qui peut être utilisée pour optimiser les coups. Il s'agit de vider la pile `a`A le plus vite possible en enlevant les "extrêmes". La méthode : Regarder la pile `a`. Se demander : "Qui est le plus près du haut ? Le Minimum ou le Maximum ?" Si le Min est plus près : on le monte et pb (et on le laisse en haut de `b`). Si le Max est plus près : on le monte et pb (et on le met en bas de 'b' avec rb). La pile `b` est donc triée au fur et à mesure, mais on a économisé des rotations en choisissant le chemin le plus court (vers le Min ou vers le Max). NB : au delà de 3 nombres, cela ne fonctionne plus sans adaptations car `b` n'est plus trié...
-
-* **Statégie choisie :**
-*A COMPLETER*
 
 ### 2. L'Algorithme Moyen O(n√n)
 * **Cible :** Piles moyennes (ex : 100 valeurs).
@@ -218,9 +204,6 @@ Le tri par seaux classique distribue les éléments dans plusieurs contenants di
 -- **Range-based sorting strategies (Stratégies par intervalles dynamiques)**
 
 C'est souvent l'évolution la plus performante du tri par paquets. Au lieu d'avoir des paquets fixes (ex: 1 à 20), on utilise une "fenêtre glissante" ou un intervalle dynamique (= le range). Si le nombre au sommet de A est compris dans l'intervalle [0, compteur + range] (compteur = nombre d'élements déjà pré-triés), on le pousse vers B. À chaque push, l'intervalle grandit ou se décale. Cette méthode lisse la distribution des nombres dans la pile B (souvent en forme de courbe de Gauss) et minimise les rotations nécessaires pour récupérer les éléments extrêmes lors de la phase finale. A la fin, les plus grands nombres (ceux qui sont rentrés en dernier) sont globalement vers le haut de la pile, et les plus petits (rentrés au début) sont vers le bas ou le milieu. Enfin, il reste à reconstruire la pile A à l'envers, en cherchant le maximum dans `b` qui a été pré-trié.
-
-* **Statégie choisie :**
-*A COMPLETER*
 
 ### 3. L'Algorithme Complexe O(n log n)
 * **Cible :** Grandes piles (500+ valeurs).
@@ -357,14 +340,7 @@ On parcourt l'arbre en suivant la règle stricte : **Gauche ➔ Racine ➔ Droit
 </details>
 <br>
 
-* **Statégie choisie :**
-*A COMPLETER*
-
-### 4. Complément : Algorithme adaptatif
-*A COMPLETER*
-
-
-### 5. Complément : Tri stable et tri instable
+### 4. Complément : Tri stable et tri instable
 
 La notion de stabilité est fondamentale en algorithmique. Elle désigne la capacité d'un tri à préserver l'ordre relatif des éléments ayant la même valeur (doublons).
 
@@ -422,3 +398,63 @@ Exemples : Quick Sort, Selection Sort, Heap Sort.
 * **fonction index_stack**(dans le fichier sort_numbers) : On commence par mesurer la taille de la liste chaînée pour allouer la mémoire d'un tableau, dans lequel on copie les entiers. On travaille avec une copie du noeud pour eviter de perdre l adresse de la liste. Dans ce tableau, on trie les entiers avec un bubble sort(* **fonction sort_numbers** *)(NB on se moque de la performance de ce pré-tri, c'est la performance des algos qui sera ensuite évaluée). 
 Enfin, la fonction * **find_index** * cherche la correspondance entre l´entier stocké dans la liste chaînée et les valeurs du tableau trié (ex : tableau trié [2, 14, 22]) > je cherche dans quel noeud se trouve stockée la valeur "2" et j'associe à ce noeud l'index 0... etc...
 
+### 2. Désordre et opérations
+Implémentation d´une fonction de calcul du taux de désordre de la liste à trier.
+Implémentation des fonctions qui permettent d'agir sur les piles (pa, pb, pp, sa, sb...)
+
+### 3. Choix et implémentation des algorithmes
+
+* **algorithme simple** :
+	* **Stratégie choisie : tri par sélection**
+Nous avons choisi d'implémenter un tri par sélection pour le ratio simplicité/efficacité de cet algorithme pour le tri des petites listes. Nous avons cherché à optimiser le tri en traitant à part les trois derniers nombres qui restent de la pile a (ou le tri se fait en un ou deux mouvements seulement). Un seconde optimisation consiste à faire tourner la pile dans un sens ou dans l'autre pour faire remonter l'index voulu en haut de la pile en fonction de la position de ce nombre dans la pile. En pseudo-code :
+
+			on calcule la taille de la pile a
+			on traite les cas où il y a moins de trois éléments dans la pile
+			tant qu'il y a plus de trois éléments
+				on détermine l index le plus petit
+				s'il est dans la moitié haute de la pile 
+					on le fait remonter avec des ra jusqu ce qu il soit tout en haut
+				s il est dans la moitie basse de la pile
+					on le fait remonter avec des rra jusqu ce qu il soit tout en haut
+				on le pushe sur b avec pb
+			on trie les 3 derniers éléments de a avec three_sort
+			on vide dans a toute la pile b
+			c'est trié !
+
+
+* **algorithme de complexité O(n√n)** :
+	* **Statégie choisie : range-based sorting strategy**
+Nous avons choisi cette variante du chunk-based sort pour son efficacité dans la catégorie des algorithmes de complexité O(n√n). Il s'agit de "pré-trier" les nombres en envoyant dans la pile b les nombres qui font partie de la plage [0- √size] (avec size qui correspond à la taille de la pile a). Au fur et à mesure qu'on envoie des nombres dans la pile b, on incrémente un compteur i et on adapte l'intervalle qui devient [0- √size + 1]. Voici la logique de l'implémemtation en pseudo-code :
+
+			on compte le nombre d elements de la stack a = size
+			on determine le range (racine de size)*
+			on met un incrementateur count a 0
+			ETAPE 1 : ON PRE-TRIE 
+			tant que a n est pas vide
+				si index est compris dans l'intervalle [0 ; range + i]
+					on pushe dans b
+					si index < i (cad s'il s'agit d'un petit index)
+						rb (on l'envoie au fond de la pile b)
+						on incrémente le compteur
+				sinon on fait tourner la pile a (avec ra)	
+			NB a la fin de cette boucle, les nombres sont pre tries, grands au dessus, petits en dessous, moyens au milieu
+			ETAPE 2 : ON TRIE LA PILE B "PRE-TRIEE"
+			tant que b n'est pas vide
+			on regarde si l'un des deux plus grands index se trouve sur le dessus de la pile (c'est une optimisation!)
+			si oui 
+				on pushe dans a
+				s il y a plus d´un element dans a
+					on vérifie que les deux nombres en haut de la pile a sont triés 
+					si ce n'est pas le cas, on les swap
+			si non
+				on regarde à quelle position se trouve index_max
+				s'il est encore dans la moitié haute de la pile
+					on fait tourner avec rb
+				s´il est dans le bas de la pile
+					on le fait remonter avec des rrb
+
+* **algorithme de complexité O(n log n)** :
+	* **Statégie choisie : A COMPLETER**
+	
+* **Complément : Algorithme adaptatif** :
+*A COMPLETER*
