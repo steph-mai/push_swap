@@ -6,12 +6,11 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 17:47:02 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/16 11:59:31 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/16 16:10:54 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
-//a remplacer apres par "push_swap.h" en modifiant le makefile(-I)
+#include "push_swap.h"
 
 t_stack_node	*lstlast(t_stack_node *lst)
 {
@@ -20,13 +19,11 @@ t_stack_node	*lstlast(t_stack_node *lst)
 	while (lst->next != NULL)
 		lst = lst->next;
 	return (lst);
-//fonction adaptee a la structure t_stack_node, 
-//sinon c est la meme que ft_lstlast de la libft
 }
 
 int	lstsize(t_stack_node *lst)
 {
-	long		count;
+	int		count;
 
 	count = 0;
 	while (lst)
@@ -50,8 +47,7 @@ void	append_node(t_stack_node **stack, int nb)
 	node->number = nb;
 	node->index = -1;
 	node->next = NULL;
-	//autres champs de la structure a initialiser!!!
-	if (*stack == NULL) // cas 1 = la liste est vide
+	if (*stack == NULL)
 	{
 		*stack = node;
 		node->prev = NULL;
@@ -62,16 +58,12 @@ void	append_node(t_stack_node **stack, int nb)
 		last_node->next = node;
 		node->prev = last_node;
 	}
-	//fonction qui malloc un nouveau noeud, 
-	//met number->nb et initialise à 0 
-	//tous les autres éléments de la structure, 
-	//ce dernier point est a completer.
 }
 
 t_stack_node	*find_max(t_stack_node *stack)
 {
 	t_stack_node	*max_node;
-	long			max_index;
+	int				max_index;
 
 	if (!stack)
 		return (NULL);
@@ -91,11 +83,11 @@ t_stack_node	*find_max(t_stack_node *stack)
 t_stack_node	*find_min(t_stack_node *stack)
 {
 	t_stack_node	*min_node;
-	long			min_index;
+	int				min_index;
 
 	if (!stack)
 		return (NULL);
-	min_index = LONG_MAX;
+	min_index = INT_MAX;
 	while (stack)
 	{
 		if (stack->index < min_index)

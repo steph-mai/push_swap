@@ -6,83 +6,73 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 09:35:15 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/16 12:13:02 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/16 16:14:57 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-//#include <math.h> // TODO à enlever à remplacer par une fonction qui calcule la racine carrée
-					// TODO supprimer em meme temps dans le Makefile -lm à la fin de la règle pour construire le $NAME
+
+static int	ft_sqrt(int nb)
+{
+	int	i;
+
+	i = 0;
+	if (nb < 0)
+		return (0);
+	while (i * i <= nb)
+		i++;
+	return (i - 1);
+}
+
+void	return_maxima_to_a(t_stack_node **a, t_stack_node **b)
+{
+	int				size;
+	int				position;
+	t_stack_node	*max_node;
+
+	position = -1;
+	if ((*b) == find_max(*b) || (*b)->index == ((find_max(*b)->index) - 1))
+	{
+		pa(a, b);
+		if ((*a)->next != NULL && (*a)->index > (*a)->next->index)
+			sa(a);
+	}
+	else
+	{
+		max_node = find_max(*b);
+		position = get_position(*b, max_node);
+		size = lstsize(*b);
+		if (position < (size / 2))
+			rb(b);
+		else
+		{
+			while (*b != max_node)
+				rrb(b);
+		}
+	}
+}
 
 void	range_based_sort(t_stack_node **a, t_stack_node **b)
 {
-	int				size;
-	long			i;
-	long			range;
-	int				position;
-	t_stack_node	*max_node;
-	
+	int			size;
+	int			i;
+	int			range;
+
 	size = lstsize(*a);
 	i = 0;
-	position = -1;
-	range = sqrt(size);
+	range = ft_sqrt(size);
 	while (*a)
 	{
 		if ((*a)->index >= 0 && (*a)->index < range + i)
 		{
 			pb(a, b);
+			if ((*b)->index < i)
+				rb(b);
 			i++;
 		}
 		else
 			ra(a);
 	}
 	while (*b)
-	{
-		if ((*b) == find_max(*b) || (*b)->index == ((find_max(*b)->index) - 1))
-		{
-			pa(a, b);
-			if ((*a)->next != NULL && (*a)->index > (*a)->next->index)
-				sa(a);
-		}
-		else
-		{
-			max_node = find_max(*b);
-			position = get_position(*b, max_node);
-			size = lstsize(*b);
-			if (position < (size / 2))
-				rb(b);
-			else
-			{
-				while (*b != max_node)
-					rrb(b);
-				pa(a, b);
-			}
-		}
-	}
+		return_maxima_to_a(a, b);
 }
-
-// on compte le nombre d elements de la stack a = size
-// on determine le range (racine de size)
-// on met un incrementateur count a 0
-// tant que a n est pas vide
-// 	si index est compris dans range + i
-// 		on pb 
-// 		i++;
-// 	sinon on ra	
-// NB a la fin les nombres sont pre tries, grands au dessus, petits en dessous, moyens au milieu
-// while (b)
-// on regarde si head_b = index_max ou index_max - 1
-// 	si oui 
-// 		pa
-// 		on verfie que head_a et head_a->next sont triees (s il y a plus dún element dans a)
-// 			si pas triees 
-// 				sa
-// 	si non
-// 		on regarde a quelle position se trouve index_max
-// 			si position < size/2 (s il est encore de le haut de la pile) !!! recalculer size a chaque tour
-// 				rb
-// 			sinon position > size/2 ( s il est dans le bas de la pile)
-// 				on le fait remonter avec des rrb
-				
-	
-	

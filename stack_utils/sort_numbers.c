@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 08:41:27 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/16 11:11:47 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/16 14:58:49 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,10 @@ void	index_stack(t_stack_node *stack)
 	find_index(stack, tab, size);
 	free(tab);
 }
+
 int	get_position(t_stack_node *stack, t_stack_node *target_node)
 {
-	long	i;
+	int	i;
 
 	i = 0;
 	while (stack)

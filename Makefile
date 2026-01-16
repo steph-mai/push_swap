@@ -39,7 +39,7 @@ all: $(NAME)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(NAME): $(OBJS) $(LIBFT) $(PRINTF)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBS_FLAGS) -o $(NAME) -lm 
+	$(CC) $(CFLAGS) $(OBJS) $(LIBS_FLAGS) -o $(NAME)
 
 $(LIBFT):
 	@make -C $(LIBFT_PATH)
