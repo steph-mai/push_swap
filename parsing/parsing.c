@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:36:44 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/13 14:22:05 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/16 16:19:19 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ static long	ft_atol(char *s)
 	long	nb;
 	size_t	i;
 	int		neg;
-	//sert a transformer chaque string de **tab en long
-	//(pas en int pour eviter les pb d'overflow)
-	//on verifiera les eventuels depassements dans la fonction build_stack
+
 	nb = 0;
 	i = 0;
 	neg = 0;
@@ -46,10 +44,7 @@ char	*from_args_to_big_str(int argc, char **argv)
 	char	*s;
 	char	*temp;
 	int		i;
-	//transforme les arguments en une grande string 
-//ou les nb sont separes par un espace
-//regle le pb "12 22" 4 qui n etait pas gere si on split seulement qd argc <= 2
-//ce qui etait ma premiere idee...
+
 	i = 1;
 	s = ft_strdup("");
 	if (!s)
@@ -88,8 +83,6 @@ char	**put_args_in_array(int argc, char **argv)
 }
 
 t_stack_node	*build_stack(char **tab)
-//on construit la liste chainee en transformant chaque chaine en entier 
-//apres verif de sa validite
 {
 	int				i;
 	long			nb;
@@ -108,7 +101,6 @@ t_stack_node	*build_stack(char **tab)
 		append_node(&stack, (int)nb);
 		i++;
 	}
-	//une fois que la liste complete est creee, on ajoute les index des differents noeuds.
 	index_stack(stack);
 	free_tab(tab);
 	return (stack);
