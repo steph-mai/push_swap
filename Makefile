@@ -6,7 +6,7 @@ CFLAGS      = -Wall -Wextra -Werror -g3 -MMD -MP
 LIBFT_PATH  = ./lib/libft
 PRINTF_PATH = ./lib/printf
 
-SRCS        = main.c \
+SRCS        = main_bis.c \
               parsing/parsing.c \
 			  parsing/free.c \
 			  parsing/check_args.c \
@@ -19,9 +19,10 @@ SRCS        = main.c \
 			  operations/reverse_rotate.c \
 			  core/three_sort.c \
 			  core/algo/simple/selection_sort.c \
-			  core/algo/simple/insertion_sort.c
-			  
-              
+			  core/algo/simple/insertion_sort.c \
+			  core/algo/complex/radix_sort.c \
+			  core/algo/medium/range_based_sort.c
+			                
 OBJS        = $(SRCS:.c=.o)
 
 DEPS        = $(OBJS:.o=.d)

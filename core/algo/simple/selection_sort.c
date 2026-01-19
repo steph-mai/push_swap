@@ -3,35 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   selection_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 09:11:56 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/15 18:34:47 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/16 16:14:25 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	get_position(t_stack_node *stack, t_stack_node *target_node)
-{
-	long	i;
-
-	i = 0;
-	while (stack)
-	{
-		if (stack == target_node)
-			return (i);
-		stack = stack->next;
-		i++;
-	}
-	return (0);
-}
-
 void	selection_sort(t_stack_node **a, t_stack_node **b)
 {
-	long			size;
+	int				size;
 	t_stack_node	*min_node;
-	long			position;
+	int				position;
 
 	size = lstsize(*a);
 	while (size > 3)
@@ -55,15 +40,3 @@ void	selection_sort(t_stack_node **a, t_stack_node **b)
 	while (*b)
 		pa(a, b);
 }
-// je calcule la longueur de la pile a
-// tant que cette longueur > 3
-// 	je determine l index le plus petit
-// 	je le cherche 
-// 		s il est dans la moitie haute de la pile 
-// 			je le fais remonter avec des ra jusqu ce qu il soit tout en haut
-// 		s il est dans la moitie basse de la pile
-// 			je fais rra jusqu a ce qu il soit en haut de la pile 
-// 			je le pushe sur b avec pb
-// je trie les 3 qui restent dans a avec three_sort
-// je pa toute la stack b 
-// c est trié
