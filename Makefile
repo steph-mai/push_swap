@@ -6,7 +6,7 @@ CFLAGS      = -Wall -Wextra -Werror -g3 -MMD -MP
 LIBFT_PATH  = ./lib/libft
 PRINTF_PATH = ./lib/printf
 
-SRCS        = main_bis.c \
+SRCS        = main.c \
               parsing/parsing.c \
 			  parsing/free.c \
 			  parsing/check_args.c \
