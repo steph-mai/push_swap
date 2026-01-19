@@ -6,7 +6,7 @@
 /*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/19 11:08:40 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/19 17:50:10 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ int				check_args_doubles(t_stack_node *node, int nb_to_check);
 void			free_tab(char **tab);
 void			free_stack(t_stack_node **stack);
 t_stack_node	*free_if_error(t_stack_node **stack, char **tab);
+
+//***flags***/
+int	flag_selector(char *str);
+
 
 /* -----------------------------STACK_UTILS-------------------------------*/
 t_stack_node	*lstlast(t_stack_node *lst);
