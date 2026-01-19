@@ -20,9 +20,9 @@ SRCS        = main_bis.c \
 			  core/three_sort.c \
 			  core/algo/simple/selection_sort.c \
 			  core/algo/simple/insertion_sort.c \
-			  core/algo/complex/radix_sort.c
-			  
-              
+			  core/algo/complex/radix_sort.c \
+			  core/algo/medium/range_based_sort.c
+			                
 OBJS        = $(SRCS:.c=.o)
 
 DEPS        = $(OBJS:.o=.d)

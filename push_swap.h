@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hazefury <hazefury@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/16 17:57:57 by hazefury         ###   ########.fr       */
+/*   Updated: 2026/01/19 11:08:40 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "./lib/libft/libft.h"
 # include "./lib/printf/includes/ft_printf.h"
-# include <unistd.h>
+# include <unistd.h> // TODO: vérifier si toujours utile
 # include <stdlib.h>
 # include <limits.h>
 
@@ -53,6 +53,7 @@ void			find_index(t_stack_node *stack, int *tab, int size);
 void			index_stack(t_stack_node *stack);
 t_stack_node	*find_max(t_stack_node *stack);
 t_stack_node	*find_min(t_stack_node *stack);
+int				get_position(t_stack_node *stack, t_stack_node *target_node);
 
 /* ----------------------------- CORE -------------------------------*/
 float			compute_disorder(t_stack_node *a);
@@ -61,11 +62,10 @@ void			three_sort(t_stack_node **stack_a);
 void			selection_sort(t_stack_node **a, t_stack_node **b);
 void			insertion_sort(t_stack_node **a, t_stack_node **b);
 /*------------  ALGO MEDIUM  ---------------*/
+void			range_based_sort(t_stack_node **a, t_stack_node **b);
 
 /*------------  ALGO COMPLEX  ---------------*/
-void radix_sort(t_stack_node **a, t_stack_node **b);
-
-
+void 			radix_sort(t_stack_node **a, t_stack_node **b);
 
 /* ----------------------------- OPERATIONS -------------------------------*/
 /*------------  SWAP  ---------------*/
