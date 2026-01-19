@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/16 14:59:32 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/19 11:08:40 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 
 # include "./lib/libft/libft.h"
 # include "./lib/printf/includes/ft_printf.h"
-# include <unistd.h>
+# include <unistd.h> // TODO: vérifier si toujours utile
 # include <stdlib.h>
 # include <limits.h>
-# include <math.h> // TODO à retirer
 
 //-------------------------------STRUCTURE-------------------------------
 typedef struct s_stack_node
@@ -66,6 +65,7 @@ void			insertion_sort(t_stack_node **a, t_stack_node **b);
 void			range_based_sort(t_stack_node **a, t_stack_node **b);
 
 /*------------  ALGO COMPLEX  ---------------*/
+void 			radix_sort(t_stack_node **a, t_stack_node **b);
 
 /* ----------------------------- OPERATIONS -------------------------------*/
 /*------------  SWAP  ---------------*/

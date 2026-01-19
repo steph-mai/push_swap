@@ -12,7 +12,7 @@ SRC = ft_printf.c \
 
 OBJ = $(SRC:.c=.o)
 NAME = libftprintf.a
-HEADER = includes/ft_printf.h
+HEADER = includes
 
 all: $(NAME)
 
