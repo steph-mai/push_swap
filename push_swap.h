@@ -6,7 +6,7 @@
 /*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/19 11:08:40 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/19 11:24:28 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "./lib/libft/libft.h"
 # include "./lib/printf/includes/ft_printf.h"
-# include <unistd.h> // TODO: vérifier si toujours utile
 # include <stdlib.h>
 # include <limits.h>
 

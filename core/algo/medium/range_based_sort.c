@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   range_based_sort.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 09:35:15 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/16 16:14:57 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/19 11:23:22 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_sqrt(int nb)
 	return (i - 1);
 }
 
-void	return_maxima_to_a(t_stack_node **a, t_stack_node **b)
+static void	return_maxima_to_a(t_stack_node **a, t_stack_node **b)
 {
 	int				size;
 	int				position;
