@@ -6,7 +6,7 @@
 /*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 17:18:40 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/20 17:16:19 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/20 17:43:46 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,14 @@ static int	is_flag(char *str, int i, int k)
 
 static int	compare_to_flag(char *str)
 {
-	if (ft_strcmp("adaptive", str) == 0)
-		return (1);
 	if (ft_strcmp("simple", str) == 0)
 		return (3);
 	if (ft_strcmp("medium", str) == 0)
 		return (5); 
 	if (ft_strcmp("complex", str) == 0)
 		return (7);
+	if (ft_strcmp("adaptive", str) == 0)
+		return (11);
 	if (ft_strcmp("bench", str) == 0)
 		return (100);
 	return (-1);
@@ -104,7 +104,7 @@ int	flag_selector(char *str)
 	if (res = -1)
 		return (-1);
 	if (res = 0)
-		res = 1;
+		res = 11;
 	return (res);
 }
 

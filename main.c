@@ -22,39 +22,19 @@
 
 static void	choose_method(int score)
 {
-		if (score == 1)
-			// adaptive
-		else if (score == 101 || score == 100)
-		{
-			// adaptive
-			// bench
-		}
-		else if (score == 3)
-			// simple
-		else if (score == 103)
-		{
-			// simple
-			// bench
-		}	
-		else if (score == 5)
-			// medium
-		else if (score == 105)
-		{	
-			// medium
-			// bench
-		}
-		else if (score == 7)
-			// complex
-		else if (score == 107)
-		{	
-			// complex
-			// bench
-		}
+		if (score == 11 || score == 111 || score == 100)
+			printf("the method will be \"adaptive\""); // adaptive
+		else if (score == 3 || score == 103)
+			printf("the method will be \"simple\""); // simple
+		else if (score == 5 || score == 105)
+			printf("the method will be \"medium\""); // medium
+		else if (score == 7 || score == 107)
+			printf("the method will be \"complex\""); // complex
 		else
-		{
-			// print_error
-		}
-	
+			printf("Error\n"); // print_error
+		if (score == 100 || score == 111 || score == 103
+			|| score == 105 || score == 107)
+			printf("Benchmark will be visible"); // bench
 }
 
 
