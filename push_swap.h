@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/19 17:50:10 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/20 17:32:24 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ typedef struct s_stack_node
 
 /* -------------------------------PARSING---------------------------------*/
 //***build***/
-char			**put_args_in_array(int argc, char **argv);
+char			*from_args_to_big_str(int argc, char **argv);
+char			**put_args_in_array(char *big_str);
 t_stack_node	*build_stack(char **tab);
 
 //***check***/
@@ -45,7 +46,7 @@ void			free_stack(t_stack_node **stack);
 t_stack_node	*free_if_error(t_stack_node **stack, char **tab);
 
 //***flags***/
-int	flag_selector(char *str);
+int				flag_selector(char *str);
 
 
 /* -----------------------------STACK_UTILS-------------------------------*/
