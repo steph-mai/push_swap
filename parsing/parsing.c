@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:36:44 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/16 16:19:19 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/20 17:15:55 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ char	*from_args_to_big_str(int argc, char **argv)
 
 	i = 1;
 	s = ft_strdup("");
+	if (argc < 2)
+		return (NULL);
 	if (!s)
 		return (NULL);
 	while (i < argc)
@@ -62,16 +64,10 @@ char	*from_args_to_big_str(int argc, char **argv)
 	return (s);
 }
 
-char	**put_args_in_array(int argc, char **argv)
+char	**put_args_in_array(char *big_string)
 {
 	char	**tab;
-	char	*big_string;
-
-	if (argc < 2)
-		return (NULL);
-	big_string = from_args_to_big_str(argc, argv);
-	if (!big_string)
-		return (NULL);
+	
 	tab = ft_split(big_string, ' ');
 	if (!tab)
 	{

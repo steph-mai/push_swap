@@ -72,6 +72,16 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 
+/*	-----------	PSEUDO CODE ---------------
+
+	str = bigstr
+
+	fonction flag(big str)
+	truncate(bigstr)
+
+	tab = put_args_in_array(bigstr);
+*/
+
 	// 2. Parsing des arguments
 	tab = put_args_in_array(argc, argv);
 
