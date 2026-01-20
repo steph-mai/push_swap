@@ -6,11 +6,12 @@
 /*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 17:18:40 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/20 17:16:19 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/20 18:45:55 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h> // TODO: a retirer
 
 int	ft_strcmp(char *s1, char *s2)
 {
@@ -22,6 +23,21 @@ int	ft_strcmp(char *s1, char *s2)
 		i++;
 	}
 	return (s1[i] - s2[i]);
+}
+
+static int	compare_to_flag(char *str)
+{
+	if (ft_strcmp("simple", str) == 0)
+		return (3);
+	if (ft_strcmp("medium", str) == 0)
+		return (5); 
+	if (ft_strcmp("complex", str) == 0)
+		return (7);
+	if (ft_strcmp("adaptive", str) == 0)
+		return (11);
+	if (ft_strcmp("bench", str) == 0)
+		return (100);
+	return (-1);
 }
 
 static int	is_flag(char *str, int i, int k)
@@ -47,21 +63,6 @@ static int	is_flag(char *str, int i, int k)
 	a = compare_to_flag(potential_flag);
 	free(potential_flag);
 	return (a);
-}
-
-static int	compare_to_flag(char *str)
-{
-	if (ft_strcmp("adaptive", str) == 0)
-		return (1);
-	if (ft_strcmp("simple", str) == 0)
-		return (3);
-	if (ft_strcmp("medium", str) == 0)
-		return (5); 
-	if (ft_strcmp("complex", str) == 0)
-		return (7);
-	if (ft_strcmp("bench", str) == 0)
-		return (100);
-	return (-1);
 }
 
 static int	main_loop(char *str, int i, int k, int res)
@@ -90,7 +91,7 @@ static int	main_loop(char *str, int i, int k, int res)
 		}
 		i++;
 	}
-	return (temp);
+	return (res);
 }
 
 int	flag_selector(char *str)
@@ -100,11 +101,13 @@ int	flag_selector(char *str)
 	int	res;
 
 	i = 0;
+	k = 0;
+	res = 0;
 	res = main_loop(str, i, k, res);
-	if (res = -1)
+	if (res == -1)
 		return (-1);
-	if (res = 0)
-		res = 1;
+	if (res == 0)
+		res = 11;
 	return (res);
 }
 
