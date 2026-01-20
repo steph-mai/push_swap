@@ -6,7 +6,7 @@
 /*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:36:44 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/20 17:15:55 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/20 18:21:40 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ char	*from_args_to_big_str(int argc, char **argv)
 	char	*temp;
 	int		i;
 
-	i = 1;
-	s = ft_strdup("");
 	if (argc < 2)
 		return (NULL);
+	i = 1;
+	s = ft_strdup("");
 	if (!s)
 		return (NULL);
 	while (i < argc)
