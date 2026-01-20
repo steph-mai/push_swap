@@ -6,7 +6,7 @@
 /*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 17:18:40 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/20 14:45:13 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/20 17:16:19 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static int	is_flag(char *str, int i, int k)
 	}
 	potential_flag[a] = '\0';
 	a = compare_to_flag(potential_flag);
+	free(potential_flag);
 	return (a);
 }
 
@@ -73,16 +74,16 @@ static int	main_loop(char *str, int i, int k, int res)
 		if (str[i] == '-' && str[i + 1] == '-')
 		{
 			k = i + 2;
-			while (str[k] != ' ' || str[k] != '\0')
+			while (str[k] != ' ' && str[k] != '\0')
 			{
-				if (str[k] < 97 && str[k] > 122)
+				if (str[k] < 97 || str[k] > 122)
 					return (-1);
 				k++;
 			}
 			if (k == 0)
 				return (-1);
 			temp = is_flag(str, i, k);
-			if (temp = -1)
+			if (temp == -1)
 				return (-1);
 			res += temp;
 			i = k;
