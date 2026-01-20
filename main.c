@@ -20,6 +20,44 @@
 // 	ft_printf("-----------------------------\n\n");
 // }
 
+static void	choose_method(int score)
+{
+		if (score == 1)
+			// adaptive
+		else if (score == 101 || score == 100)
+		{
+			// adaptive
+			// bench
+		}
+		else if (score == 3)
+			// simple
+		else if (score == 103)
+		{
+			// simple
+			// bench
+		}	
+		else if (score == 5)
+			// medium
+		else if (score == 105)
+		{	
+			// medium
+			// bench
+		}
+		else if (score == 7)
+			// complex
+		else if (score == 107)
+		{	
+			// complex
+			// bench
+		}
+		else
+		{
+			// print_error
+		}
+	
+}
+
+
 int	main(int argc, char **argv)
 {
 	t_stack_node	*stack_a;

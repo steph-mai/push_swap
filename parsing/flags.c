@@ -6,7 +6,7 @@
 /*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 17:18:40 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/19 19:07:42 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/20 14:45:13 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,16 @@ static int	compare_to_flag(char *str)
 		return (5); 
 	if (ft_strcmp("complex", str) == 0)
 		return (7);
+	if (ft_strcmp("bench", str) == 0)
+		return (100);
+	return (-1);
 }
 
-int	flag_selector(char *str)
+static int	main_loop(char *str, int i, int k, int res)
 {
-	int	i;
-	int	k;
-	int	res;
+	int temp;
 
-	i = 0;
-	res = 0;
+	temp = 0;
 	while (str[i] != '\0')
 	{
 		if (str[i] == '-' && str[i + 1] == '-')
@@ -81,8 +81,29 @@ int	flag_selector(char *str)
 			}
 			if (k == 0)
 				return (-1);
-			res += is_flag(str, i, k);
+			temp = is_flag(str, i, k);
+			if (temp = -1)
+				return (-1);
+			res += temp;
+			i = k;
 		}
 		i++;
 	}
+	return (temp);
 }
+
+int	flag_selector(char *str)
+{
+	int	i;
+	int	k;
+	int	res;
+
+	i = 0;
+	res = main_loop(str, i, k, res);
+	if (res = -1)
+		return (-1);
+	if (res = 0)
+		res = 1;
+	return (res);
+}
+
