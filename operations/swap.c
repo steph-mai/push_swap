@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marberge <marberge@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 17:08:26 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/21 17:33:15 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/21 23:39:54 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,14 @@ void	swap(t_stack **head)
 void	sa(t_stack **head, t_bench *bench)
 {
 	swap(head);
-	ft_printf("sa\n");
-	if (bench && bench->active == 1)
-	{
-		bench->sa++;
-		bench->total_count++;
-	}
+	exec_and_count("sa", bench);
 	return ;
 }
 
 void	sb(t_stack **head, t_bench *bench)
 {
 	swap(head);
-	ft_printf("sb\n");
-	if (bench && bench->active == 1)
-	{
-		bench->sb++;
-		bench->total_count++;
-	}
+	exec_and_count("sb", bench);
 	return ;
 }
 
@@ -59,11 +49,6 @@ void	ss(t_stack **head_a, t_stack **head_b, t_bench *bench)
 {
 	swap(head_a);
 	swap(head_b);
-	ft_printf("ss\n");
-	if (bench && bench->active == 1)
-	{
-		bench->ss++;
-		bench->total_count++;
-	}
+	exec_and_count("ss", bench);
 	return ;
 }

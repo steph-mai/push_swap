@@ -6,7 +6,7 @@
 /*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 15:11:15 by marberge          #+#    #+#             */
-/*   Updated: 2025/12/08 19:50:02 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/21 14:32:57 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_add_to_buffer(char *buffer, int *buf_index, char *str_to_add)
 	{
 		if (*buf_index + 1 >= BUFFER_SIZE)
 		{
-			if (ft_flush_buffer(buffer, buf_index) == -1)
+			if (ft_flush_buffer(buffer, buf_index, 1) == -1)
 				return (-1);
 		}
 		buffer[*buf_index] = str_to_add[i];
@@ -45,7 +45,7 @@ int	ft_add_char(char *buffer, int *buf_index, char char_to_add)
 		return (0);
 	if (*buf_index + 1 >= BUFFER_SIZE)
 	{
-		if (ft_flush_buffer(buffer, buf_index) == -1)
+		if (ft_flush_buffer(buffer, buf_index, 1) == -1)
 			return (-1);
 	}
 	buffer[*buf_index] = char_to_add;

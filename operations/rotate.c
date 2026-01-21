@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marberge <marberge@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 14:51:14 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/21 17:33:15 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/21 23:39:32 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,14 @@ void	rotate(t_stack **head)
 void	ra(t_stack **a, t_bench *bench)
 {
 	rotate(a);
-	ft_printf("ra\n");
-	if (bench && bench->active == 1)
-	{
-		bench->ra++;
-		bench->total_count++;
-	}
+	exec_and_count("ra", bench);
 	return ;
 }
 
 void	rb(t_stack **b, t_bench *bench)
 {
 	rotate(b);
-	ft_printf("rb\n");
-	if (bench && bench->active == 1)
-	{
-		bench->rb++;
-		bench->total_count++;
-	}
+	exec_and_count("rb", bench);
 	return ;
 }
 
@@ -56,11 +46,6 @@ void	rr(t_stack **a, t_stack **b, t_bench *bench)
 {
 	rotate(a);
 	rotate(b);
-	ft_printf("rr\n");
-	if (bench && bench->active == 1)
-	{
-		bench->rr++;
-		bench->total_count++;
-	}
+	exec_and_count("rrr", bench);
 	return ;
 }
