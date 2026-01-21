@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/21 11:33:58 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/21 14:34:08 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,32 @@
 //-------------------------------STRUCTURE-------------------------------
 typedef struct s_stack_node
 {
-	/* data to complete */
 	int					number;
 	int					index;
 	struct s_stack_node	*prev;
 	struct s_stack_node	*next;
 }						t_stack_node;
+
+typedef	struct s_bench
+{
+	float	disorder;
+	int		score;
+	int		active;
+	char	*strategy;
+	char	*theory_class;
+	int		total_count;
+	int 	sa;
+	int		sb;
+	int		ss;
+	int		pa;
+	int		pb;
+	int		ra;
+	int		rb;
+	int		rr;
+	int   	rra;
+	int		rrb;
+	int		rrr;	
+}			t_bench;
 
 /* -------------------------------PARSING---------------------------------*/
 //***build***/
@@ -60,38 +80,38 @@ t_stack_node	*find_min(t_stack_node *stack);
 int				get_position(t_stack_node *stack, t_stack_node *target_node);
 
 /* ----------------------------- CORE -------------------------------*/
-float			compute_disorder(t_stack_node *a);
-void			three_sort(t_stack_node **stack_a);
+float			compute_disorder(t_stack_node *a, t_bench *bench);
+void			three_sort(t_stack_node **stack_a, t_bench *bench);
 /*------------  ALGO SIMPLE  ---------------*/
-void			selection_sort(t_stack_node **a, t_stack_node **b);
-void			insertion_sort(t_stack_node **a, t_stack_node **b);
+void			selection_sort(t_stack_node **a, t_stack_node **b, t_bench *bench);
+void			insertion_sort(t_stack_node **a, t_stack_node **b, t_bench *bench);
 /*------------  ALGO MEDIUM  ---------------*/
-void			range_based_sort(t_stack_node **a, t_stack_node **b);
+void			range_based_sort(t_stack_node **a, t_stack_node **b, t_bench *bench);
 
 /*------------  ALGO COMPLEX  ---------------*/
-void			radix_sort(t_stack_node **a, t_stack_node **b);
+void			radix_sort(t_stack_node **a, t_stack_node **b, t_bench *bench);
 /*------------  ALGO ADAPTIVE  ---------------*/
-void			select_algo(t_stack_node **a, t_stack_node **b);
+void			select_algo(t_stack_node **a, t_stack_node **b, t_bench *bench);
 
 /* ----------------------------- OPERATIONS -------------------------------*/
 /*------------  SWAP  ---------------*/
 void			swap(t_stack_node **head);
-void			sa(t_stack_node **head);
-void			sb(t_stack_node **head);
-void			ss(t_stack_node **head_a, t_stack_node **head_b);
+void			sa(t_stack_node **head, t_bench *bench);
+void			sb(t_stack_node **head, t_bench *bench);
+void			ss(t_stack_node **head_a, t_stack_node **head_b, t_bench *bench);
 /*------------  PUSH  ---------------*/
 void			push(t_stack_node **dest, t_stack_node **src);
-void			pa(t_stack_node **stack_a, t_stack_node **stack_b);
-void			pb(t_stack_node **stack_a, t_stack_node **stack_b);
+void			pa(t_stack_node **stack_a, t_stack_node **stack_b, t_bench *bench);
+void			pb(t_stack_node **stack_a, t_stack_node **stack_b, t_bench *bench);
 /*------------  ROTATE  ---------------*/
 void			rotate(t_stack_node **head);
-void			ra(t_stack_node **a);
-void			rb(t_stack_node **b);
-void			rrr(t_stack_node **a, t_stack_node **b);
+void			ra(t_stack_node **a, t_bench *bench);
+void			rb(t_stack_node **b, t_bench *bench);
+void			rrr(t_stack_node **a, t_stack_node **b, t_bench *bench);
 /*------------  REVERSE ROTATE  ---------------*/
 void			reverse_rotate(t_stack_node **head);
-void			rra(t_stack_node **a);
-void			rrb(t_stack_node **b);
-void			rrr(t_stack_node **a, t_stack_node **b);
+void			rra(t_stack_node **a, t_bench *bench);
+void			rrb(t_stack_node **b, t_bench *bench);
+void			rrr(t_stack_node **a, t_stack_node **b, t_bench *bench);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   range_based_sort.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 09:35:15 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/19 11:23:22 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/21 14:50:45 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_sqrt(int nb)
 	return (i - 1);
 }
 
-static void	return_maxima_to_a(t_stack_node **a, t_stack_node **b)
+static void	return_maxima_to_a(t_stack_node **a, t_stack_node **b, t_bench *bench)
 {
 	int				size;
 	int				position;
@@ -33,9 +33,9 @@ static void	return_maxima_to_a(t_stack_node **a, t_stack_node **b)
 	position = -1;
 	if ((*b) == find_max(*b) || (*b)->index == ((find_max(*b)->index) - 1))
 	{
-		pa(a, b);
+		pa(a, b, bench);
 		if ((*a)->next != NULL && (*a)->index > (*a)->next->index)
-			sa(a);
+			sa(a, bench);
 	}
 	else
 	{
@@ -43,16 +43,16 @@ static void	return_maxima_to_a(t_stack_node **a, t_stack_node **b)
 		position = get_position(*b, max_node);
 		size = lstsize(*b);
 		if (position < (size / 2))
-			rb(b);
+			rb(b, bench);
 		else
 		{
 			while (*b != max_node)
-				rrb(b);
+				rrb(b, bench);
 		}
 	}
 }
 
-void	range_based_sort(t_stack_node **a, t_stack_node **b)
+void	range_based_sort(t_stack_node **a, t_stack_node **b, t_bench *bench)
 {
 	int			size;
 	int			i;
@@ -65,14 +65,14 @@ void	range_based_sort(t_stack_node **a, t_stack_node **b)
 	{
 		if ((*a)->index >= 0 && (*a)->index < range + i)
 		{
-			pb(a, b);
+			pb(a, b, bench);
 			if ((*b)->index < i)
-				rb(b);
+				rb(b, bench);
 			i++;
 		}
 		else
-			ra(a);
+			ra(a, bench);
 	}
 	while (*b)
-		return_maxima_to_a(a, b);
+		return_maxima_to_a(a, b, bench);
 }
