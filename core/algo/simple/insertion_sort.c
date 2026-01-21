@@ -6,16 +6,16 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:02:54 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/21 14:44:49 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:56:29 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void insertion_sort(t_stack_node **a, t_stack_node **b, t_bench *bench)
+void	insertion_sort(t_stack **a, t_stack **b, t_bench *bench)
 {
-	t_stack_node *node;
-	t_stack_node *lowest_index;
+	t_stack		*node;
+	t_stack		*lowest_index;
 
 	pb(a, b, bench);
 	while (*a)
@@ -32,7 +32,7 @@ void insertion_sort(t_stack_node **a, t_stack_node **b, t_bench *bench)
 			else if (node->index < node->next->index && node == lowest_index)
 			{
 				rb(b, bench);
-				break;
+				break ;
 			}
 		}
 	}

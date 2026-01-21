@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 09:35:15 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/21 14:50:45 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:52:31 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ static int	ft_sqrt(int nb)
 	return (i - 1);
 }
 
-static void	return_maxima_to_a(t_stack_node **a, t_stack_node **b, t_bench *bench)
+static void	return_maxima_to_a(t_stack **a, t_stack **b, t_bench *bench)
 {
-	int				size;
-	int				position;
-	t_stack_node	*max_node;
+	int		size;
+	int		position;
+	t_stack	*max_node;
 
 	position = -1;
 	if ((*b) == find_max(*b) || (*b)->index == ((find_max(*b)->index) - 1))
@@ -52,7 +52,7 @@ static void	return_maxima_to_a(t_stack_node **a, t_stack_node **b, t_bench *benc
 	}
 }
 
-void	range_based_sort(t_stack_node **a, t_stack_node **b, t_bench *bench)
+void	range_based_sort(t_stack **a, t_stack **b, t_bench *bench)
 {
 	int			size;
 	int			i;

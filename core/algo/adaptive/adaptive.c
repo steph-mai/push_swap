@@ -6,13 +6,13 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 17:35:55 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/21 14:51:15 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:57:27 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	select_algo(t_stack_node **a, t_stack_node **b, t_bench *bench)
+void	select_algo(t_stack **a, t_stack **b, t_bench *bench)
 {
 	float	d;
 	int		size;
@@ -31,7 +31,7 @@ void	select_algo(t_stack_node **a, t_stack_node **b, t_bench *bench)
 		bench->strategy = "medium";
 	}
 	else
-	{	
+	{
 		radix_sort(a, b, bench);
 		bench->strategy = "complex";
 	}

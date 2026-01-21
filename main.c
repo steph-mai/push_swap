@@ -6,23 +6,21 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 10:19:30 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/21 14:57:27 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:39:16 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h> 
 
-static void	choose_method(int score,t_stack_node **a, t_stack_node **b, t_bench *bench)
+static void	choose_method(int score, t_stack **a,
+	t_stack **b, t_bench *bench)
 {
-	// printf("le score calculé est de : %d\n\n", score); // adaptive
-	if (score == 100 || score == 103 || score == 105 || score == 107 || score == 111)
+	if (score == 100 || score == 103 || score == 105
+		|| score == 107 || score == 111)
 		bench->active = 1;
 	if (score == 11 || score == 111 || score == 100)
-	{
 		select_algo(a, b, bench);
-		
-	}
 	else if (score == 3 || score == 103)
 	{
 		selection_sort(a, b, bench);
@@ -44,7 +42,7 @@ static void	choose_method(int score,t_stack_node **a, t_stack_node **b, t_bench 
 		printf("Benchmark visible\n");
 }
 
-static	char *ft_truncate(char *str)
+static	char	*ft_truncate(char *str)
 {
 	char	*str_without_flags;
 	int		i;
@@ -74,13 +72,12 @@ static	char *ft_truncate(char *str)
 
 int	main(int argc, char **argv)
 {
-	t_stack_node	*stack_a;
-	t_stack_node	*stack_b;
-	char			**tab;
-	char			*big_str;
-	// int				score;
-	t_bench			bench;
-	
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	char	**tab;
+	char	*big_str;
+	t_bench	bench;
+
 	ft_bzero(&bench, sizeof(t_bench));
 	if (argc < 2)
 		return (0);
@@ -94,12 +91,20 @@ int	main(int argc, char **argv)
 	if (!stack_a)
 		return (1);
 	printf("désordre = %.2f\n", compute_disorder(stack_a, &bench));
-	choose_method(bench.score, &stack_a, &stack_b, &bench);	
+	choose_method(bench.score, &stack_a, &stack_b, &bench);
 	printf("bench.desordre = %f\n", bench.disorder);
 	printf("bench.total_count = %d\n", bench.total_count);
 	printf("bench.sa = %d\n", bench.sa);
+	printf("bench.sb = %d\n", bench.sb);
+	printf("bench.ss = %d\n", bench.ss);
+	printf("bench.pa = %d\n", bench.pa);
 	printf("bench.pb = %d\n", bench.pb);
 	printf("bench.ra = %d\n", bench.ra);
+	printf("bench.rb = %d\n", bench.rb);
+	printf("bench.rr = %d\n", bench.rr);
+	printf("bench.rra = %d\n", bench.rra);
+	printf("bench.rrb = %d\n", bench.rrb);
+	printf("bench.rrr = %d\n", bench.rrr);
 	printf("bench.strategy = %s\n", bench.strategy);
 	free_stack(&stack_a);
 	free_stack(&stack_b);

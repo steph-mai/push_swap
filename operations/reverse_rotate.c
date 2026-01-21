@@ -6,16 +6,16 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 18:15:54 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/21 14:26:22 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:33:15 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	reverse_rotate(t_stack_node **head)
+void	reverse_rotate(t_stack **head)
 {
-	t_stack_node	*head_temp;
-	t_stack_node	*current_node;
+	t_stack	*head_temp;
+	t_stack	*current_node;
 
 	if (!head || !*head || lstsize(*head) < 2)
 		return ;
@@ -28,7 +28,7 @@ void	reverse_rotate(t_stack_node **head)
 	head_temp->prev = current_node;
 }
 
-void	rra(t_stack_node **a, t_bench *bench)
+void	rra(t_stack **a, t_bench *bench)
 {
 	reverse_rotate(a);
 	ft_printf("rra\n");
@@ -40,7 +40,7 @@ void	rra(t_stack_node **a, t_bench *bench)
 	return ;
 }
 
-void	rrb(t_stack_node **b, t_bench *bench)
+void	rrb(t_stack **b, t_bench *bench)
 {
 	reverse_rotate(b);
 	ft_printf("rrb\n");
@@ -52,7 +52,7 @@ void	rrb(t_stack_node **b, t_bench *bench)
 	return ;
 }
 
-void	rrr(t_stack_node **a, t_stack_node **b, t_bench *bench)
+void	rrr(t_stack **a, t_stack **b, t_bench *bench)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);

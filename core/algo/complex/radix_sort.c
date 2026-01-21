@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 17:15:51 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/21 14:48:30 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:51:55 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ static int	get_max_bits(int max_num)
 	return (max_bits);
 }
 
-static void	sort_loop(t_stack_node **a, t_stack_node **b, int bit_max, t_bench *bench)
+static void	sort_loop(t_stack **a, t_stack **b, int bit_max, t_bench *bench)
 {
-	int				i;
-	int				k;
-	t_stack_node	*current_node;
-	int				len;
-		
+	int		i;
+	int		k;
+	t_stack	*current_node;
+	int		len;
+
 	i = 0;
 	k = 0;
 	len = lstsize(*a);
@@ -50,10 +50,10 @@ static void	sort_loop(t_stack_node **a, t_stack_node **b, int bit_max, t_bench *
 	}
 }
 
-void	radix_sort(t_stack_node **a, t_stack_node **b, t_bench *bench)
+void	radix_sort(t_stack **a, t_stack **b, t_bench *bench)
 {
-	int				bit_max;
-	t_stack_node	*highest_index_node;
+	int		bit_max;
+	t_stack	*highest_index_node;
 
 	highest_index_node = find_max(*a);
 	bit_max = get_max_bits(highest_index_node->index);

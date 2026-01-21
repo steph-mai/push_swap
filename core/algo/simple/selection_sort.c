@@ -6,17 +6,17 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 09:11:56 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/21 14:35:12 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:51:07 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	selection_sort(t_stack_node **a, t_stack_node **b, t_bench *bench)
+void	selection_sort(t_stack **a, t_stack **b, t_bench *bench)
 {
-	int				size;
-	t_stack_node	*min_node;
-	int				position;
+	int		size;
+	t_stack	*min_node;
+	int		position;
 
 	size = lstsize(*a);
 	while (size > 3)

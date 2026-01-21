@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/21 14:34:08 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:38:10 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,14 @@
 # include <limits.h>
 
 //-------------------------------STRUCTURE-------------------------------
-typedef struct s_stack_node
+typedef struct s_stack
 {
 	int					number;
 	int					index;
-	struct s_stack_node	*prev;
-	struct s_stack_node	*next;
-}						t_stack_node;
-
-typedef	struct s_bench
+	struct s_stack		*prev;
+	struct s_stack		*next;
+}						t_stack;
+typedef struct s_bench
 {
 	float	disorder;
 	int		score;
@@ -35,7 +34,7 @@ typedef	struct s_bench
 	char	*strategy;
 	char	*theory_class;
 	int		total_count;
-	int 	sa;
+	int		sa;
 	int		sb;
 	int		ss;
 	int		pa;
@@ -43,7 +42,7 @@ typedef	struct s_bench
 	int		ra;
 	int		rb;
 	int		rr;
-	int   	rra;
+	int		rra;
 	int		rrb;
 	int		rrr;	
 }			t_bench;
@@ -52,66 +51,65 @@ typedef	struct s_bench
 //***build***/
 char			*from_args_to_big_str(int argc, char **argv);
 char			**put_args_in_array(char *big_str);
-t_stack_node	*build_stack(char **tab);
+t_stack			*build_stack(char **tab);
 
 //***check***/
 int				check_args_syntax(char **tab);
 int				check_args_overflow(long i);
-int				check_args_doubles(t_stack_node *node, int nb_to_check);
+int				check_args_doubles(t_stack *node, int nb_to_check);
 
 //***free***/
 void			free_tab(char **tab);
-void			free_stack(t_stack_node **stack);
-t_stack_node	*free_if_error(t_stack_node **stack, char **tab);
+void			free_stack(t_stack **stack);
+t_stack			*free_if_error(t_stack **stack, char **tab);
 
 //***flags***/
 int				flag_selector(char *str);
 
-
 /* -----------------------------STACK_UTILS-------------------------------*/
-t_stack_node	*lstlast(t_stack_node *lst);
-int				lstsize(t_stack_node *lst);
-void			append_node(t_stack_node **stack, int nb);
+t_stack			*lstlast(t_stack *lst);
+int				lstsize(t_stack *lst);
+void			append_node(t_stack **stack, int nb);
 int				*sort_numbers(int *tab, int size);
-void			find_index(t_stack_node *stack, int *tab, int size);
-void			index_stack(t_stack_node *stack);
-t_stack_node	*find_max(t_stack_node *stack);
-t_stack_node	*find_min(t_stack_node *stack);
-int				get_position(t_stack_node *stack, t_stack_node *target_node);
+void			find_index(t_stack *stack, int *tab, int size);
+void			index_stack(t_stack *stack);
+t_stack			*find_max(t_stack *stack);
+t_stack			*find_min(t_stack *stack);
+int				get_position(t_stack *stack, t_stack *target);
 
 /* ----------------------------- CORE -------------------------------*/
-float			compute_disorder(t_stack_node *a, t_bench *bench);
-void			three_sort(t_stack_node **stack_a, t_bench *bench);
+float			compute_disorder(t_stack *a, t_bench *bench);
+void			three_sort(t_stack **stack_a, t_bench *bench);
 /*------------  ALGO SIMPLE  ---------------*/
-void			selection_sort(t_stack_node **a, t_stack_node **b, t_bench *bench);
-void			insertion_sort(t_stack_node **a, t_stack_node **b, t_bench *bench);
+void			selection_sort(t_stack **a, t_stack **b, t_bench *bench);
+void			insertion_sort(t_stack **a, t_stack **b, t_bench *bench);
 /*------------  ALGO MEDIUM  ---------------*/
-void			range_based_sort(t_stack_node **a, t_stack_node **b, t_bench *bench);
+void			range_based_sort(t_stack **a, t_stack **b, t_bench *bench);
 
 /*------------  ALGO COMPLEX  ---------------*/
-void			radix_sort(t_stack_node **a, t_stack_node **b, t_bench *bench);
+void			radix_sort(t_stack **a, t_stack **b, t_bench *bench);
 /*------------  ALGO ADAPTIVE  ---------------*/
-void			select_algo(t_stack_node **a, t_stack_node **b, t_bench *bench);
+void			select_algo(t_stack **a, t_stack **b, t_bench *bench);
 
 /* ----------------------------- OPERATIONS -------------------------------*/
 /*------------  SWAP  ---------------*/
-void			swap(t_stack_node **head);
-void			sa(t_stack_node **head, t_bench *bench);
-void			sb(t_stack_node **head, t_bench *bench);
-void			ss(t_stack_node **head_a, t_stack_node **head_b, t_bench *bench);
+void			swap(t_stack **head);
+void			sa(t_stack **head, t_bench *bench);
+void			sb(t_stack **head, t_bench *bench);
+void			ss(t_stack **head_a, t_stack **head_b, t_bench *bench);
 /*------------  PUSH  ---------------*/
-void			push(t_stack_node **dest, t_stack_node **src);
-void			pa(t_stack_node **stack_a, t_stack_node **stack_b, t_bench *bench);
-void			pb(t_stack_node **stack_a, t_stack_node **stack_b, t_bench *bench);
+void			push(t_stack **dest, t_stack **src);
+void			pa(t_stack **stack_a, t_stack **stack_b, t_bench *bench);
+void			pb(t_stack **stack_a, t_stack **stack_b, t_bench *bench);
 /*------------  ROTATE  ---------------*/
-void			rotate(t_stack_node **head);
-void			ra(t_stack_node **a, t_bench *bench);
-void			rb(t_stack_node **b, t_bench *bench);
-void			rrr(t_stack_node **a, t_stack_node **b, t_bench *bench);
+void			rotate(t_stack **head);
+void			ra(t_stack **a, t_bench *bench);
+void			rb(t_stack **b, t_bench *bench);
+void			rrr(t_stack **a, t_stack **b, t_bench *bench);
 /*------------  REVERSE ROTATE  ---------------*/
-void			reverse_rotate(t_stack_node **head);
-void			rra(t_stack_node **a, t_bench *bench);
-void			rrb(t_stack_node **b, t_bench *bench);
-void			rrr(t_stack_node **a, t_stack_node **b, t_bench *bench);
+void			reverse_rotate(t_stack **head);
+void			rra(t_stack **a, t_bench *bench);
+void			rrb(t_stack **b, t_bench *bench);
+void			rrr(t_stack **a, t_stack **b, t_bench *bench);
 
 #endif
