@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/20 17:32:24 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/21 11:33:58 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "./lib/libft/libft.h"
 # include "./lib/printf/includes/ft_printf.h"
-# include <unistd.h> // TODO: vérifier si toujours utile
 # include <stdlib.h>
 # include <limits.h>
 
@@ -70,7 +69,9 @@ void			insertion_sort(t_stack_node **a, t_stack_node **b);
 void			range_based_sort(t_stack_node **a, t_stack_node **b);
 
 /*------------  ALGO COMPLEX  ---------------*/
-void 			radix_sort(t_stack_node **a, t_stack_node **b);
+void			radix_sort(t_stack_node **a, t_stack_node **b);
+/*------------  ALGO ADAPTIVE  ---------------*/
+void			select_algo(t_stack_node **a, t_stack_node **b);
 
 /* ----------------------------- OPERATIONS -------------------------------*/
 /*------------  SWAP  ---------------*/
