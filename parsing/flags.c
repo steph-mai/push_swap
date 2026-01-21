@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 17:18:40 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/20 18:45:55 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/21 17:40:20 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	compare_to_flag(char *str)
 	if (ft_strcmp("simple", str) == 0)
 		return (3);
 	if (ft_strcmp("medium", str) == 0)
-		return (5); 
+		return (5);
 	if (ft_strcmp("complex", str) == 0)
 		return (7);
 	if (ft_strcmp("adaptive", str) == 0)
@@ -44,7 +44,7 @@ static int	is_flag(char *str, int i, int k)
 {
 	int			j;
 	int			a;
-	int 		size;
+	int			size;
 	char		*potential_flag;
 
 	a = 0;
@@ -67,7 +67,7 @@ static int	is_flag(char *str, int i, int k)
 
 static int	main_loop(char *str, int i, int k, int res)
 {
-	int temp;
+	int	temp;
 
 	temp = 0;
 	while (str[i] != '\0')
@@ -110,4 +110,3 @@ int	flag_selector(char *str)
 		res = 11;
 	return (res);
 }
-

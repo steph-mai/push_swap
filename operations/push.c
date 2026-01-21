@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marberge <marberge@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 08:55:24 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/21 14:35:19 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/21 23:15:23 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(t_stack_node **dest, t_stack_node **src)
+void	push(t_stack **dest, t_stack **src)
 {
-	t_stack_node	*node_to_push;
+	t_stack	*node_to_push;
 
 	if (!src || !*src || !dest)
 		return ;
@@ -37,16 +37,34 @@ void	push(t_stack_node **dest, t_stack_node **src)
 	return ;
 }
 
-void	pa(t_stack_node **stack_a, t_stack_node **stack_b)
+void	pa(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 {
 	push(stack_a, stack_b);
+<<<<<<< HEAD
 	ft_printf(1, "pa\n");
+=======
+	ft_printf("pa\n");
+	if (bench && bench->active == 1)
+	{
+		bench->pa++;
+		bench->total_count++;
+	}
+>>>>>>> bench
 	return ;
 }
 
-void	pb(t_stack_node **stack_a, t_stack_node **stack_b)
+void	pb(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 {
 	push(stack_b, stack_a);
+<<<<<<< HEAD
 	ft_printf(1, "pb\n");
+=======
+	ft_printf("pb\n");
+	if (bench && bench->active == 1)
+	{
+		bench->pb++;
+		bench->total_count++;
+	}
+>>>>>>> bench
 	return ;
 }

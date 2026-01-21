@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:36:44 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/20 18:21:40 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/21 17:53:39 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	*from_args_to_big_str(int argc, char **argv)
 char	**put_args_in_array(char *big_string)
 {
 	char	**tab;
-	
+
 	tab = ft_split(big_string, ' ');
 	if (!tab)
 	{
@@ -78,11 +78,11 @@ char	**put_args_in_array(char *big_string)
 	return (tab);
 }
 
-t_stack_node	*build_stack(char **tab)
+t_stack	*build_stack(char **tab)
 {
 	int				i;
 	long			nb;
-	t_stack_node	*stack;
+	t_stack			*stack;
 
 	i = 0;
 	stack = NULL;
