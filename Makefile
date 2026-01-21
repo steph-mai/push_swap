@@ -23,7 +23,8 @@ SRCS        = main.c \
 			  core/algo/simple/insertion_sort.c \
 			  core/algo/complex/radix_sort.c \
 			  core/algo/medium/range_based_sort.c \
-			  core/algo/adaptive/adaptive.c
+			  core/algo/adaptive/adaptive.c \
+			  core/bench.c
 			                
 OBJS        = $(SRCS:.c=.o)
 

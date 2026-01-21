@@ -6,7 +6,7 @@
 /*   By: marberge <marberge@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/21 23:14:07 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/22 00:03:23 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct s_bench
 {
 	float	disorder;
 	int		score;
-	int		active;
 	char	*strategy;
 	char	*theory_class;
 	int		total_count;
@@ -46,27 +45,6 @@ typedef struct s_bench
 	int		rrb;
 	int		rrr;	
 }			t_bench;
-
-typedef    struct s_bench
-{
-    float    disorder;
-    int        score;
-    int        active;
-    char    *strategy;
-    char    *theory_class;
-    int        total_count;
-    int     sa;
-    int        sb;
-    int        ss;
-    int        pa;
-    int        pb;
-    int        ra;
-    int        rb;
-    int        rr;
-    int       rra;
-    int        rrb;
-    int        rrr;    
-}            t_bench;
 
 /* -------------------------------PARSING---------------------------------*/
 //***build***/
@@ -86,6 +64,8 @@ t_stack			*free_if_error(t_stack **stack, char **tab);
 
 //***flags***/
 int				flag_selector(char *str);
+int				ft_strcmp(char *s1, char *s2);
+
 
 /* -----------------------------STACK_UTILS-------------------------------*/
 t_stack			*lstlast(t_stack *lst);
@@ -106,11 +86,13 @@ void			selection_sort(t_stack **a, t_stack **b, t_bench *bench);
 void			insertion_sort(t_stack **a, t_stack **b, t_bench *bench);
 /*------------  ALGO MEDIUM  ---------------*/
 void			range_based_sort(t_stack **a, t_stack **b, t_bench *bench);
-
 /*------------  ALGO COMPLEX  ---------------*/
 void			radix_sort(t_stack **a, t_stack **b, t_bench *bench);
 /*------------  ALGO ADAPTIVE  ---------------*/
 void			select_algo(t_stack **a, t_stack **b, t_bench *bench);
+/*------------  BENCH  ---------------*/
+void    		exec_and_count(char *move, t_bench *bench);
+void			bench_print(t_bench *bench);
 
 /* ----------------------------- OPERATIONS -------------------------------*/
 /*------------  SWAP  ---------------*/

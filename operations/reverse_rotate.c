@@ -6,7 +6,7 @@
 /*   By: marberge <marberge@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 18:15:54 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/21 23:18:57 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/21 23:38:30 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,15 @@ void	rra(t_stack **a, t_bench *bench)
 {
 	reverse_rotate(a);
 	ft_printf(1, "rra\n");
-	if (bench && bench->active == 1)
-	{
-		bench->rra++;
-		bench->total_count++;
-	}
+	exec_and_count("rra", bench);
 	return ;
 }
 
 void	rrb(t_stack **b, t_bench *bench)
 {
 	reverse_rotate(b);
-	ft_printf(1, "rrb\n");
-	if (bench && bench->active == 1)
-	{
-		bench->rrb++;
-		bench->total_count++;
-	}
+	exec_and_count("rrb", bench);
+
 	return ;
 }
 
@@ -56,11 +48,6 @@ void	rrr(t_stack **a, t_stack **b, t_bench *bench)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
-	ft_printf(1, "rrr\n");
-	if (bench && bench->active == 1)
-	{
-		bench->rrr++;
-		bench->total_count++;
-	}
+	exec_and_count("rrr", bench);
 	return ;
 }

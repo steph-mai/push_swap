@@ -6,7 +6,7 @@
 /*   By: marberge <marberge@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 08:55:24 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/21 23:18:31 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/21 23:37:08 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,13 @@ void	push(t_stack **dest, t_stack **src)
 void	pa(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 {
 	push(stack_a, stack_b);
-	ft_printf(1, "pa\n");
-	if (bench && bench->active == 1)
-	{
-		bench->pa++;
-		bench->total_count++;
-	}
+	exec_and_count("pa", bench);
 	return ;
 }
 
 void	pb(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 {
 	push(stack_b, stack_a);
-	ft_printf(1, "pb\n");
-	if (bench && bench->active == 1)
-	{
-		bench->pb++;
-		bench->total_count++;
-	}
+	exec_and_count("pb", bench);
 	return ;
 }
