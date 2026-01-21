@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 17:08:26 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/16 16:06:13 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/21 14:34:27 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ void	swap(t_stack_node **head)
 void	sa(t_stack_node **head)
 {
 	swap(head);
-	ft_printf("sa\n");
+	ft_printf(1, "sa\n");
 	return ;
 }
 
 void	sb(t_stack_node **head)
 {
 	swap(head);
-	ft_printf("sb\n");
+	ft_printf(1, "sb\n");
 	return ;
 }
 
@@ -49,6 +49,6 @@ void	ss(t_stack_node **head_a, t_stack_node **head_b)
 {
 	swap(head_a);
 	swap(head_b);
-	ft_printf("ss\n");
+	ft_printf(1, "ss\n");
 	return ;
 }

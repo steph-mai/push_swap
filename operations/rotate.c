@@ -6,7 +6,7 @@
 /*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 14:51:14 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/14 18:10:31 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/21 14:35:01 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ void	rotate(t_stack_node **head)
 void	ra(t_stack_node **a)
 {
 	rotate(a);
-	ft_printf("ra\n");
+	ft_printf(1, "ra\n");
 	return ;
 }
 
 void	rb(t_stack_node **b)
 {
 	rotate(b);
-	ft_printf("rb\n");
+	ft_printf(1, "rb\n");
 	return ;
 }
 
@@ -46,6 +46,6 @@ void	rr(t_stack_node **a, t_stack_node **b)
 {
 	rotate(a);
 	rotate(b);
-	ft_printf("rr\n");
+	ft_printf(1, "rr\n");
 	return ;
 }

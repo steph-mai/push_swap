@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/21 11:33:58 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/21 14:44:34 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,27 @@ typedef struct s_stack_node
 	struct s_stack_node	*prev;
 	struct s_stack_node	*next;
 }						t_stack_node;
+
+typedef    struct s_bench
+{
+    float    disorder;
+    int        score;
+    int        active;
+    char    *strategy;
+    char    *theory_class;
+    int        total_count;
+    int     sa;
+    int        sb;
+    int        ss;
+    int        pa;
+    int        pb;
+    int        ra;
+    int        rb;
+    int        rr;
+    int       rra;
+    int        rrb;
+    int        rrr;    
+}            t_bench;
 
 /* -------------------------------PARSING---------------------------------*/
 //***build***/
