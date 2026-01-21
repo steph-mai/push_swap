@@ -356,7 +356,7 @@ Exemples : Quick Sort, Selection Sort, Heap Sort.
 	-	on les transforme en entiers en utilisant atol plutôt que atoi (en cas d'overflow). Si atol renvoie bien un nombre, on vérifie l'oveflow.
 	-	on vérifie l'absence de doublons.
 	- si tout va bien, on construit la liste chaînée grâce à la fonction suivante.
-* **NB :** Les fonctions relatives à la liste chaînée sont des variantes des fonctions de la libft, adaptées à la structure t_stack_node 
+* **NB :** Les fonctions relatives à la liste chaînée sont des variantes des fonctions de la libft, adaptées à la structure t_stack 
 * **append_node :** fonction qui ajoute un nouveau noeud à la fin de la liste chaînée. Chaque nouveau noeud stocke la valeur d'un entier récupéré. Plus on avance dans les noeuds, plus on descend dans la pile.
 * ex 1 2 3 donnera : 	1
 						2
@@ -369,7 +369,7 @@ Exemples : Quick Sort, Selection Sort, Heap Sort.
 	int					number;
 	struct s_stack_node	*prev; // liste doublement chaînée pour faciliter ensuite les mouvements
 	struct s_stack_node	*next;
-}						t_stack_node;
+}						t_stack;
 ```
 * **index*** : Il s'agit d'associer un index à chaque valeur (!!!une fois la liste chaînée complétée) pour travailler ensuite sur les index, ce qui règle le problème des nombres négatifs et simplifie beaucoup le traitement. On a a priori besoin des index pour les algo moyens et complexes. Cet index doit être ajouté à la structure qui devient alors :
 
@@ -379,7 +379,7 @@ Exemples : Quick Sort, Selection Sort, Heap Sort.
 	int					index //le rang de l'entier dans la liste
 	struct s_stack_node	*prev;
 	struct s_stack_node	*next;
-}						t_stack_node;
+}						t_stack;
 ```
 * **Pour compléter ce champ index :** *
 * **fonction index_stack**(dans le fichier sort_numbers) : On commence par mesurer la taille de la liste chaînée pour allouer la mémoire d'un tableau, dans lequel on copie les entiers. On travaille avec une copie du noeud pour éviter de perdre l'adresse de la liste. Dans ce tableau, on trie les entiers avec un bubble sort(* **fonction sort_numbers** *)(NB on se moque de la performance de ce pré-tri, c'est la performance des algos qui sera ensuite évaluée). 

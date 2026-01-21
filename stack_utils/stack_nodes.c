@@ -6,13 +6,13 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 17:47:02 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/16 16:10:54 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:41:11 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack_node	*lstlast(t_stack_node *lst)
+t_stack	*lstlast(t_stack *lst)
 {
 	if (!lst)
 		return (NULL);
@@ -21,7 +21,7 @@ t_stack_node	*lstlast(t_stack_node *lst)
 	return (lst);
 }
 
-int	lstsize(t_stack_node *lst)
+int	lstsize(t_stack *lst)
 {
 	int		count;
 
@@ -34,14 +34,14 @@ int	lstsize(t_stack_node *lst)
 	return (count);
 }
 
-void	append_node(t_stack_node **stack, int nb)
+void	append_node(t_stack **stack, int nb)
 {
-	t_stack_node	*node;
-	t_stack_node	*last_node;
+	t_stack	*node;
+	t_stack	*last_node;
 
 	if (!stack)
 		return ;
-	node = malloc(sizeof(t_stack_node));
+	node = malloc(sizeof(t_stack));
 	if (!node)
 		return ;
 	node->number = nb;
@@ -60,10 +60,10 @@ void	append_node(t_stack_node **stack, int nb)
 	}
 }
 
-t_stack_node	*find_max(t_stack_node *stack)
+t_stack	*find_max(t_stack *stack)
 {
-	t_stack_node	*max_node;
-	int				max_index;
+	t_stack	*max_node;
+	int		max_index;
 
 	if (!stack)
 		return (NULL);
@@ -80,10 +80,10 @@ t_stack_node	*find_max(t_stack_node *stack)
 	return (max_node);
 }
 
-t_stack_node	*find_min(t_stack_node *stack)
+t_stack	*find_min(t_stack *stack)
 {
-	t_stack_node	*min_node;
-	int				min_index;
+	t_stack	*min_node;
+	int		min_index;
 
 	if (!stack)
 		return (NULL);

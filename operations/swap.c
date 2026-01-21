@@ -6,16 +6,16 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 17:08:26 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/16 16:06:13 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:33:15 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_stack_node **head)
+void	swap(t_stack **head)
 {
-	t_stack_node	*node_a;
-	t_stack_node	*node_b;
+	t_stack	*node_a;
+	t_stack	*node_b;
 
 	if (!head || !*head || lstsize(*head) < 2)
 		return ;
@@ -31,24 +31,39 @@ void	swap(t_stack_node **head)
 	return ;
 }
 
-void	sa(t_stack_node **head)
+void	sa(t_stack **head, t_bench *bench)
 {
 	swap(head);
 	ft_printf("sa\n");
+	if (bench && bench->active == 1)
+	{
+		bench->sa++;
+		bench->total_count++;
+	}
 	return ;
 }
 
-void	sb(t_stack_node **head)
+void	sb(t_stack **head, t_bench *bench)
 {
 	swap(head);
 	ft_printf("sb\n");
+	if (bench && bench->active == 1)
+	{
+		bench->sb++;
+		bench->total_count++;
+	}
 	return ;
 }
 
-void	ss(t_stack_node **head_a, t_stack_node **head_b)
+void	ss(t_stack **head_a, t_stack **head_b, t_bench *bench)
 {
 	swap(head_a);
 	swap(head_b);
 	ft_printf("ss\n");
+	if (bench && bench->active == 1)
+	{
+		bench->ss++;
+		bench->total_count++;
+	}
 	return ;
 }
