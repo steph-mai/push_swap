@@ -1,4 +1,4 @@
-*This project has been created as part of the 42 curriculum by marberge et stmaire.*             
+*This project has been created as part of the 42 curriculum by marberge, stmaire.*             
 
 
 ## 📝 Description
@@ -44,14 +44,7 @@ Le projet fonctionne avec deux piles : **Stack A** et **Stack B**.
 
 4. **🚀 Le Défi de la Complexité**
 
-Pour atteindre le grade "Excellent", ce programme implémente une **stratégie adaptative**. Avant de trier, il calcule le **taux de désordre** de la liste pour sélectionner l'algorithme le plus performant :
-
-* **Faible désordre / Petite liste (< 0.2)** :
-    * *Stratégie :* Réparation locale ou tri simple ($O(n)$ ou $O(n^2)$).
-* **Désordre moyen (0.2 - 0.5)** :
-    * *Stratégie :* Algorithme par "Chunks" / Tronçons ($O(n\sqrt{n})$).
-* **Grandes listes / Chaos total (≥ 0.5)** :
-    * *Stratégie :* Algorithmes divisés type Radix ou Quick Sort ($O(n \log n)$).
+Pour atteindre le grade "Excellent", ce programme implémente une **stratégie adaptative**. Avant de trier, il calcule le **taux de désordre** de la liste pour sélectionner l'algorithme le plus performant en fonction du désordre et de la taille de la liste à trier.
 
 ### ⚡ Modes de Fonctionnement
 
@@ -352,12 +345,6 @@ Exemples : Insertion Sort, Bubble Sort, Merge Sort.
 
 Exemples : Quick Sort, Selection Sort, Heap Sort.
 
-## Contributions
-
-* préciser le rôle de chacun dans le projet
-
-*A COMPLETER*
-
 ## Démarche et étapes de réalisation du projet
 
 ### 1. Parsing
@@ -384,7 +371,7 @@ Exemples : Quick Sort, Selection Sort, Heap Sort.
 	struct s_stack_node	*next;
 }						t_stack_node;
 ```
-* **index*** : Il s'agit d'associer un index à chaque valeur (!!!une fois la liste chaînée complétée) pour travailler ensuite sur les index, ce qui règle le problème des nombres négatifs et simplifie beaucoup le traitement. On a a priori bsoin des index pour les algo moyens et complexes. Cet index doit être ajouté à la structure qui devient alors :
+* **index*** : Il s'agit d'associer un index à chaque valeur (!!!une fois la liste chaînée complétée) pour travailler ensuite sur les index, ce qui règle le problème des nombres négatifs et simplifie beaucoup le traitement. On a a priori besoin des index pour les algo moyens et complexes. Cet index doit être ajouté à la structure qui devient alors :
 
 ```{
 	/* data to complete */
@@ -395,7 +382,7 @@ Exemples : Quick Sort, Selection Sort, Heap Sort.
 }						t_stack_node;
 ```
 * **Pour compléter ce champ index :** *
-* **fonction index_stack**(dans le fichier sort_numbers) : On commence par mesurer la taille de la liste chaînée pour allouer la mémoire d'un tableau, dans lequel on copie les entiers. On travaille avec une copie du noeud pour eviter de perdre l adresse de la liste. Dans ce tableau, on trie les entiers avec un bubble sort(* **fonction sort_numbers** *)(NB on se moque de la performance de ce pré-tri, c'est la performance des algos qui sera ensuite évaluée). 
+* **fonction index_stack**(dans le fichier sort_numbers) : On commence par mesurer la taille de la liste chaînée pour allouer la mémoire d'un tableau, dans lequel on copie les entiers. On travaille avec une copie du noeud pour éviter de perdre l'adresse de la liste. Dans ce tableau, on trie les entiers avec un bubble sort(* **fonction sort_numbers** *)(NB on se moque de la performance de ce pré-tri, c'est la performance des algos qui sera ensuite évaluée). 
 Enfin, la fonction * **find_index** * cherche la correspondance entre l´entier stocké dans la liste chaînée et les valeurs du tableau trié (ex : tableau trié [2, 14, 22]) > je cherche dans quel noeud se trouve stockée la valeur "2" et j'associe à ce noeud l'index 0... etc...
 
 ### 2. Désordre et opérations
@@ -404,9 +391,10 @@ Implémentation des fonctions qui permettent d'agir sur les piles (pa, pb, pp, s
 
 ### 3. Choix et implémentation des algorithmes
 
-* **algorithme simple** :
-	* **Stratégie choisie : tri par sélection**
-Nous avons choisi d'implémenter un tri par sélection pour le ratio simplicité/efficacité de cet algorithme pour le tri des petites listes. Nous avons cherché à optimiser le tri en traitant à part les trois derniers nombres qui restent de la pile a (ou le tri se fait en un ou deux mouvements seulement). Un seconde optimisation consiste à faire tourner la pile dans un sens ou dans l'autre pour faire remonter l'index voulu en haut de la pile en fonction de la position de ce nombre dans la pile. En pseudo-code :
+### A. algorithme simple :
+* **Stratégie choisie : tri par sélection**.
+
+	Nous avons choisi d'implémenter un tri par sélection pour le ratio simplicité/efficacité de cet algorithme pour le tri des petites listes. Nous avons cherché à optimiser le tri en traitant à part les trois derniers nombres qui restent de la pile a (ou le tri se fait en un ou deux mouvements seulement). Un seconde optimisation consiste à faire tourner la pile dans un sens ou dans l'autre pour faire remonter l'index voulu en haut de la pile en fonction de la position de ce nombre dans la pile. En pseudo-code :
 
 			on calcule la taille de la pile a
 			on traite les cas où il y a moins de trois éléments dans la pile
@@ -422,10 +410,13 @@ Nous avons choisi d'implémenter un tri par sélection pour le ratio simplicité
 			c'est trié !
 
 
-* **algorithme de complexité O(n√n)** :
-	* **Statégie choisie : range-based sorting strategy**
+### B. algorithme de complexité O(n√n) :
+* **Statégie choisie : range-based sorting strategy**
+
 Nous avons choisi cette variante du chunk-based sort pour son efficacité dans la catégorie des algorithmes de complexité O(n√n). Il s'agit de "pré-trier" les nombres en envoyant dans la pile b les nombres qui font partie de la plage [0- √size] (avec size qui correspond à la taille de la pile a). Au fur et à mesure qu'on envoie des nombres dans la pile b, on incrémente un compteur i et on adapte l'intervalle qui devient [0- √size + 1]. Voici la logique de l'implémemtation en pseudo-code :
 
+			
+			
 			on compte le nombre d elements de la stack a = size
 			on determine le range (racine de size)*
 			on met un incrementateur count a 0
@@ -453,8 +444,229 @@ Nous avons choisi cette variante du chunk-based sort pour son efficacité dans l
 				s´il est dans le bas de la pile
 					on le fait remonter avec des rrb
 
-* **algorithme de complexité O(n log n)** :
-	* **Statégie choisie : A COMPLETER**
+### C. algorithme de complexité O(n log n) :
+* **Statégie choisie : Radix Sort**
+
+Nous avons sélectionné le Radix Sort (en base 2) pour son efficacité sur les très grands jeux de données (N ≥ 5000). Il s'agit d'un algorithme de complexité O(n log n). La stratégie ne repose pas sur la comparaison des valeurs entre elles, mais sur le traitement de leur représentation binaire, du bit de poids faible vers le bit de poids fort. Pour simplifier le traitement (et gérer les nombres négatifs), nous associons d'abord chaque nombre à son rang final (de 0 à size-1). Ensuite, pour chaque position de bit, nous filtrons la pile a : les nombres ayant un bit à 0 sont envoyés dans la pile b, tandis que ceux ayant un bit à 1 restent dans la pile a (via rotation). Après chaque passe, on rassemble tout en reversant b sur a, ce qui ordonne progressivement la liste.
+
+Voici la logique de l'implémentation en pseudo-code :
+
+
+		Initialisation & Pré-traitement :
+		On parcourt la pile A pour associer à chaque nombre son **index final** (de 0 à size-1).
+		(Cela permet de ne travailler qu'avec des nombres positifs et simplifie le tri binaire).
+		On détermine le nombre de bits nécessaires (`max_bits`) pour écrire le plus grand index.
+		On initialise un compteur de position de bit `i` à 0.
+
+		BOUCLE PRINCIPALE : TRAITEMENT BIT PAR BIT
+		TANT QUE `i` est inférieur à `max_bits` :
+
+    		Phase 1 : Distribution (Tri selon le bit i)
+    		On répète l'opération `size` fois (pour chaque élément de A) :
+        	On regarde l'index du nombre au sommet de la pile A (head).
+        		SI le bit à la position `i` est égal à 0 :
+            		On le pousse dans la pile B (`pb`).
+        		SINON (si le bit est égal à 1) :
+           			 On le laisse dans A et on fait tourner la pile (`ra`).
+    
+    		Phase 2 : Rassemblement (Reconstitution)
+    		TANT QUE la pile B n'est pas vide :
+        		On repousse tout le contenu de B sur A (`pa`).
+        		(Comme B est vidé sur A, les nombres ayant un '0' se retrouvent au-dessus, et l'ordre relatif est conservé).
+
+			Phase 3 : Passage au bit suivant
+    		On incrémente `i` (on passe au bit de poids supérieur).
+
+		À la fin de la boucle (après le traitement du dernier bit), la pile A est entièrement triée.
+
 	
-* **Complément : Algorithme adaptatif** :
-*A COMPLETER*
+### D. Algorithme adaptatif :
+
+Pour définir la stratégie à adopter, nous nous sommes appuyés sur des tests prenant en compte le désordre et la longueur de la liste à trier. Les données reportées sont représentatives d'un score "moyen"à "mauvais" (sauf pour le radix sort où le nombre d'opérations est fixe quel que soit le désordre). Les meilleurs résultats sont indiqués en **gras**. :
+
+### 📊 Analyse des Petites Listes (N = 5, 10, 20)
+
+Ce tableau présente l'évolution de la performance sur les petites tailles de listes. Il justifie pourquoi l'algorithme adaptatif moyen ou complexe n'est activé qu'au-delà de 20 éléments.
+
+* **Sel** : Selection Sort (Tri simple optimisé).
+* **Ran** : Range-Based Sort (Tri par paquets $O(N\sqrt{N})$).
+* **Rad** : Radix Sort (Binaire $O(N \log N)$).
+
+| Désordre | N=5 (Sel) | N=5 (Ran) | N=5 (Rad) | N=10 (Sel) | N=10 (Ran) | N=10 (Rad) | N=20 (Sel) | N=20 (Ran) | N=20 (Rad) |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **0.1** | **6** | 13 | 25 | **16** | 24 | 50 | **32** | 55 | 212 |
+| **0.2** | **7** | 15 | 25 | **20** | 28 | 50 | **38** | 60 | 212 |
+| **0.3** | **8** | 15 | 25 | **21** | 27 | 50 | **55** | 65 | 212 |
+| **0.4** | **7** | 13 | 25 | **21** | 36 | 50 | **75** | 70 | 212 |
+| **0.5** | **8** | 12 | 25 | **24** | 31 | 50 | 92 | **75** | 212 |
+| **0.6** | **9** | 17 | 25 | **19** | 25 | 50 | 80 | **80** | 212 |
+| **0.7** | **8** | 15 | 25 | **23** | 29 | 50 | **65** | 85 | 212 |
+| **0.8** | **9** | 16 | 25 | **24** | 38 | 50 | **50** | 90 | 212 |
+| **0.9** | **8** | 17 | 25 | **23** | 42 | 50 | **40** | 95 | 212 |
+| **1.0** | **8** | 18 | 25 | **23** | 40 | 50 | **38** | 98 | 212 |
+
+#### 💡 Analyse de la progression :
+
+1.  **Hégémonie du Selection Sort ($N \le 10$)** :
+    * Jusqu'à 10 éléments, le **Selection Sort** domine totalement. Il est 2 à 3 fois plus rapide que le Radix ou le Range Sort.
+    * *Conclusion :* Un algorithme simple est impératif pour ces tailles afin d'éviter le gaspillage de mouvements. Le **selection Sort** reste le plus efficace pour les listes de moins de 20 nombres. Le **range_based_sort** devient ensemble plus efficace lorsque le désordre est autour de 0.5.
+    * Le **Radix** est ici hors-jeu (212 coups) : le coût fixe des passes binaires (5 bits nécessaires) est trop lourd pour une si petite liste.
+
+### 📊 Analyse des Listes Moyennes (N = 50 à 500)
+
+* **Sel** : Selection Sort (Tri simple optimisé).
+* **Ran** : Range-Based Sort (Tri par paquets $O(N\sqrt{N})$).
+* **Rad** : Radix Sort (Binaire $O(N \log N)$).
+
+| Désordre | N=50 (Sel) | N=50 (Ran) | N=50 (Rad) | N=100 (Sel) | N=100 (Ran) | N=100 (Rad) | N=500 (Sel) | N=500 (Ran) | N=500 (Rad) |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **0.1** | **100** | 111 | 467 | **180** | 350 | 1050 | 3900 | **1239** | 6784 |
+| **0.2** | **127** | 138 | 467 | **250** | 380 | 1050 | 5688 | **1600** | 6784 |
+| **0.3** | **125** | 152 | 467 | **350** | 450 | 1050 | 8546 | **2122** | 6784 |
+| **0.4** | 310 | **200** | 467 | 600 | **520** | 1050 | 9183 | **2343** | 6784 |
+| **0.5** | 514 | **241** | 467 | 900 | **600** | 1050 | 11123 | **2779** | 6784 |
+| **0.6** | 388 | **253** | 467 | 800 | **680** | 1050 | 14037 | **3019** | 6784 |
+| **0.7** | **235** | 293 | 467 | **500** | 750 | 1050 | 16226 | **3443** | 6784 |
+| **0.8** | **178** | 292 | 467 | **400** | 820 | 1050 | 22416 | **4053** | 6784 |
+| **0.9** | **143** | 332 | 467 | **300** | 950 | 1050 | 25798 | **4482** | 6784 |
+| **1.0** | **143** | 331 | 467 | **320** | 1100 | 1050 | 25510 | **6355** | 6784 |
+
+#### 💡 Analyse comparative :
+
+1.  **N=50 & N=100 (Sel vs Ran) :**
+    * Le **Selection Sort (Sel)** reste très pertinent pour les cas extrêmes (très trié ou inversé), car il profite des optimisations apportées.
+    * Le **Range Sort (Ran)** prend l'avantage uniquement dans la zone de "désordre intermédiaire" (0.4 à 0.6).
+    * Le **Radix** est trop lourd (coût fixe constant trop élevé).
+
+2.  **N=500 (choix du Range Sort) :**
+    * Le **Range Sort (Ran)** devient l'algorithme dominant absolu. Il bat le Radix même dans le pire cas (6355 contre 6794 coups).
+    * Le **Selection Sort** s'effondre totalement (dépassant les 25 000 coups) et n 'est plus pertinent à partir de ce seuil.
+
+	### 📊 Analyse grandes Listes (N = 1000, 3000)
+
+Pour ces tailles, les algorithmes de type $O(N^2)$ (Selection Sort) sont exclus car trop lents.
+Ce tableau compare uniquement le **Range-Based Sort** (Tri par paquets) et le **Radix Sort** (Base 2).
+
+* **Ran** : Range-Based Sort (Optimisé avec heuristiques).
+* **Rad** : Radix Sort (Performance stable peu importe le désordre).
+
+| Désordre | N=1000 (Ran) | N=1000 (Rad) | N=3000 (Ran) | N=3000 (Rad) |
+| :---: | :---: | :---: | :---: | :---: |
+| **0.1** | **2 548** | 15 060 | **11 445** | 55 172 |
+| **0.2** | **4 596** | 15 060 | **21 757** | 55 172 |
+| **0.3** | **5 594** | 15 060 | **30 023** | 55 172 |
+| **0.4** | **6 671** | 15 060 | **38 339** | 55 172 |
+| **0.5** | **8 239** | 15 060 | **45 636** | 55 172 |
+| **0.6** | **9 276** | 15 060 | 55 712 | **55 172** |
+| **0.7** | **10 420** | 15 060 | 58 012 | **55 172** |
+| **0.8** | **11 641** | 15 060 | 62 518 | **55 172** |
+| **0.9** | **11 757** | 15 060 | 63 386 | **55 172** |
+| **1.0** | 19 521 | **15 060** | 93 646 | **55 172** |
+
+### 📊 Analyse des très Grandes Listes (N = 5000, 10000)
+
+On observe que pour des volumes très importants, la stabilité du **Radix Sort** finit par surpasser le **Range Sort** dès que le désordre est significatif. Pour une liste de 10000 nombres, le **radix** l'emporte à tous les coups.
+
+| Désordre | N=5000 (Ran) | N=5000 (Rad) | N=10000 (Ran) | N=10000 (Rad) |
+| :---: | :---: | :---: | :---: | :---: |
+| **0.2** | **82 462** | 100 190 | 224 167 | **215 392** |
+| **0.5** | 111 601 | **100 190** | 385 956 | **215 392** |
+| **0.8** | 110 874 | **100 190** | 502 721 | **215 392** |
+
+
+### 4. 📉 Calcul de la complexité des algorithmes
+
+Cette section a pour but de vérifier si nos algorithmes correspondent bien à leur complexité théorique annoncée, en utilisant la formule du facteur de croissance ($\alpha$).
+
+---
+
+#### 🐢 Algorithme simple (select_sort)
+
+On prend comme repères les valeurs pour **N = 100** et **N = 500** (pire cas).
+
+* Calcul du grossissement de la liste : $Ratio_N = 500/100 = \mathbf{5}$
+* Calcul du grossissement du nombre d'opérations : $Ratio_{Ops} = 25\,798 / 900 \approx \mathbf{28.6}$
+
+On est donc proche de $O(N^2)$ car $5^2 = 25$. On applique la formule logarithmique pour trouver la puissance exacte :
+
+$$
+\alpha = \frac{\ln(28.6)}{\ln(5)} \approx \frac{3.35}{1.61} \approx \mathbf{2.08}
+$$
+
+> **Conclusion :** L'exposant $\alpha$ étant très proche de **2**		(NB : résultat théorique attendu : ln(25) / ln(5) = 2)), cela confirme que la complexité de l'algorithme est **$O(N^2)$**. C'est pour cette raison que cet algorithme n'est plus utilisé au-delà de 100 nombres (l'explosion du nombre de coups devient ingérable).
+
+---
+
+#### 🐇 Algorithme moyen (range-based sorting strategy)
+
+On compare l'évolution du nombre d'opérations sur des listes de taille moyenne à grande avec un désordre standard (0.5).
+
+* **Données mesurées :** $N = 1000$ (8 239 coups) et $N = 3000$ (45 636 coups).
+* Calcul du grossissement de la liste : $Ratio_N = 3000 / 1000 = \mathbf{3}$
+* Calcul du grossissement des opérations :
+
+$$
+Ratio_{Ops} = \frac{45 636}{8 239} \approx \mathbf{5.54}
+$$
+
+Théoriquement, la complexité $N\sqrt{N}$ donnerait ici $3\sqrt{3} \approx 5.19$. On est très proche. On confirme en appliquant la formule logarithmique :
+
+$$
+\alpha = \frac{\ln(5.54)}{\ln(3)} \approx \frac{1.71}{1.10} \approx \mathbf{1.56}
+$$
+
+> **Conclusion :** L'exposant $\alpha \approx 1.5$ indique une complexité proche de **$O(N \sqrt{N})$** (NB : résultat théorique : ln(5.19) / ln(3) = 1.49)  C'est nettement plus performant que le Selection Sort ($\alpha \approx 2$), mais cela explique pourquoi le **Range Sort** finit par être dépassé par le **Radix Sort** sur les très grandes listes.
+
+---
+
+#### 🚀 Algorithme complexe (radix_sort)
+
+Pour le radix_sort, nous observons une grande stabilité sur les très grandes listes. Nous allons démontrer pourquoi la complexité théorique $O(N \times k)$ est strictement équivalente à $O(N \log N)$.
+
+* **Données mesurées :** $N = 5000$ (100 190 coups) et $N = 10000$ (215 392 coups).
+* **Ratio observé :**
+    $$
+    Ratio_{Ops} = \frac{215 392}{100 190} \approx \mathbf{2.15}
+    $$
+
+**1. Calcul via les bits ($N \times k$) :**
+* Pour $N = 5000$ : Il faut **13 bits** ($2^{13} = 8192$).
+* Pour $N = 10000$ : Il faut **14 bits** ($2^{14} = 16384$).
+
+$$
+Ratio_{Théorique} = \frac{10000 \times 14}{5000 \times 13} = 2 \times \frac{14}{13} \approx \mathbf{2.15}
+$$
+
+**2. Calcul via les logarithmes ($N \log N$) :**
+En base 2, le nombre de bits $k$ est défini par le logarithme : $k \approx \log_2(N)$.
+
+$$
+Ratio_{Log} = \frac{10000 \times \log_2(10000)}{5000 \times \log_2(5000)} \approx 2 \times \frac{13.29}{12.29} \approx \mathbf{2.16}
+$$
+
+> **Conclusion :** Les deux calculs mènent au même résultat (~2.15), ce qui confirme que l'algorithme suit bien une complexité **$O(N \log N)$**.
+
+---
+
+### 📊 Récapitulatif 
+
+| Algorithme | Ratio N testé | Ratio Ops Mesuré | Exposant calculé ($\alpha$) | Complexité Validée |
+| :--- | :---: | :---: | :---: | :--- |
+| **Selection** | x5 | x28.6 | **2.08** | $O(N^2)$ |
+| **Range** | x3 | x5.54 | **1.56** | $O(N\sqrt{N})$ |
+| **Radix** | x2 | x2.15 | **1.10** | $O(N \log N)$ |
+
+
+## 👥 Contributions
+
+| Fonctionnalité | Auteurs / Responsables |
+| :--- | :--- |
+| **Parsing & Validation** | `stmaire` |
+| **Gestion des Flags** | `marberge` |
+| **Benchmark & Tests** | `marberge` |
+| **Opérations (Instructions)** | `marberge` & `stmaire` |
+| **Algo : Simple Sort** | `marberge` & `stmaire` |
+| **Algo : Medium Sort** | `stmaire` |
+| **Algo : Complex Sort** | `marberge` |
+| **Sélecteur Adaptatif** | `stmaire` |
+| **Documentation (README)** | `stmaire` |
