@@ -10,6 +10,7 @@ SRCS        = main.c \
               parsing/parsing.c \
 			  parsing/free.c \
 			  parsing/check_args.c \
+			  parsing/flags.c \
               stack_utils/stack_nodes.c \
 			  stack_utils/sort_numbers.c \
 			  core/disorder.c \

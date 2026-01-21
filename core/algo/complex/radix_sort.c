@@ -3,44 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   radix_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 17:15:51 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/19 11:22:49 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/21 11:34:26 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int get_max_bits(int max_num)
+static int	get_max_bits(int max_num)
 {
-	int max_bits;
+	int	max_bits;
 
 	max_bits = 0;
-	// Tant que max_num n'est pas réduit à 0
 	while ((max_num >> max_bits) != 0)
-	{
 		max_bits++;
-	}
 	return (max_bits);
 }
 
-void radix_sort(t_stack_node **a, t_stack_node **b)
+static void	sort_loop(t_stack_node **a, t_stack_node **b, int bit_max, int len)
 {
-	int bit_max;
-	int stack_len;
-	int i;
-	int k;
-	t_stack_node *current_node;
+	int				i;
+	int				k;
+	t_stack_node	*current_node;
 
-	current_node = find_max(*a);
-	stack_len = lstsize(*a);
-	bit_max = get_max_bits(current_node->index);
 	i = 0;
 	k = 0;
 	while (i < bit_max)
 	{
-		while (k < stack_len)
+		while (k < len)
 		{
 			current_node = *a;
 			if (((current_node->index >> i) & 1) == 1)
@@ -56,17 +48,14 @@ void radix_sort(t_stack_node **a, t_stack_node **b)
 	}
 }
 
-/*
-PSEUDO CODE :
-
-int LONGEUR_BIT_MAX = TROUVER_BIT_MAX(TROUVER_INDEX_MAX(PILE A))
-int i = 0
-MA_PILE_TYPE *NOEUD_COURANT;
-
-TANT QUE (désorde de la pile A != 0.00)
+void	radix_sort(t_stack_node **a, t_stack_node **b)
 {
-	NOEUD_COURANT = *PILE A
+	int				bit_max;
+	int				len;
+	t_stack_node	*highest_index_node;
 
+	highest_index_node = find_max(*a);
+	len = lstsize(*a);
+	bit_max = get_max_bits(highest_index_node->index);
+	sort_loop(a, b, bit_max, len);
 }
-
-*/

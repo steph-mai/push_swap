@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/21 11:29:18 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/21 11:33:58 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ typedef struct s_stack_node
 
 /* -------------------------------PARSING---------------------------------*/
 //***build***/
-char			**put_args_in_array(int argc, char **argv);
+char			*from_args_to_big_str(int argc, char **argv);
+char			**put_args_in_array(char *big_str);
 t_stack_node	*build_stack(char **tab);
 
 //***check***/
@@ -42,6 +43,10 @@ int				check_args_doubles(t_stack_node *node, int nb_to_check);
 void			free_tab(char **tab);
 void			free_stack(t_stack_node **stack);
 t_stack_node	*free_if_error(t_stack_node **stack, char **tab);
+
+//***flags***/
+int				flag_selector(char *str);
+
 
 /* -----------------------------STACK_UTILS-------------------------------*/
 t_stack_node	*lstlast(t_stack_node *lst);
