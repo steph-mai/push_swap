@@ -6,7 +6,7 @@
 /*   By: marberge <marberge@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 14:51:14 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/21 23:15:22 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/21 23:19:09 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,32 +31,24 @@ void	rotate(t_stack **head)
 void	ra(t_stack **a, t_bench *bench)
 {
 	rotate(a);
-<<<<<<< HEAD
 	ft_printf(1, "ra\n");
-=======
-	ft_printf("ra\n");
 	if (bench && bench->active == 1)
 	{
 		bench->ra++;
 		bench->total_count++;
 	}
->>>>>>> bench
 	return ;
 }
 
 void	rb(t_stack **b, t_bench *bench)
 {
 	rotate(b);
-<<<<<<< HEAD
 	ft_printf(1, "rb\n");
-=======
-	ft_printf("rb\n");
 	if (bench && bench->active == 1)
 	{
 		bench->rb++;
 		bench->total_count++;
 	}
->>>>>>> bench
 	return ;
 }
 
@@ -64,15 +56,11 @@ void	rr(t_stack **a, t_stack **b, t_bench *bench)
 {
 	rotate(a);
 	rotate(b);
-<<<<<<< HEAD
 	ft_printf(1, "rr\n");
-=======
-	ft_printf("rr\n");
 	if (bench && bench->active == 1)
 	{
 		bench->rr++;
 		bench->total_count++;
 	}
->>>>>>> bench
 	return ;
 }

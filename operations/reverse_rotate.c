@@ -6,7 +6,7 @@
 /*   By: marberge <marberge@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 18:15:54 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/21 23:15:24 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/21 23:18:57 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,32 +31,24 @@ void	reverse_rotate(t_stack **head)
 void	rra(t_stack **a, t_bench *bench)
 {
 	reverse_rotate(a);
-<<<<<<< HEAD
 	ft_printf(1, "rra\n");
-=======
-	ft_printf("rra\n");
 	if (bench && bench->active == 1)
 	{
 		bench->rra++;
 		bench->total_count++;
 	}
->>>>>>> bench
 	return ;
 }
 
 void	rrb(t_stack **b, t_bench *bench)
 {
 	reverse_rotate(b);
-<<<<<<< HEAD
 	ft_printf(1, "rrb\n");
-=======
-	ft_printf("rrb\n");
 	if (bench && bench->active == 1)
 	{
 		bench->rrb++;
 		bench->total_count++;
 	}
->>>>>>> bench
 	return ;
 }
 
@@ -64,15 +56,11 @@ void	rrr(t_stack **a, t_stack **b, t_bench *bench)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
-<<<<<<< HEAD
 	ft_printf(1, "rrr\n");
-=======
-	ft_printf("rrr\n");
 	if (bench && bench->active == 1)
 	{
 		bench->rrr++;
 		bench->total_count++;
 	}
->>>>>>> bench
 	return ;
 }

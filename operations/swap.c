@@ -6,7 +6,7 @@
 /*   By: marberge <marberge@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 17:08:26 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/21 23:15:21 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/21 23:19:24 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,32 +34,24 @@ void	swap(t_stack **head)
 void	sa(t_stack **head, t_bench *bench)
 {
 	swap(head);
-<<<<<<< HEAD
 	ft_printf(1, "sa\n");
-=======
-	ft_printf("sa\n");
 	if (bench && bench->active == 1)
 	{
 		bench->sa++;
 		bench->total_count++;
 	}
->>>>>>> bench
 	return ;
 }
 
 void	sb(t_stack **head, t_bench *bench)
 {
 	swap(head);
-<<<<<<< HEAD
 	ft_printf(1, "sb\n");
-=======
-	ft_printf("sb\n");
 	if (bench && bench->active == 1)
 	{
 		bench->sb++;
 		bench->total_count++;
 	}
->>>>>>> bench
 	return ;
 }
 
@@ -67,15 +59,11 @@ void	ss(t_stack **head_a, t_stack **head_b, t_bench *bench)
 {
 	swap(head_a);
 	swap(head_b);
-<<<<<<< HEAD
 	ft_printf(1, "ss\n");
-=======
-	ft_printf("ss\n");
 	if (bench && bench->active == 1)
 	{
 		bench->ss++;
 		bench->total_count++;
 	}
->>>>>>> bench
 	return ;
 }
