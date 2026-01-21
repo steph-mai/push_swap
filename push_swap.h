@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/20 14:23:10 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/21 11:29:18 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "./lib/libft/libft.h"
 # include "./lib/printf/includes/ft_printf.h"
-# include <unistd.h> // TODO: vérifier si toujours utile
 # include <stdlib.h>
 # include <limits.h>
 
