@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marberge <marberge@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 17:18:40 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/22 19:31:45 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/22 23:50:54 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,85 +39,69 @@ static int	compare_to_flag(char *str)
 	return (-1);
 }
 
-static int is_flag(char *str, int start, int end)
+int	is_flag(char *str, int start, int end)
 {
-    int     i;
-    int     a;
-    char    *potential_flag;
-    int     res;
+	int		i;
+	int		a;
+	char	*potential_flag;
+	int		res;
 
-    potential_flag = malloc((end - start + 1) * sizeof(char));
-    if (!potential_flag)
-        return (-1);
-    
-    i = start;
-    a = 0;
-    while (i < end)
-    {
-        potential_flag[a] = str[i];
-        i++;
-        a++;
-    }
-    potential_flag[a] = '\0';
-    
-    res = compare_to_flag(potential_flag);
-    free(potential_flag);
-    return (res);
+	potential_flag = malloc((end - start + 1) * sizeof(char));
+	if (!potential_flag)
+		return (-1);
+	i = start;
+	a = 0;
+	while (i < end)
+	{
+		potential_flag[a] = str[i];
+		i++;
+		a++;
+	}
+	potential_flag[a] = '\0';
+	res = compare_to_flag(potential_flag);
+	free(potential_flag);
+	return (res);
 }
 
-static int is_digit(char c)
+static int	main_loop(char *str, int res)
 {
-    return (c >= '0' && c <= '9');
-}
-static int main_loop(char *str, int res)
-{
-    int i;
-    int k;
-    int temp;
+	int	i;
+	int	tmp;	
 
-    i = 0;
-    while (str[i])
-    {
-        while (str[i] == ' ')
-            i++;
-        if (str[i] == '\0')
-            break;
-        if (is_digit(str[i]) || (str[i] == '-' && is_digit(str[i + 1])))
-        {
-            if (str[i] == '-') 
-                i++;
-            while (is_digit(str[i]))
-                i++;
-            if (str[i] != ' ' && str[i] != '\0')
-                return (-1);
-        }
-        else
-        {
-            k = i;
-            while (str[k] != ' ' && str[k] != '\0')
-                k++;
-            temp = is_flag(str, i, k);
-            if (temp == -1)
-                return (-1);
-            res += temp;
-            i = k;
-        }
-    }
-    return (res);
+	i = 0;
+	while (str[i])
+	{
+		while (str[i] == ' ')
+			i++;
+		if (!str[i])
+			break ;
+		if (is_digit(str[i]) || (str[i] == '-' && is_digit(str[i + 1])))
+		{
+			if (!skip_valid_number(str, &i))
+				return (-1);
+		}
+		else
+		{
+			tmp = process_flag_token(str, &i);
+			if (tmp == -1)
+				return (-1);
+			res += tmp;
+		}
+	}
+	return (res);
 }
 
-            
-int flag_selector(char *str)
+int	flag_selector(char *str)
 {
-    int res;
-    res = 0;
-    
-    if (!str || !str[0])
-        return (-1);
-    res = main_loop(str, res);
-    if (res == -1)
-        return (-1);
-    if (res == 0)
-        res = 11;
-    return (res);
+	int	res;
+
+	res = 0;
+	if (!str || !str[0])
+		return (-1);
+	res = main_loop(str, res);
+	if (res == -1)
+		return (-1);
+	if (res == 0)
+		res = 11;
+	return (res);
 }
