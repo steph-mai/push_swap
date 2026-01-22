@@ -3,64 +3,92 @@
 /*                                                        :::      ::::::::   */
 /*   bench.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 14:54:43 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/22 00:36:03 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/22 11:40:49 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    exec_and_count(char *move, t_bench *bench)
+void	exec_and_count(char *move, t_bench *bench)
 {
-    ft_printf(1, "%s\n", move);
-    bench->total_count++;
-    if (ft_strcmp(move, "pa") == 0)
-        bench->pa++;
-    else if (ft_strcmp(move, "pb") == 0)
-        bench->pb++;
+	ft_printf(1, "%s\n", move);
+	bench->total_count++;
+	if (ft_strcmp(move, "pa") == 0)
+		bench->pa++;
+	else if (ft_strcmp(move, "pb") == 0)
+		bench->pb++;
 	else if (ft_strcmp(move, "sa") == 0)
-        bench->sa++;
+		bench->sa++;
 	else if (ft_strcmp(move, "sb") == 0)
-        bench->sb++;
+		bench->sb++;
 	else if (ft_strcmp(move, "ss") == 0)
-        bench->ss++;
+		bench->ss++;
 	else if (ft_strcmp(move, "ra") == 0)
-        bench->ra++;
+		bench->ra++;
 	else if (ft_strcmp(move, "rb") == 0)
-        bench->rb++;
+		bench->rb++;
 	else if (ft_strcmp(move, "rr") == 0)
-        bench->rr++;
+		bench->rr++;
 	else if (ft_strcmp(move, "rra") == 0)
-        bench->rra++;
+		bench->rra++;
 	else if (ft_strcmp(move, "rrb") == 0)
-        bench->rrb++;
+		bench->rrb++;
 	else if (ft_strcmp(move, "rrr") == 0)
-        bench->rrr++;
-	}
+		bench->rrr++;
+}
 
-static void settle_strategy_class(t_bench *bench)
+static void	settle_strategy_class(t_bench *bench)
 {
-    if (ft_strcmp(bench->strategy, "Simple") == 0)
-        bench->theory_class = "O(n²)";
-    else if (ft_strcmp(bench->strategy, "Medium") == 0)
-        bench->theory_class = "O(n√n)";
-    else if (ft_strcmp(bench->strategy, "Complex") == 0)
-        bench->theory_class = "O(n log n)";
+	if (ft_strcmp(bench->strategy, "Simple") == 0)
+		bench->theory_class = "O(n²)";
+	else if (ft_strcmp(bench->strategy, "Medium") == 0)
+		bench->theory_class = "O(n√n)";
+	else if (ft_strcmp(bench->strategy, "Complex") == 0)
+		bench->theory_class = "O(n log n)";
+}
+
+static int	get_len(int n)
+{
+	int	len;
+
+	len = 0;
+	if (n == 0)
+		return (1);
+	while (n > 0)
+	{
+		n = n / 10;
+		len++;
+	}
+	return (len);
 }
 
 static char	*disorder_to_string(t_bench *bench)
 {
-	/*TODO: essayer de transformer la valeur du disorder contenu dans le bench
-	en une chaine de caractere pour l'afficher dans la fonction bench_print.
-	C'est la piste que j'imagine mais libre a toi de partir sur autre chose :)
-	*/
-	(void)bench;
-	char *res;
+	int		whole;
+	int		dec;
+	int		size;
+	char	*str;
+	char	*tmp;
 
-	res = "49.93%%"; // exemple
-	return (res);
+	whole = (int)(bench->disorder);
+	dec = (int)(((bench->disorder) - whole) * 100);
+	size = get_len(whole) + 4;
+	str = ft_calloc(size, sizeof(char));
+	if (!str)
+		return (NULL);
+	tmp = ft_itoa(whole);
+	ft_strlcpy(str, tmp, size);
+	free(tmp);
+	ft_strlcat(str, ".", size);
+	if (dec < 10)
+		ft_strlcat(str, "0", size);
+	tmp = ft_itoa(dec);
+	ft_strlcat(str, tmp, size);
+	free(tmp);
+	return (str);
 }
 
 void	bench_print(t_bench *bench)
@@ -69,8 +97,7 @@ void	bench_print(t_bench *bench)
 
 	res = disorder_to_string(bench);
 	settle_strategy_class(bench);
-
-	ft_printf(2, "[bench] disorder: %s\n", res);
+	ft_printf(2, "[bench] disorder: %s%\n", res);
 	ft_printf(2, "[bench] stategy: %s / ", bench->strategy);
 	ft_printf(2, "%s\n", bench->theory_class);
 	ft_printf(2, "[bench] total_ops: %d\n", bench->total_count);
@@ -79,5 +106,5 @@ void	bench_print(t_bench *bench)
 	ft_printf(2, "[bench] ra: %d  rb: %d", bench->ra, bench->rb);
 	ft_printf(2, " rr: %d  rra: %d", bench->rr, bench->rra);
 	ft_printf(2, " rrb: %d  rrr: %d\n", bench->rrb, bench->rrr);
-	// free(res); // si tu malloc la res => penser a la free apres
+	free(res);
 }
