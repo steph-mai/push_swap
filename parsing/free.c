@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 12:03:57 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/21 17:33:15 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/22 16:51:24 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	free_stack(t_stack **stack)
 
 t_stack	*free_if_error(t_stack **stack, char **tab)
 {
-	write(2, "Error\n", 6);
+	ft_printf(2, "Error\n");
 	free_tab(tab);
 	free_stack(stack);
 	return (NULL);

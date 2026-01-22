@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 17:08:26 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/21 23:39:54 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/22 16:05:21 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_stack **head)
+static void	swap(t_stack **head)
 {
 	t_stack	*node_a;
 	t_stack	*node_b;

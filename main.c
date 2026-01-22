@@ -6,12 +6,11 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 10:19:30 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/22 11:25:29 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/22 16:24:35 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h> 
 
 static void	choose_method(int score, t_stack **a,
 	t_stack **b, t_bench *bench)
@@ -37,7 +36,7 @@ static void	choose_method(int score, t_stack **a,
 		bench->strategy = "Complex";
 	}
 	else
-		printf("Error\n");
+		ft_printf(2, "Error\n");
 	if (score == 100 || score == 103 || score == 105
 		|| score == 107 || score == 111)
 		bench_print(bench);

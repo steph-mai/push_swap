@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 08:55:24 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/21 23:37:08 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/22 16:04:03 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(t_stack **dest, t_stack **src)
+static void	push(t_stack **dest, t_stack **src)
 {
 	t_stack	*node_to_push;
 

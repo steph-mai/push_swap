@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 14:51:14 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/21 23:39:32 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/22 16:05:13 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate(t_stack **head)
+static void	rotate(t_stack **head)
 {
 	t_stack	*head_temp;
 	t_stack	*current_node;
