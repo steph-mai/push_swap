@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 17:18:40 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/22 16:07:50 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/22 19:00:38 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ int	ft_strcmp(char *s1, char *s2)
 
 static int	compare_to_flag(char *str)
 {
-	if (ft_strcmp("simple", str) == 0)
+	if (ft_strcmp("--simple", str) == 0)
 		return (3);
-	if (ft_strcmp("medium", str) == 0)
+	if (ft_strcmp("--medium", str) == 0)
 		return (5);
-	if (ft_strcmp("complex", str) == 0)
+	if (ft_strcmp("--complex", str) == 0)
 		return (7);
-	if (ft_strcmp("adaptive", str) == 0)
+	if (ft_strcmp("--adaptive", str) == 0)
 		return (11);
-	if (ft_strcmp("bench", str) == 0)
+	if (ft_strcmp("--bench", str) == 0)
 		return (100);
 	return (-1);
 }
@@ -47,7 +47,7 @@ static int	is_flag(char *str, int i, int k)
 	char		*potential_flag;
 
 	a = 0;
-	j = i + 2;
+	j = i;
 	size = k - j;
 	potential_flag = malloc((size + 1) * sizeof(char));
 	if (!potential_flag)
@@ -71,12 +71,12 @@ static int	main_loop(char *str, int i, int k, int res)
 	temp = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] == '-' && str[i + 1] == '-')
+		if ( !((str[i] >= '0' && str[i] <= '9') || ((str[i] == '-' || str[i] == '+') && (str[i + 1] >= '0' && str[i + 1] <= '9'))) )
 		{
-			k = i + 2;
+			k = i;
 			while (str[k] != ' ' && str[k] != '\0')
 			{
-				if (str[k] < 97 || str[k] > 122)
+				if ((str[k] < 97 || str[k] > 122) && str[k] != '-')
 					return (-1);
 				k++;
 			}

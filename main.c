@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 10:19:30 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/22 16:24:35 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/22 17:25:18 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,29 +42,27 @@ static void	choose_method(int score, t_stack **a,
 		bench_print(bench);
 }
 
-static	char	*ft_truncate(char *str)
+static	char	*ft_truncate(char *str, t_bench *bench)
 {
 	char	*str_without_flags;
 	int		i;
-	int		score;
 
 	if (!str)
 		return (NULL);
-	score = flag_selector(str);
-	if (score == -1)
+	if (bench->score == -1)
 		return (str);
 	else
 	{
-		i = ft_strlen(str) - 1;
-		while (i > 1)
+		i = 0;
+		while (str[i] != '\0')
 		{
-			if (str[i] == ' ' && (str[i -1] >= 97 && str[i - 1] <= 122))
+			if (str[i] >= 48 && str[i] <= 57)
 			{
-				str_without_flags = ft_strdup(str + i + 1);
+				str_without_flags = ft_strdup(str + i);
 				free(str);
 				return (str_without_flags);
 			}
-			i--;
+			i++;
 		}
 		return (str);
 	}
@@ -83,7 +81,7 @@ int	main(int argc, char **argv)
 		return (0);
 	big_str = from_args_to_big_str(argc, argv);
 	bench.score = flag_selector(big_str);
-	big_str = ft_truncate(big_str);
+	big_str = ft_truncate(big_str, &bench);
 	tab = put_args_in_array(big_str);
 	stack_a = NULL;
 	stack_b = NULL;
