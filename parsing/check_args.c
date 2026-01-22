@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 11:57:33 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/06 11:53:05 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:33:15 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	check_args_overflow(long i)
 	return (1);
 }
 
-int	check_args_doubles(t_stack_node *node, int nb_to_check)
+int	check_args_doubles(t_stack *node, int nb_to_check)
 {
 	if (!node)
 		return (1);

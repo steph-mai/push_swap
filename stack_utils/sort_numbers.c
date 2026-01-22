@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 08:41:27 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/16 14:58:49 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/21 17:55:24 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ int	*sort_numbers(int *tab, int size)
 	return (tab);
 }
 
-void	find_index(t_stack_node *stack, int *tab, int size)
+void	find_index(t_stack *stack, int *tab, int size)
 {
-	t_stack_node	*ptr;
-	int				i;
+	t_stack	*ptr;
+	int		i;
 
 	ptr = stack;
 	while (ptr)
@@ -60,12 +60,12 @@ void	find_index(t_stack_node *stack, int *tab, int size)
 	}
 }
 
-void	index_stack(t_stack_node *stack)
+void	index_stack(t_stack *stack)
 {
-	int					*tab;
-	t_stack_node		*ptr;
-	int					size;
-	int					i;
+	int		*tab;
+	t_stack	*ptr;
+	int		size;
+	int		i;
 
 	size = lstsize(stack);
 	tab = malloc(sizeof(int) * size);
@@ -84,7 +84,7 @@ void	index_stack(t_stack_node *stack)
 	free(tab);
 }
 
-int	get_position(t_stack_node *stack, t_stack_node *target_node)
+int	get_position(t_stack *stack, t_stack *target_node)
 {
 	int	i;
 

@@ -6,13 +6,13 @@
 /*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 12:33:56 by marberge          #+#    #+#             */
-/*   Updated: 2025/12/08 19:56:37 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/21 14:26:08 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
 
-int	ft_printf(const char *str, ...)
+int	ft_printf(int fd, const char *str, ...)
 {
 	va_list	args;
 	int		count;
@@ -29,7 +29,7 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	if (count == -1)
 		return (-1);
-	if (ft_flush_buffer(buffer, &buf_index) == -1)
+	if (ft_flush_buffer(buffer, &buf_index, fd) == -1)
 		return (-1);
 	return (count);
 }

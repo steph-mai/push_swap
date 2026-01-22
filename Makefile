@@ -18,12 +18,13 @@ SRCS        = main.c \
 			  operations/push.c \
 			  operations/rotate.c \
 			  operations/reverse_rotate.c \
-			  core/three_sort.c \
+			  core/algo/simple/three_sort.c \
 			  core/algo/simple/selection_sort.c \
 			  core/algo/simple/insertion_sort.c \
 			  core/algo/complex/radix_sort.c \
 			  core/algo/medium/range_based_sort.c \
-			  core/algo/adaptive/adaptive.c
+			  core/algo/adaptive/adaptive.c \
+			  core/bench.c
 			                
 OBJS        = $(SRCS:.c=.o)
 

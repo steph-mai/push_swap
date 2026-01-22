@@ -6,21 +6,22 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 17:08:11 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/16 16:17:22 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/22 11:23:33 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-float	compute_disorder(t_stack_node *a)
+float	compute_disorder(t_stack *a)
 {
-	int				mistakes;
-	int				total_pairs;
-	t_stack_node	*temp_node_a;
-	t_stack_node	*temp_node_b;
+	int		mistakes;
+	int		total_pairs;
+	t_stack	*temp_node_a;
+	t_stack	*temp_node_b;
+	float	result;
 
 	if (!a || lstsize(a) < 2)
-		return (0.0);
+		return (00.00);
 	mistakes = 0;
 	total_pairs = 0;
 	temp_node_a = a;
@@ -36,5 +37,6 @@ float	compute_disorder(t_stack_node *a)
 		}
 		temp_node_a = temp_node_a->next;
 	}
-	return ((float)mistakes / (float)total_pairs);
+	result = (float)mistakes / (float)total_pairs * 100;
+	return (result);
 }
