@@ -6,13 +6,13 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 18:15:54 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/22 11:41:44 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/22 16:04:50 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	reverse_rotate(t_stack **head)
+static void	reverse_rotate(t_stack **head)
 {
 	t_stack	*head_temp;
 	t_stack	*current_node;
@@ -31,7 +31,6 @@ void	reverse_rotate(t_stack **head)
 void	rra(t_stack **a, t_bench *bench)
 {
 	reverse_rotate(a);
-	ft_printf(1, "rra\n");
 	exec_and_count("rra", bench);
 	return ;
 }

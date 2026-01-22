@@ -6,12 +6,11 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 17:18:40 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/21 17:40:20 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/22 16:07:50 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h> // TODO: a retirer
 
 int	ft_strcmp(char *s1, char *s2)
 {

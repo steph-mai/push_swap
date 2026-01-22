@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/22 11:41:28 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/22 16:04:38 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,21 +95,17 @@ void			bench_print(t_bench *bench);
 
 /* ----------------------------- OPERATIONS -------------------------------*/
 /*------------  SWAP  ---------------*/
-void			swap(t_stack **head);
 void			sa(t_stack **head, t_bench *bench);
 void			sb(t_stack **head, t_bench *bench);
 void			ss(t_stack **head_a, t_stack **head_b, t_bench *bench);
 /*------------  PUSH  ---------------*/
-void			push(t_stack **dest, t_stack **src);
 void			pa(t_stack **stack_a, t_stack **stack_b, t_bench *bench);
 void			pb(t_stack **stack_a, t_stack **stack_b, t_bench *bench);
 /*------------  ROTATE  ---------------*/
-void			rotate(t_stack **head);
 void			ra(t_stack **a, t_bench *bench);
 void			rb(t_stack **b, t_bench *bench);
 void			rrr(t_stack **a, t_stack **b, t_bench *bench);
 /*------------  REVERSE ROTATE  ---------------*/
-void			reverse_rotate(t_stack **head);
 void			rra(t_stack **a, t_bench *bench);
 void			rrb(t_stack **b, t_bench *bench);
 void			rrr(t_stack **a, t_stack **b, t_bench *bench);
