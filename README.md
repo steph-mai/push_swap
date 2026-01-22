@@ -1,7 +1,10 @@
 *This project has been created as part of the 42 curriculum by marberge, stmaire.*             
 
 
-## 📝 Description
+<details>
+<summary><strong>📝 Description (Cliquer pour dérouler)</strong></summary>
+
+<br>
 
 **Push_swap** est un projet d'algorithmique avancé qui consiste à trier des données sur une pile (stack), avec un jeu d'instructions limité et en un nombre de coups strictement optimisé.
 
@@ -53,8 +56,10 @@ Afin de faciliter le contrôle des performances, le programme intègre plusieurs
 * **Mode Automatique (Par défaut)** : Le programme est autonome. Il scanne la pile et choisit la meilleure stratégie pour minimiser les coups.
 * **Modes Forcés (`--simple`, `--medium`, `--complex`)** : Ces options permettent de désactiver l'intelligence artificielle du programme pour forcer l'utilisation d'un algorithme spécifique, quelle que soit la taille de la liste. C'est idéal pour vérifier la robustesse de chaque méthode individuellement.
 * **Mode Benchmark (`--bench`)** : Transforme le programme en outil d'analyse scientifique. En plus de trier, il calcule et affiche des statistiques précises sur la **sortie d'erreur** (taux de désordre, stratégie utilisée, compteurs d'opérations détaillés), permettant une validation rigoureuse sans perturber le checker.
+</details>
 
-## 💻 Instructions
+<details>
+<summary><strong>📝 Instructions (Cliquer pour dérouler)</strong></summary>
 
 ### 🔧 Compilation
 
@@ -130,8 +135,10 @@ Comme le benchmark écrit sur la sortie d'erreur (`stderr`), il ne perturbe pas 
 * **`make clean`** : Supprime les fichiers objets (`.o`).
 * **`make fclean`** : Supprime les fichiers objets et l'exécutable `push_swap`.
 * **`make re`** : Recompile tout depuis zéro.
+</details>
 
-## 📚 Ressources & Références
+<details>
+<summary><strong>📝 Ressources et références (Cliquer pour dérouler)</strong></summary>
 
 Voici une sélectionde ressources techniques pour comprendre les algorithmes implémentés et les outils utilisés pour valider le projet.
 
@@ -156,12 +163,21 @@ Voici une sélectionde ressources techniques pour comprendre les algorithmes imp
 * **[push_swap_visualizer (o-reo)](https://github.com/o-reo/push_swap_visualizer)** : Un outil graphique indispensable pour **voir** les piles bouger en temps réel. Il permet de comprendre visuellement la logique de tri et de débugger les boucles infinies.
 * **[push_swap_tester (SimonCROS)](https://github.com/SimonCROS/push_swap_tester)** : Un script de benchmark complet pour lancer des milliers de tests aléatoires, vérifier la gestion des erreurs et calculer la moyenne de coups. Essentiel pour calibrer le mode adaptatif.
 
-## 🧠 Stratégies Algorithmiques & Complexité
+### 🤖 Utilisation de l'IA
+
+Dans le cadre de ce projet, l'intelligence artificielle a été utilisée comme un outil d'assistance complémentaire aux recherches traditionnelles. Elle est intervenue sur trois axes principaux :
+* **Support Théorique :** Aide à la vulgarisation et à la compréhension de concepts algorithmiques avancés (calcul de complexité temporelle/spatiale, notation Big O) et mathématiques (calcul du taux de désordre d'une liste).
+* **Génération de Tests :** Création de jeux de données spécifiques, notamment des séries de nombres respectant des pourcentages de désordre précis, pour éprouver la robustesse des algorithmes de tri.
+* **Débogage :** Assistance à l'analyse de code pour l'identification d'erreurs logiques et la résolution de problèmes de gestion de mémoire (segmentation faults).
+</details>
+
+<details>
+<summary><strong>📝 Stratégies Algorithmiques & Complexité (Cliquer pour dérouler)</strong></summary>
 
 Pour résoudre efficacement le problème de tri quelle que soit la taille de l'entrée, ce projet implémente trois approches algorithmiques distinctes, allant de la méthode naïve à la plus optimisée, conformément aux exigences du sujet.
 
 ### 1. L'Algorithme Simple O(n²)
-* **Cible :** Petites piles (3 à ~10 valeurs).
+* **Cible :** Petites piles (3 à ~20 valeurs).
 
 * **Strategies possibles (quelques exemples) :**
 
@@ -344,8 +360,11 @@ Exemples : Insertion Sort, Bubble Sort, Merge Sort.
 * **Tri Instable (Unstable Sort)** : L'ordre relatif des éléments égaux n'est pas garanti et peut être modifié aléatoirement durant le processus. Ces algorithmes sont souvent plus rapides ou économes en mémoire, mais "perdent" l'information de l'ordre initial pour les doublons.
 
 Exemples : Quick Sort, Selection Sort, Heap Sort.
+</details>
 
-## Démarche et étapes de réalisation du projet
+<details>
+<summary><strong>📝 Démarche et étapes de réalisation du projet
+(Cliquer pour dérouler)</strong></summary>
 
 ### 1. Parsing
 
@@ -655,9 +674,14 @@ $$
 | **Selection** | x5 | x28.6 | **2.08** | $O(N^2)$ |
 | **Range** | x3 | x5.54 | **1.56** | $O(N\sqrt{N})$ |
 | **Radix** | x2 | x2.15 | **1.10** | $O(N \log N)$ |
+</details>
 
 
-## 👥 Contributions
+
+<details>
+<summary><strong>📝 👥 Contributions (Cliquer pour dérouler)</strong></summary>
+
+<br>
 
 | Fonctionnalité | Auteurs / Responsables |
 | :--- | :--- |
@@ -670,3 +694,4 @@ $$
 | **Algo : Complex Sort** | `marberge` |
 | **Sélecteur Adaptatif** | `stmaire` |
 | **Documentation (README)** | `stmaire` |
+</details>

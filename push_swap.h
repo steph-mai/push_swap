@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/22 00:03:23 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/22 11:41:28 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ t_stack			*free_if_error(t_stack **stack, char **tab);
 int				flag_selector(char *str);
 int				ft_strcmp(char *s1, char *s2);
 
-
 /* -----------------------------STACK_UTILS-------------------------------*/
 t_stack			*lstlast(t_stack *lst);
 int				lstsize(t_stack *lst);
@@ -79,7 +78,7 @@ t_stack			*find_min(t_stack *stack);
 int				get_position(t_stack *stack, t_stack *target);
 
 /* ----------------------------- CORE -------------------------------*/
-float			compute_disorder(t_stack *a, t_bench *bench);
+float			compute_disorder(t_stack *a);
 void			three_sort(t_stack **stack_a, t_bench *bench);
 /*------------  ALGO SIMPLE  ---------------*/
 void			selection_sort(t_stack **a, t_stack **b, t_bench *bench);
@@ -91,7 +90,7 @@ void			radix_sort(t_stack **a, t_stack **b, t_bench *bench);
 /*------------  ALGO ADAPTIVE  ---------------*/
 void			select_algo(t_stack **a, t_stack **b, t_bench *bench);
 /*------------  BENCH  ---------------*/
-void    		exec_and_count(char *move, t_bench *bench);
+void			exec_and_count(char *move, t_bench *bench);
 void			bench_print(t_bench *bench);
 
 /* ----------------------------- OPERATIONS -------------------------------*/

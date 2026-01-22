@@ -6,13 +6,13 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 17:08:11 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/21 18:00:45 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/22 11:23:33 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-float	compute_disorder(t_stack *a, t_bench *bench)
+float	compute_disorder(t_stack *a)
 {
 	int		mistakes;
 	int		total_pairs;
@@ -38,7 +38,5 @@ float	compute_disorder(t_stack *a, t_bench *bench)
 		temp_node_a = temp_node_a->next;
 	}
 	result = (float)mistakes / (float)total_pairs * 100;
-	if (bench)
-		bench->disorder = result;
 	return (result);
 }

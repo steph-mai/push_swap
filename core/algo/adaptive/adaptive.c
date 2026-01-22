@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   adaptive.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 17:35:55 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/22 00:16:22 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/22 11:24:09 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	select_algo(t_stack **a, t_stack **b, t_bench *bench)
 	float	d;
 	int		size;
 
-	d = compute_disorder(*a, bench);
+	d = compute_disorder(*a);
 	size = lstsize(*a);
 	if (size < 20 || (size < 100 && (d < 30.00 || d >= 70.00)))
 	{

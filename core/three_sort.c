@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 09:57:47 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/21 17:33:15 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/22 11:26:08 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	three_sort(t_stack **stack_a, t_bench *bench)
 
 	if (!stack_a || !*stack_a || !(*stack_a)->next || !(*stack_a)->next->next)
 		return ;
-	if (compute_disorder(*stack_a, bench) == 0)
+	if (compute_disorder(*stack_a) == 0)
 		return ;
 	node_one = *stack_a;
 	node_two = node_one->next;

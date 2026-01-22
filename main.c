@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 10:19:30 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/22 00:13:10 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/22 11:25:29 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	main(int argc, char **argv)
 	stack_a = build_stack(tab);
 	if (!stack_a)
 		return (1);
-	bench.disorder = compute_disorder(stack_a, &bench);
+	bench.disorder = compute_disorder(stack_a);
 	choose_method(bench.score, &stack_a, &stack_b, &bench);
 	free_stack(&stack_a);
 	free_stack(&stack_b);

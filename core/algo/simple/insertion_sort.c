@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 14:02:54 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/21 17:56:29 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/22 11:24:54 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	insertion_sort(t_stack **a, t_stack **b, t_bench *bench)
 	while (*a)
 	{
 		pb(a, b, bench);
-		while (compute_disorder(*b, bench) != 100.00)
+		while (compute_disorder(*b) != 100.00)
 		{
 			lowest_index = find_min(*b);
 			node = *b;
