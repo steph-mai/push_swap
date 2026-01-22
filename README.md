@@ -1,10 +1,47 @@
 *This project has been created as part of the 42 curriculum by marberge, stmaire.*             
 
+__
+
+<div align="center">
+<br>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQPzuYKu7n0cWUYa5Kbg0_LrlEQAIURWeo9A&s" alt="42 Logo" width="400" />
+
+  <br>
+</div>
+
+# push_swap
+
+![Language](https://img.shields.io/badge/Language-C-blue)
+![Bonus](https://img.shields.io/badge/Bonus-No-red)
+![Grade](https://img.shields.io/badge/Grade-100%2F100-brightgreen)
+![Tag](https://img.shields.io/badge/Algorithm-grey)
+![Tag](https://img.shields.io/badge/Complexity-grey)
+![Tag](https://img.shields.io/badge/Optimization-grey)
+
+
+<br>
+
+<br>
+
+## Sommaire
+
+1.  [Description](#1-Description)
+2.  [Instructions](#2-Instructions)
+3.  [Ressources et référence](#3-les-arguments)
+4.  [Stratégie Algorithmique & Complexité](#4-les-conditions-ifelse)
+5.  [Démarche et étapes de réalisation du projet](#5-les-boucles-forwhile)
+5.  [Contributions](#5-les-boucles-forwhile)
+
+<br>
+
+---
 
 <details>
 <summary><strong>📝 Description (Cliquer pour dérouler)</strong></summary>
 
 <br>
+
+## 1. Description
 
 **Push_swap** est un projet d'algorithmique avancé qui consiste à trier des données sur une pile (stack), avec un jeu d'instructions limité et en un nombre de coups strictement optimisé.
 
@@ -60,6 +97,9 @@ Afin de faciliter le contrôle des performances, le programme intègre plusieurs
 
 <details>
 <summary><strong>📝 Instructions (Cliquer pour dérouler)</strong></summary>
+
+
+## 2. Instructions
 
 ### 🔧 Compilation
 
