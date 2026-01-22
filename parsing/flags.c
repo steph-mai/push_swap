@@ -6,7 +6,7 @@
 /*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 17:18:40 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/22 19:00:38 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/22 19:31:45 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,73 +39,85 @@ static int	compare_to_flag(char *str)
 	return (-1);
 }
 
-static int	is_flag(char *str, int i, int k)
+static int is_flag(char *str, int start, int end)
 {
-	int			j;
-	int			a;
-	int			size;
-	char		*potential_flag;
+    int     i;
+    int     a;
+    char    *potential_flag;
+    int     res;
 
-	a = 0;
-	j = i;
-	size = k - j;
-	potential_flag = malloc((size + 1) * sizeof(char));
-	if (!potential_flag)
-		return (-1);
-	while (j < k)
-	{
-		potential_flag[a] = str[j];
-		j++;
-		a++;
-	}
-	potential_flag[a] = '\0';
-	a = compare_to_flag(potential_flag);
-	free(potential_flag);
-	return (a);
+    potential_flag = malloc((end - start + 1) * sizeof(char));
+    if (!potential_flag)
+        return (-1);
+    
+    i = start;
+    a = 0;
+    while (i < end)
+    {
+        potential_flag[a] = str[i];
+        i++;
+        a++;
+    }
+    potential_flag[a] = '\0';
+    
+    res = compare_to_flag(potential_flag);
+    free(potential_flag);
+    return (res);
 }
 
-static int	main_loop(char *str, int i, int k, int res)
+static int is_digit(char c)
 {
-	int	temp;
+    return (c >= '0' && c <= '9');
+}
+static int main_loop(char *str, int res)
+{
+    int i;
+    int k;
+    int temp;
 
-	temp = 0;
-	while (str[i] != '\0')
-	{
-		if ( !((str[i] >= '0' && str[i] <= '9') || ((str[i] == '-' || str[i] == '+') && (str[i + 1] >= '0' && str[i + 1] <= '9'))) )
-		{
-			k = i;
-			while (str[k] != ' ' && str[k] != '\0')
-			{
-				if ((str[k] < 97 || str[k] > 122) && str[k] != '-')
-					return (-1);
-				k++;
-			}
-			if (k == 0)
-				return (-1);
-			temp = is_flag(str, i, k);
-			if (temp == -1)
-				return (-1);
-			res += temp;
-			i = k;
-		}
-		i++;
-	}
-	return (res);
+    i = 0;
+    while (str[i])
+    {
+        while (str[i] == ' ')
+            i++;
+        if (str[i] == '\0')
+            break;
+        if (is_digit(str[i]) || (str[i] == '-' && is_digit(str[i + 1])))
+        {
+            if (str[i] == '-') 
+                i++;
+            while (is_digit(str[i]))
+                i++;
+            if (str[i] != ' ' && str[i] != '\0')
+                return (-1);
+        }
+        else
+        {
+            k = i;
+            while (str[k] != ' ' && str[k] != '\0')
+                k++;
+            temp = is_flag(str, i, k);
+            if (temp == -1)
+                return (-1);
+            res += temp;
+            i = k;
+        }
+    }
+    return (res);
 }
 
-int	flag_selector(char *str)
+            
+int flag_selector(char *str)
 {
-	int	i;
-	int	k;
-	int	res;
-
-	i = 0;
-	k = 0;
-	res = 0;
-	res = main_loop(str, i, k, res);
-	if (res == -1)
-		return (-1);
-	if (res == 0)
-		res = 11;
-	return (res);
+    int res;
+    res = 0;
+    
+    if (!str || !str[0])
+        return (-1);
+    res = main_loop(str, res);
+    if (res == -1)
+        return (-1);
+    if (res == 0)
+        res = 11;
+    return (res);
 }
