@@ -6,13 +6,13 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 08:41:27 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/21 17:55:24 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/22 17:18:43 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	*sort_numbers(int *tab, int size)
+static int	*sort_numbers(int *tab, int size)
 {
 	int	i;
 	int	j;
@@ -38,7 +38,7 @@ int	*sort_numbers(int *tab, int size)
 	return (tab);
 }
 
-void	find_index(t_stack *stack, int *tab, int size)
+static void	find_index(t_stack *stack, int *tab, int size)
 {
 	t_stack	*ptr;
 	int		i;

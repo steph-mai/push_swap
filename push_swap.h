@@ -6,7 +6,7 @@
 /*   By: marberge <marberge@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/22 23:51:42 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/22 23:57:11 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,6 @@ int				is_flag(char *str, int start, int end);
 t_stack			*lstlast(t_stack *lst);
 int				lstsize(t_stack *lst);
 void			append_node(t_stack **stack, int nb);
-int				*sort_numbers(int *tab, int size);
-void			find_index(t_stack *stack, int *tab, int size);
 void			index_stack(t_stack *stack);
 t_stack			*find_max(t_stack *stack);
 t_stack			*find_min(t_stack *stack);
