@@ -1,6 +1,6 @@
 *This project has been created as part of the 42 curriculum by marberge, stmaire.*             
 
-__
+---
 
 <div align="center">
 <br>
@@ -19,35 +19,16 @@ __
 ![Tag](https://img.shields.io/badge/Optimization-grey)
 
 
-<br>
-
-<br>
-
-## Sommaire
-
-1.  [Description](#1-Description)
-2.  [Instructions](#2-Instructions)
-3.  [Ressources et référence](#3-les-arguments)
-4.  [Stratégie Algorithmique & Complexité](#4-les-conditions-ifelse)
-5.  [Démarche et étapes de réalisation du projet](#5-les-boucles-forwhile)
-5.  [Contributions](#5-les-boucles-forwhile)
-
-<br>
-
----
-
-<details>
-<summary><strong>📝 Description (Cliquer pour dérouler)</strong></summary>
-
-<br>
-
-## 1. Description
-
 **Push_swap** est un projet d'algorithmique avancé qui consiste à trier des données sur une pile (stack), avec un jeu d'instructions limité et en un nombre de coups strictement optimisé.
 
 Le défi principal n'est pas seulement de trier, mais de le faire avec une **efficacité mathématique**. Le programme ne se contente pas d'appliquer une méthode unique : il est conçu pour être **intelligent et adaptatif**, analysant les données avant d'agir.
 
-### 🎮 Les Règles du Jeu
+---
+
+## 1. Description
+
+<details>
+<summary><strong>🎮 Les Règles du Jeu</strong></summary>
 
 Le projet fonctionne avec deux piles : **Stack A** et **Stack B**.
 
@@ -86,22 +67,28 @@ Le projet fonctionne avec deux piles : **Stack A** et **Stack B**.
 
 Pour atteindre le grade "Excellent", ce programme implémente une **stratégie adaptative**. Avant de trier, il calcule le **taux de désordre** de la liste pour sélectionner l'algorithme le plus performant en fonction du désordre et de la taille de la liste à trier.
 
-### ⚡ Modes de Fonctionnement
+</details>
+
+<details>
+<summary><strong>⚡ Modes de Fonctionnement</strong></summary>
+
+
 
 Afin de faciliter le contrôle des performances, le programme intègre plusieurs modes d'exécution activables via des drapeaux (flags):
 
 * **Mode Automatique (Par défaut)** : Le programme est autonome. Il scanne la pile et choisit la meilleure stratégie pour minimiser les coups.
 * **Modes Forcés (`--simple`, `--medium`, `--complex`)** : Ces options permettent de désactiver l'intelligence artificielle du programme pour forcer l'utilisation d'un algorithme spécifique, quelle que soit la taille de la liste. C'est idéal pour vérifier la robustesse de chaque méthode individuellement.
 * **Mode Benchmark (`--bench`)** : Transforme le programme en outil d'analyse scientifique. En plus de trier, il calcule et affiche des statistiques précises sur la **sortie d'erreur** (taux de désordre, stratégie utilisée, compteurs d'opérations détaillés), permettant une validation rigoureuse sans perturber le checker.
-</details>
 
-<details>
-<summary><strong>📝 Instructions (Cliquer pour dérouler)</strong></summary>
-
+</details> 
 
 ## 2. Instructions
 
-### 🔧 Compilation
+<details>
+<summary><strong>🔧 Compilation</strong></summary>
+
+
+
 
 Le projet est écrit en C et utilise un `Makefile` pour la compilation. Assurez-vous d'avoir `gcc` et `make` installés sur votre machine.
 Cette commande génère l'exécutable `push_swap`.
@@ -112,7 +99,11 @@ Cette commande génère l'exécutable `push_swap`.
 
 ---
 
-### 🚀 Exécution
+</details>
+
+<details>
+<summary><strong>🚀 Exécution</strong></summary>
+
 
 Le programme prend en argument une liste d'entiers à trier.
 
@@ -129,7 +120,11 @@ Utilisation avec une variable (Recommandé) : Pour tester facilement la même li
 ARG="4 67 3 87 23"; ./push_swap $ARG
 ```
 
-### 🚩 Options & Drapeaux
+</details>
+
+<details>
+<summary><strong>🚩 Options & Drapeaux</strong></summary>
+
 
 Vous pouvez ajouter un drapeau **avant** la liste de nombres pour modifier le comportement du programme.
 
@@ -154,7 +149,12 @@ Pour obtenir les statistiques de tri (désordre, complexité, compteurs) sur la 
 ```bash
 ./push_swap --bench $ARG
 ```
-### ✅ Vérification (Checker)
+
+</details>
+
+<details>
+<summary><strong>✅ Vérification (Checker)</strong></summary>
+
 
 Le programme est conçu pour être utilisé en "pipe" avec le binaire de vérification (`checker_linux` ou votre propre bonus checker).
 
@@ -170,19 +170,25 @@ Comme le benchmark écrit sur la sortie d'erreur (`stderr`), il ne perturbe pas 
 ```bash
 ./push_swap --bench $ARG | ./checker_linux $ARG
 ```
-### 🧹 Nettoyage
+
+</details> 
+
+<details>
+<summary><strong>🧹 Nettoyage</strong></summary>
+
+
 
 * **`make clean`** : Supprime les fichiers objets (`.o`).
 * **`make fclean`** : Supprime les fichiers objets et l'exécutable `push_swap`.
 * **`make re`** : Recompile tout depuis zéro.
 </details>
 
+## 3. Ressources et références 
+
 <details>
-<summary><strong>📝 Ressources et références (Cliquer pour dérouler)</strong></summary>
+<summary><strong>🧠 Algorithmes & Stratégies</strong></summary>
 
-Voici une sélectionde ressources techniques pour comprendre les algorithmes implémentés et les outils utilisés pour valider le projet.
-
-### 🧠 Algorithmes & Stratégies
+Voici une sélection de ressources techniques pour comprendre les algorithmes implémentés et les outils utilisés pour valider le projet.
 
 * **[Push_swap — A journey to find the optimal sorting algorithm](https://medium.com/nerd-for-tech/push-swap-v2-comprehensive-guide-434f86d60661)** : Explication du **Radix Sort** (tri par base), l'alternative mathématique binaire pour garantir une complexité $O(n \log n)$.
 * **[Big O Cheat Sheet](https://www.bigocheatsheet.com/)** : Le tableau de référence pour visualiser graphiquement les différences de performance entre $O(n^2)$ (Simple), $O(n\sqrt{n})$ (Moyen) et $O(n \log n)$ (Complexe).
@@ -196,14 +202,20 @@ Voici une sélectionde ressources techniques pour comprendre les algorithmes imp
 * **[Wikipedia : Quick sort](https://fr.wikipedia.org/wiki/Tri_rapide)**
 * **[Wikipedia : Heap sort](https://fr.wikipedia.org/wiki/Tri_par_tas)**
 
+</details>
 
+<details>
+<summary><strong>🛠️ Outils de Test & Visualisation</strong></summary>
 
-### 🛠️ Outils de Test & Visualisation
 
 * **[push_swap_visualizer (o-reo)](https://github.com/o-reo/push_swap_visualizer)** : Un outil graphique indispensable pour **voir** les piles bouger en temps réel. Il permet de comprendre visuellement la logique de tri et de débugger les boucles infinies.
 * **[push_swap_tester (SimonCROS)](https://github.com/SimonCROS/push_swap_tester)** : Un script de benchmark complet pour lancer des milliers de tests aléatoires, vérifier la gestion des erreurs et calculer la moyenne de coups. Essentiel pour calibrer le mode adaptatif.
 
-### 🤖 Utilisation de l'IA
+</details>
+
+<details>
+<summary><strong>🤖 Utilisation de l'IA</strong></summary>
+
 
 Dans le cadre de ce projet, l'intelligence artificielle a été utilisée comme un outil d'assistance complémentaire aux recherches traditionnelles. Elle est intervenue sur trois axes principaux :
 * **Support Théorique :** Aide à la vulgarisation et à la compréhension de concepts algorithmiques avancés (calcul de complexité temporelle/spatiale, notation Big O) et mathématiques (calcul du taux de désordre d'une liste).
@@ -211,12 +223,13 @@ Dans le cadre de ce projet, l'intelligence artificielle a été utilisée comme 
 * **Débogage :** Assistance à l'analyse de code pour l'identification d'erreurs logiques et la résolution de problèmes de gestion de mémoire (segmentation faults).
 </details>
 
+## 4. Stratégies Algorithmiques & Complexité
+
+<!-- Pour résoudre efficacement le problème de tri quelle que soit la taille de l'entrée, ce projet implémente trois approches algorithmiques distinctes, allant de la méthode naïve à la plus optimisée, conformément aux exigences du sujet. -->
+
 <details>
-<summary><strong>📝 Stratégies Algorithmiques & Complexité (Cliquer pour dérouler)</strong></summary>
+<summary><strong>🟢 L'Algorithme Simple O(n²)</strong></summary>
 
-Pour résoudre efficacement le problème de tri quelle que soit la taille de l'entrée, ce projet implémente trois approches algorithmiques distinctes, allant de la méthode naïve à la plus optimisée, conformément aux exigences du sujet.
-
-### 1. L'Algorithme Simple O(n²)
 * **Cible :** Petites piles (3 à ~20 valeurs).
 
 * **Strategies possibles (quelques exemples) :**
@@ -230,7 +243,11 @@ Pour résoudre efficacement le problème de tri quelle que soit la taille de l'e
 -- **L'Extraction Min/Max (Extraction Method) :**
 C'est une version plus "flexible" du tri par sélection, qui peut être utilisée pour optimiser les coups. Il s'agit de vider la pile `a`A le plus vite possible en enlevant les "extrêmes". La méthode : Regarder la pile `a`. Se demander : "Qui est le plus près du haut ? Le Minimum ou le Maximum ?" Si le Min est plus près : on le monte et pb (et on le laisse en haut de `b`). Si le Max est plus près : on le monte et pb (et on le met en bas de 'b' avec rb). La pile `b` est donc triée au fur et à mesure, mais on a économisé des rotations en choisissant le chemin le plus court (vers le Min ou vers le Max). NB : au delà de 3 nombres, cela ne fonctionne plus sans adaptations car `b` n'est plus trié...
 
-### 2. L'Algorithme Moyen O(n√n)
+</details>
+
+<details>
+<summary><strong>🟡 L'Algorithme Moyen O(n√n)</strong></summary>
+
 * **Cible :** Piles moyennes (ex : 100 valeurs).
 
 * **Stratégie :** **Chunk-based sorting (Tri par paquets)** 
@@ -254,7 +271,12 @@ Le tri par seaux classique distribue les éléments dans plusieurs contenants di
 
 C'est souvent l'évolution la plus performante du tri par paquets. Au lieu d'avoir des paquets fixes (ex: 1 à 20), on utilise une "fenêtre glissante" ou un intervalle dynamique (= le range). Si le nombre au sommet de A est compris dans l'intervalle [0, compteur + range] (compteur = nombre d'élements déjà pré-triés), on le pousse vers B. À chaque push, l'intervalle grandit ou se décale. Cette méthode lisse la distribution des nombres dans la pile B (souvent en forme de courbe de Gauss) et minimise les rotations nécessaires pour récupérer les éléments extrêmes lors de la phase finale. A la fin, les plus grands nombres (ceux qui sont rentrés en dernier) sont globalement vers le haut de la pile, et les plus petits (rentrés au début) sont vers le bas ou le milieu. Enfin, il reste à reconstruire la pile A à l'envers, en cherchant le maximum dans `b` qui a été pré-trié.
 
-### 3. L'Algorithme Complexe O(n log n)
+</details>
+
+<details>
+<summary><strong>🔴 L'Algorithme Complexe O(n log n)</strong></summary>
+
+
 * **Cible :** Grandes piles (500+ valeurs).
 * **Pourquoi O(n log n) ?**
     * En informatique, **log n** (logarithme en base 2) est la réponse à la question : **"Combien de fois puis-je couper ma liste en deux avant qu'il ne reste plus qu'un seul élément ?"**
@@ -277,8 +299,10 @@ MSD = Most Significant Digit (Chiffre le Plus Significatif).
     On commence par la gauche (les milliers, ou ici le bit le plus fort).
     On descend vers la droite.
 
+
+
 <details>
-	<summary>tableau comparatif LSD/MSD</summary>
+<summary><strong> ➡️ Tableau comparatif LSD/MSD</strong></summary>
 
 | Critère | LSD (Least Significant Digit) | MSD (Most Significant Digit) |
 | :--- | :--- | :--- |
@@ -289,6 +313,9 @@ MSD = Most Significant Digit (Chiffre le Plus Significatif).
 | **Efficacité** | **Constante** (Le nombre de coups est prévisible). | **Variable** (Potentiellement plus rapide, mais dur à optimiser).
 
 </details>
+
+---
+
 <br>
 
  
@@ -320,7 +347,7 @@ Le tri par tas (Heap Sort) est un algorithme de comparaison efficace et en place
 Le BST sort (Binary Search Tree ou arbre de recherche binaire) recourt aussi aux arbres binaires mais la logique de rangement est différente : contrairement au heap sort où l'élément le plus grand est en haut, ici tout ce qui est plus petit doit aller à gauche, tout ce qui est plus grand doit aller à droite.
 exemple :
 
-<details><summary>🌳 Exemple : Tri par Arbre Binaire de Recherche (BST)</summary>
+<details><summary>➡️ Exemple : Tri par Arbre Binaire de Recherche (BST) 🌳</summary>
 
 **Tableau initial :** `[4, 10, 3, 5, 1]`
 
@@ -386,10 +413,17 @@ On parcourt l'arbre en suivant la règle stricte : **Gauche ➔ Racine ➔ Droit
     * 📝 On note : `10`
 
 ✅ **Résultat trié :** `1, 3, 4, 5, 10`
+
 </details>
+
+---
+
 <br>
 
-### 4. Complément : Tri stable et tri instable
+</details>
+
+<details>
+<summary><strong>🟤 Complément : Tri stable et tri instable</strong></summary>
 
 La notion de stabilité est fondamentale en algorithmique. Elle désigne la capacité d'un tri à préserver l'ordre relatif des éléments ayant la même valeur (doublons).
 
@@ -400,13 +434,13 @@ Exemples : Insertion Sort, Bubble Sort, Merge Sort.
 * **Tri Instable (Unstable Sort)** : L'ordre relatif des éléments égaux n'est pas garanti et peut être modifié aléatoirement durant le processus. Ces algorithmes sont souvent plus rapides ou économes en mémoire, mais "perdent" l'information de l'ordre initial pour les doublons.
 
 Exemples : Quick Sort, Selection Sort, Heap Sort.
+
 </details>
 
-<details>
-<summary><strong>📝 Démarche et étapes de réalisation du projet
-(Cliquer pour dérouler)</strong></summary>
+## 5. Démarche et étapes de réalisation du projet
 
-### 1. Parsing
+<details>
+<summary><strong>🆗 Parsing</strong></summary>
 
 * **fonction from_args_to_big_str :** récupérer les arguments entrés par l'utilisateur (sous la forme : "1 3 -12" ou  1 3 -12 ou encore un mixte des deux -par exemple : "1 3 " -12) et les placer dans une "big_str"
 * **fonction put_args_in_array :** split de cette "big_str" dans un tableau de tableau (chaque ligne contient une string entrée par l'utilisateur, qui sera à transformer en entier)
@@ -444,11 +478,10 @@ Exemples : Quick Sort, Selection Sort, Heap Sort.
 * **fonction index_stack**(dans le fichier sort_numbers) : On commence par mesurer la taille de la liste chaînée pour allouer la mémoire d'un tableau, dans lequel on copie les entiers. On travaille avec une copie du noeud pour éviter de perdre l'adresse de la liste. Dans ce tableau, on trie les entiers avec un bubble sort(* **fonction sort_numbers** *)(NB on se moque de la performance de ce pré-tri, c'est la performance des algos qui sera ensuite évaluée). 
 Enfin, la fonction * **find_index** * cherche la correspondance entre l´entier stocké dans la liste chaînée et les valeurs du tableau trié (ex : tableau trié [2, 14, 22]) > je cherche dans quel noeud se trouve stockée la valeur "2" et j'associe à ce noeud l'index 0... etc...
 
-### 2. Désordre et opérations
-Implémentation d´une fonction de calcul du taux de désordre de la liste à trier.
-Implémentation des fonctions qui permettent d'agir sur les piles (pa, pb, pp, sa, sb...)
+</details>
 
-### 3. Choix et implémentation des algorithmes
+<details>
+<summary><strong>📝 Choix et implémentation des algorithmes</strong></summary>
 
 ### A. algorithme simple :
 * **Stratégie choisie : tri par sélection**.
@@ -538,10 +571,19 @@ Voici la logique de l'implémentation en pseudo-code :
 
 		À la fin de la boucle (après le traitement du dernier bit), la pile A est entièrement triée.
 
-	
-### D. Algorithme adaptatif :
+
+</details>
+
+<details>
+<summary><strong>📝 Algorithme adaptatif</strong></summary>
+
 
 Pour définir la stratégie à adopter, nous nous sommes appuyés sur des tests prenant en compte le désordre et la longueur de la liste à trier. Les données reportées sont représentatives d'un score "moyen"à "mauvais" (sauf pour le radix sort où le nombre d'opérations est fixe quel que soit le désordre). Les meilleurs résultats sont indiqués en **gras**. :
+
+</details>
+
+<details>
+<summary><strong>📊 Analyse</strong></summary>
 
 ### 📊 Analyse des Petites Listes (N = 5, 10, 20)
 
@@ -563,6 +605,8 @@ Ce tableau présente l'évolution de la performance sur les petites tailles de l
 | **0.8** | **9** | 16 | 25 | **24** | 38 | 50 | **50** | 90 | 212 |
 | **0.9** | **8** | 17 | 25 | **23** | 42 | 50 | **40** | 95 | 212 |
 | **1.0** | **8** | 18 | 25 | **23** | 40 | 50 | **38** | 98 | 212 |
+
+
 
 #### 💡 Analyse de la progression :
 
@@ -632,8 +676,11 @@ On observe que pour des volumes très importants, la stabilité du **Radix Sort*
 | **0.5** | 111 601 | **100 190** | 385 956 | **215 392** |
 | **0.8** | 110 874 | **100 190** | 502 721 | **215 392** |
 
+</details>
 
-### 4. 📉 Calcul de la complexité des algorithmes
+<details>
+<summary><strong>📉 Calcul de la complexité des algorithmes</strong></summary>
+
 
 Cette section a pour but de vérifier si nos algorithmes correspondent bien à leur complexité théorique annoncée, en utilisant la formule du facteur de croissance ($\alpha$).
 
@@ -716,10 +763,12 @@ $$
 | **Radix** | x2 | x2.15 | **1.10** | $O(N \log N)$ |
 </details>
 
+</details>
 
+## 6. Contributions
 
 <details>
-<summary><strong>📝 👥 Contributions (Cliquer pour dérouler)</strong></summary>
+<summary><strong>👥 Contributions</strong></summary>
 
 <br>
 
@@ -734,4 +783,5 @@ $$
 | **Algo : Complex Sort** | `marberge` |
 | **Sélecteur Adaptatif** | `stmaire` |
 | **Documentation (README)** | `stmaire` |
+
 </details>
