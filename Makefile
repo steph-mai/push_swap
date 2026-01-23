@@ -45,11 +45,13 @@ all: $(NAME)
 $(NAME): $(OBJS) $(LIBFT) $(PRINTF)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBS_FLAGS) -o $(NAME)
 
-$(LIBFT):
-	@make -C $(LIBFT_PATH)
+$(LIBFT): FORCE
+	@make -C $(LIBFT_PATH) 
 
-$(PRINTF):
+$(PRINTF): FORCE
 	@make -C $(PRINTF_PATH)
+
+FORCE:
 
 -include $(DEPS)
 
@@ -67,4 +69,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re FORCE
