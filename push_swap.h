@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/22 23:57:11 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/23 17:09:55 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ float			compute_disorder(t_stack *a);
 void			three_sort(t_stack **stack_a, t_bench *bench);
 /*------------  ALGO SIMPLE  ---------------*/
 void			selection_sort(t_stack **a, t_stack **b, t_bench *bench);
-void			insertion_sort(t_stack **a, t_stack **b, t_bench *bench);
 /*------------  ALGO MEDIUM  ---------------*/
 void			range_based_sort(t_stack **a, t_stack **b, t_bench *bench);
 /*------------  ALGO COMPLEX  ---------------*/
