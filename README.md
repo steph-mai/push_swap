@@ -686,6 +686,8 @@ Cette section a pour but de vérifier si nos algorithmes correspondent bien à l
 
 ---
 
+### Complexité temporelle
+
 #### 🐢 Algorithme simple (select_sort)
 
 On prend comme repères les valeurs pour **N = 100** et **N = 500** (pire cas).
@@ -761,11 +763,28 @@ $$
 | **Selection** | x5 | x28.6 | **2.08** | $O(N^2)$ |
 | **Range** | x3 | x5.54 | **1.56** | $O(N\sqrt{N})$ |
 | **Radix** | x2 | x2.15 | **1.10** | $O(N \log N)$ |
+
+
+## Complexité spatiale
+### 📦 Complexité Spatiale (Space Complexity)
+
+La complexité spatiale du projet **push_swap** est de **$\mathcal{O}(N)$** (linéaire), où $N$ est le nombre d'entiers à trier.
+
+Cette performance s'explique par les choix d'implémentation suivants :
+
+* **Structures de Données ($\mathcal{O}(N)$) :**
+    L'utilisation de **listes chaînées** (`t_stack`) permet d'allouer exactement la mémoire nécessaire pour $N$ éléments. Le tri s'effectue par manipulation de pointeurs : les nœuds sont déplacés entre la pile A et la pile B sans jamais être dupliqués. L'occupation mémoire reste donc constante après l'initialisation.
+
+* **Algorithmes Itératifs ($\mathcal{O}(1)$ auxiliaire) :**
+    Les algorithmes utilisés (Radix, Selection, etc.) sont conçus de manière **itérative** (boucles `while`) et non récursive. Cela évite la surcharge de la pile d'appel. Les variables temporaires utilisées (`i`, `tmp`, `min`) occupent un espace constant, quelle que soit la taille de la liste.
+
+* **Gestion du Parsing :**
+    L'allocation temporaire pour le parsing des arguments (tableau de chaînes via `ft_split`) est proportionnelle à $N$, mais cette mémoire est **libérée** immédiatement avant le début du tri.
+
+**Conclusion :** L'empreinte mémoire du programme est strictement proportionnelle au nombre d'éléments en entrée.
 </details>
 
 </details>
-
-## 6. Contributions
 
 <details>
 <summary><strong>👥 Contributions</strong></summary>
