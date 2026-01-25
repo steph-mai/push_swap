@@ -371,33 +371,6 @@ L'arbre final ressemble à ceci :
   1     5
 ```
 
----
-
-### Ce que ça donne une fois rendu :
-
-### 🌳 Exemple : Tri par Arbre Binaire de Recherche (BST)
-
-**Tableau initial :** `[4, 10, 3, 5, 1]`
-
-#### Étape 1 : Construction de l'arbre (Insertion)
-| Tour | Nombre | Comparaisons (Le Chemin) | Action finale |
-| :---: | :---: | :--- | :--- |
-| 1 | **4** | *(L'arbre est vide)* | Devient la **Racine**. |
-| 2 | **10** | 10 > 4 ➔ Droite | Devient l'enfant **Droit** de 4. |
-| 3 | **3** | 3 < 4 ➔ Gauche | Devient l'enfant **Gauche** de 4. |
-| 4 | **5** | 5 > 4 (Droite) ➔ 5 < 10 (Gauche) | Devient l'enfant **Gauche** de 10. |
-| 5 | **1** | 1 < 4 (Gauche) ➔ 1 < 3 (Gauche) | Devient l'enfant **Gauche** de 3. |
-
-#### Résultat Visuel
-L'arbre final ressemble à ceci :
-
-```text
-       4
-     /   \
-    3     10
-   /     /
-  1     5
-```
 #### Étape 2 : Lecture (Parcours Infixe / In-Order)
 On parcourt l'arbre en suivant la règle stricte : **Gauche ➔ Racine ➔ Droite**.
 

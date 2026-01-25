@@ -21,7 +21,6 @@ SRCS        = main.c \
 			  operations/reverse_rotate.c \
 			  core/algo/simple/three_sort.c \
 			  core/algo/simple/selection_sort.c \
-			  core/algo/simple/insertion_sort.c \
 			  core/algo/complex/radix_sort.c \
 			  core/algo/medium/range_based_sort.c \
 			  core/algo/adaptive/adaptive.c \
@@ -46,11 +45,13 @@ all: $(NAME)
 $(NAME): $(OBJS) $(LIBFT) $(PRINTF)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBS_FLAGS) -o $(NAME)
 
-$(LIBFT):
-	@make -C $(LIBFT_PATH)
+$(LIBFT): FORCE
+	@make -C $(LIBFT_PATH) 
 
-$(PRINTF):
+$(PRINTF): FORCE
 	@make -C $(PRINTF_PATH)
+
+FORCE:
 
 -include $(DEPS)
 
@@ -68,4 +69,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re FORCE
