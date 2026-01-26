@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 17:18:40 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/22 23:50:54 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/26 09:31:01 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ static int	main_loop(char *str, int res)
 			i++;
 		if (!str[i])
 			break ;
-		if (is_digit(str[i]) || (str[i] == '-' && is_digit(str[i + 1])))
+		if (is_digit(str[i])
+			|| ((str[i] == '-' || str[i] == '+') && is_digit(str[i + 1])))
 		{
 			if (!skip_valid_number(str, &i))
 				return (-1);
