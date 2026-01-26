@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 10:19:30 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/23 15:24:05 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/26 09:30:42 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ static	char	*ft_truncate(char *str, t_bench *bench)
 		i = 0;
 		while (str[i] != '\0')
 		{
-			if ((is_digit(str[i]))
-				|| (str[i] == '-' && is_digit(str[i + 1])))
+			if (is_digit(str[i])
+				|| ((str[i] == '-' || str[i] == '+') && is_digit(str[i + 1])))
 			{
 				str_without_flags = ft_strdup(str + i);
 				free(str);
