@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_nodes.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 17:47:02 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/21 17:41:11 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/27 18:25:28 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	lstsize(t_stack *lst)
 	return (count);
 }
 
-void	append_node(t_stack **stack, int nb)
+void	append_node(t_stack **stack, int nb, t_data *data)
 {
 	t_stack	*node;
 	t_stack	*last_node;
@@ -43,7 +43,10 @@ void	append_node(t_stack **stack, int nb)
 		return ;
 	node = malloc(sizeof(t_stack));
 	if (!node)
+	{
+		set_error(CREATE_STACK_FAIL, *data);
 		return ;
+	}
 	node->number = nb;
 	node->index = -1;
 	node->next = NULL;
