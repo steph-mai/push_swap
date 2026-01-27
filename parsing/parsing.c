@@ -6,7 +6,7 @@
 /*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:36:44 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/27 12:38:31 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/27 19:22:41 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_error	from_args_to_big_str(int argc, char **argv, t_data *data)
 		temp = ft_strjoin(s, argv[i]);
 		free(s);
 		if (!temp)
-			return (set_error(BIG_STR_FAIL, *data));
+		return (set_error(BIG_STR_FAIL, *data));
 		s = temp;
 		temp = ft_strjoin(s, " ");
 		free(s);
@@ -65,26 +65,30 @@ t_error	from_args_to_big_str(int argc, char **argv, t_data *data)
 		s = temp;
 		i++;
 	}
-	free(temp);
 	data->big_str = s;
 	return (NO_ERROR);
 }
 
-char	**put_args_in_array(char *big_string)
+char	**put_args_in_array(t_data *data)
 {
 	char	**tab;
 
-	tab = ft_split(big_string, ' ');
-	if (!tab)
+	if (!data->big_str)
 	{
-		free(big_string);
+		set_error(TAB_FAIL, *data);
 		return (NULL);
 	}
-	free(big_string);
+	tab = ft_split(data->big_str, ' ');
+	if (!tab)
+	{
+		set_error(TAB_FAIL, *data);
+		return (NULL);
+	}
+	free(data->big_str);
 	return (tab);
 }
 
-t_stack	*build_stack(char **tab)
+t_stack	*build_stack(t_data *data)
 {
 	int				i;
 	long			nb;
@@ -92,18 +96,25 @@ t_stack	*build_stack(char **tab)
 
 	i = 0;
 	stack = NULL;
-	if (check_args_syntax(tab) == 0)
-		return (free_if_error(&stack, tab));
-	while (tab[i])
+	if (check_args_syntax(data->tab) == 0)
+		return (free_if_error(&stack, data->tab));
+	while (data->tab[i])
 	{
-		nb = ft_atol (tab[i]);
+		nb = ft_atol (data->tab[i]);
 		if (check_args_overflow(nb) == 0
 			|| check_args_doubles(stack, (int)nb) == 0)
-			return (free_if_error(&stack, tab));
-		append_node(&stack, (int)nb);
+		{
+			set_error(CREATE_STACK_FAIL, *data);
+			return (NULL);
+		}
+		append_node(&stack, (int)nb, data);
+		if (data->error_id != NO_ERROR)
+			return (NULL);
 		i++;
 	}
-	index_stack(stack);
-	free_tab(tab);
+	index_stack(stack, data);
+	if (data->error_id != NO_ERROR)
+			return (NULL);
+	free_tab(data->tab);
 	return (stack);
 }

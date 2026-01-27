@@ -6,7 +6,7 @@
 /*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 12:03:57 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/27 12:38:35 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/27 19:16:01 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,24 @@ t_error	set_error(t_error id_of_error, t_data data)
 	return (id_of_error);
 }
 
-int	free_exit(t_data *data, t_bench *ben, t_stack **a, t_stack **b)
+int	check_err(t_error err, t_data *data, t_stack **a, t_stack **b)
 {
-	if (data->error_id == NO_ERROR)
+	if (err == NO_ERROR)
 		return (0);
+	if (err == NO_ARGS)
+		exit(EXIT_SUCCESS);
 	ft_printf(2, "Error\n");
-	if (data->error_id == BIG_STR_FAIL)
-		return (1);
-
-	return (1);
+	if (err == BIG_STR_FAIL)
+		exit(EXIT_FAILURE);
+	if (err == FLAG_ERROR || err == TUNCATE_FAIL || err == TAB_FAIL 
+		|| err == CREATE_STACK_FAIL || err == ALREADY_SORTED)
+		free(data->big_str);
+	if (err == TAB_FAIL || err == CREATE_STACK_FAIL || err == ALREADY_SORTED)
+		free(data->tab);
+	if (err == CREATE_STACK_FAIL || err == ALREADY_SORTED)
+	{
+		free_stack(a);
+		free_stack(b);
+	}
+	exit(EXIT_FAILURE);
 }
