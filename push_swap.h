@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/23 17:09:55 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/27 12:35:46 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,16 @@
 # include <limits.h>
 
 //-------------------------------STRUCTURE-------------------------------
+typedef enum e_error
+{
+    NO_ERROR = 0,       // Tout va bien
+	NO_ARGS = 1,
+    BIG_STR_FAIL = 2,   // Erreur allocation chaine géante
+    TAB_FAIL = 3,       // Erreur allocation tableau d'entiers
+    CREATE_STACK_FAIL = 4, // Erreur création de la stack
+    ARGS_INVALID = 5    // Arguments non numériques (ex)
+}			t_error;
+
 typedef struct s_stack
 {
 	int					number;
@@ -46,9 +56,16 @@ typedef struct s_bench
 	int		rrr;	
 }			t_bench;
 
+typedef struct s_data
+{
+	char		**tab;
+	char		*big_str;
+	t_error		error_id;
+}			t_data;
+
 /* -------------------------------PARSING---------------------------------*/
 //***build***/
-char			*from_args_to_big_str(int argc, char **argv);
+t_error			from_args_to_big_str(int argc, char **argv, t_data *data);
 char			**put_args_in_array(char *big_str);
 t_stack			*build_stack(char **tab);
 
@@ -61,6 +78,8 @@ int				check_args_doubles(t_stack *node, int nb_to_check);
 void			free_tab(char **tab);
 void			free_stack(t_stack **stack);
 t_stack			*free_if_error(t_stack **stack, char **tab);
+int				free_exit(t_data *data, t_bench *ben, t_stack **a, t_stack **b);
+int				set_error(int id_of_error, t_data data);
 
 //***flags***/
 int				flag_selector(char *str);
