@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:36:44 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/27 12:38:31 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/27 16:34:38 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_error	from_args_to_big_str(int argc, char **argv, t_data *data)
 		s = temp;
 		i++;
 	}
-	free(temp);
+	// free(temp);
 	data->big_str = s;
 	return (NO_ERROR);
 }

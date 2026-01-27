@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 10:19:30 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/27 12:36:06 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/27 16:46:19 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,33 +42,33 @@
 // 		bench_print(bench);
 // }
 
-// static	char	*ft_truncate(char *str, t_bench *bench)
-// {
-// 	char	*str_without_flags;
-// 	int		i;
+static	char	*ft_truncate(char *str, t_bench *bench)
+{
+	char	*str_without_flags;
+	int		i;
 
-// 	if (!str)
-// 		return (NULL);
-// 	if (bench->score == -1)
-// 		return (str);
-// 	else
-// 	{
-// 		i = 0;
-// 		while (str[i] != '\0')
-// 		{
-// 			if (is_digit(str[i])
-// 				|| ((str[i] == '-' || str[i] == '+') && is_digit(str[i + 1])))
-// 			{
-// 				str_without_flags = ft_strdup(str + i);
-// 				free(str);
-// 				return (str_without_flags);
-// 			}
-// 			i++;
-// 		}
-// 		free(str);
-// 		exit(0);
-// 	}
-// }
+	if (!str)
+		return (NULL);
+	if (bench->score == -1)
+		return (str);
+	else
+	{
+		i = 0;
+		while (str[i] != '\0')
+		{
+			if (is_digit(str[i])
+				|| ((str[i] == '-' || str[i] == '+') && is_digit(str[i + 1])))
+			{
+				str_without_flags = ft_strdup(str + i);
+				free(str);
+				return (str_without_flags);
+			}
+			i++;
+		}
+		free(str);
+		exit(0);
+	}
+}
 
 int	main(int argc, char **argv)
 {
@@ -90,14 +90,19 @@ int	main(int argc, char **argv)
 	else {
 		ft_printf(1, "Tout va bien\n");
 	}
-	// bench.score = flag_selector(data);
-	// data.big_str = ft_truncate(data, &bench);
+	bench.score = flag_selector(data);
+	data.big_str = ft_truncate(data, &bench);
+	if (!data.big_str)
+		return (free_exit(&data, &bench, &stack_a, &stack_b));
+	else {
+		ft_printf(1, "Tout va bien\n");
+	}
 	// data.tab = put_args_in_array(data);
 	// stack_a = build_stack(data);
 	// if (!stack_a)
 	// 	return (1);
 	// bench.disorder = compute_disorder(stack_a);
-	// if (bench.disorder == 0.00)
+	// if (bench.disorder == 0.00) 
 	// 	return (0);
 	// choose_method(bench.score, &stack_a, &stack_b, &bench);
 	free_stack(&stack_a);
