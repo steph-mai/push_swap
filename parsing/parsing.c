@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:36:44 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/21 17:53:39 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/27 12:38:31 by marberge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,29 +39,35 @@ static long	ft_atol(char *s)
 	return (nb);
 }
 
-char	*from_args_to_big_str(int argc, char **argv)
+t_error	from_args_to_big_str(int argc, char **argv, t_data *data)
 {
 	char	*s;
 	char	*temp;
 	int		i;
 
 	if (argc < 2)
-		return (NULL);
+		return (set_error(NO_ARGS, *data));
 	i = 1;
 	s = ft_strdup("");
 	if (!s)
-		return (NULL);
+		return (set_error(BIG_STR_FAIL, *data));
 	while (i < argc)
 	{
 		temp = ft_strjoin(s, argv[i]);
 		free(s);
+		if (!temp)
+			return (set_error(BIG_STR_FAIL, *data));
 		s = temp;
 		temp = ft_strjoin(s, " ");
 		free(s);
+		if (!temp)
+			return (set_error(BIG_STR_FAIL, *data));
 		s = temp;
 		i++;
 	}
-	return (s);
+	free(temp);
+	data->big_str = s;
+	return (NO_ERROR);
 }
 
 char	**put_args_in_array(char *big_string)

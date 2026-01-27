@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 23:08:33 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/22 23:48:31 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/26 09:28:06 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	is_digit(char c)
 
 int	skip_valid_number(char *str, int *i)
 {
-	if (str[*i] == '-')
+	if (str[*i] == '-' || str[*i] == '+')
 		(*i)++;
 	while (str[*i] >= '0' && str[*i] <= '9')
 		(*i)++;
