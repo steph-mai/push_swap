@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: steph <steph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 10:19:30 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/27 19:17:08 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/28 15:51:22 by steph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	choose_method(int score, t_stack **a,
 		bench->strategy = "Complex";
 	}
 	else
-		ft_printf(2, "Error\n");
+		write(2, "Error\n", 6);
 	if (score == 100 || score == 103 || score == 105
 		|| score == 107 || score == 111)
 		bench_print(bench);
@@ -49,28 +49,39 @@ static	char	*ft_truncate(char *str, t_data *data)
 
 	if (!str)
 	{
-		set_error(TUNCATE_FAIL, *data); // TODO: verifier si la str peut vraiment être NULL ici (normalement si elle est NULL, cela a dû être détecter avant mais pas sûr)
+		set_error(TRUNCATE_FAIL, data);
 		return (NULL);
 	}
-	else
+	i = 0;
+	while (str[i] != '\0')
 	{
-		i = 0;
-		while (str[i] != '\0')
+		if (is_digit(str[i])
+			|| ((str[i] == '-' || str[i] == '+') && is_digit(str[i + 1])))
 		{
-			if (is_digit(str[i])
-				|| ((str[i] == '-' || str[i] == '+') && is_digit(str[i + 1])))
-			{
-				str_without_flags = ft_strdup(str + i);
-				free(str);
-				if (!str_without_flags)
-					set_error(TUNCATE_FAIL, *data);
-				return (str_without_flags);
-			}
-			i++;
+			str_without_flags = ft_strdup(str + i);
+			free(str);
+			if (!str_without_flags)
+				set_error(TRUNCATE_FAIL, data);
+			return (str_without_flags);
 		}
-		free(str);
-		exit(0);
+		i++;
 	}
+	free(str);
+	set_error(NO_NUMBER, data);
+	return (NULL);
+}
+
+static void	init_and_parse(int argc, char **argv, t_data *data, t_bench *bench)
+{
+	ft_bzero(bench, sizeof(t_bench));
+	ft_bzero(data, sizeof(t_data));
+	data->error_id = from_args_to_big_str(argc, argv, data);
+	check_err(data->error_id, data, NULL, NULL);
+	bench->score = flag_selector(data);
+	data->big_str = ft_truncate(data->big_str, data);
+	check_err(data->error_id, data, NULL, NULL);
+	data->tab = put_args_in_array(data);
+	check_err(data->error_id, data, NULL, NULL);
 }
 
 int	main(int argc, char **argv)
@@ -80,28 +91,16 @@ int	main(int argc, char **argv)
 	t_data		data;
 	t_bench		bench;
 
-	ft_bzero(&bench, sizeof(t_bench));
-	ft_bzero(&data, sizeof(t_data));
 	if (argc < 2)
 		return (0);
 	stack_a = NULL;
 	stack_b = NULL;
-	data.error_id = from_args_to_big_str(argc, argv, &data);
-	check_err(data.error_id, &data, &stack_a, &stack_b);
-	bench.score = flag_selector(&data);
-	check_err(data.error_id, &data, &stack_a, &stack_b);
-	data.big_str = ft_truncate(data.big_str, &data);
-	check_err(data.error_id, &data, &stack_a, &stack_b);
-	data.tab = put_args_in_array(&data);
-	check_err(data.error_id, &data, &stack_a, &stack_b);
+	init_and_parse(argc, argv, &data, &bench);
 	stack_a = build_stack(&data);
 	check_err(data.error_id, &data, &stack_a, &stack_b);
-	// if (!stack_a)
-	// 	return (1);
 	bench.disorder = compute_disorder(stack_a);
 	if (bench.disorder == 0.00)
-		set_error(ALREADY_SORTED, data);
-	check_err(data.error_id, &data, &stack_a, &stack_b);
+		check_err(ALREADY_SORTED, &data, &stack_a, &stack_b);
 	choose_method(bench.score, &stack_a, &stack_b, &bench);
 	free_stack(&stack_a);
 	free_stack(&stack_b);

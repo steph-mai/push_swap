@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: steph <steph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 17:18:40 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/27 16:49:28 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/28 09:01:19 by steph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,10 @@ int	flag_selector(t_data *data)
 
 	res = 0;
 	if (!data->big_str || !data->big_str[0])
-		return (set_error(BIG_STR_FAIL, *data));
+		return (set_error(BIG_STR_FAIL, data));
 	res = main_loop(data->big_str, res);
 	if (res == -1)
-		return (set_error(FLAG_ERROR, *data));
+		return (set_error(FLAG_ERROR, data));
 	if (res == 0)
 		res = 11;
 	return (res);
