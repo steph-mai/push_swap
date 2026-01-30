@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 14:52:21 by marberge          #+#    #+#             */
-/*   Updated: 2026/01/30 11:10:51 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/30 11:38:53 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		i;
 	int		k;
 
-	if (!s1 || !s2)
-		return (NULL);
 	i = 0;
 	if (!s1 || !s2)
 		return (NULL);
