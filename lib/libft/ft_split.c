@@ -3,10 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+<<<<<<< HEAD
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 19:06:14 by marberge          #+#    #+#             */
 /*   Updated: 2026/01/27 16:15:35 by stmaire          ###   ########.fr       */
+=======
+/*   By: steph <steph@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/19 19:06:14 by marberge          #+#    #+#             */
+/*   Updated: 2026/01/28 13:02:47 by steph            ###   ########.fr       */
+>>>>>>> 966df5f8f0047db8850d4fdaf715f95e47b18f83
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +90,7 @@ static char	**ft_sep_words(char const *s, char **array, char c)
 		if (!array[row])
 		{
 			ft_free_array(array, row);
-			return(NULL);
+			return (NULL);
 		}
 		i += k + 1;
 		row++;

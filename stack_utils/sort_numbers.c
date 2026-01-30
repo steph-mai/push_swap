@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_numbers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
+/*   By: steph <steph@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 08:41:27 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/22 17:18:43 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/28 09:02:09 by steph            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	find_index(t_stack *stack, int *tab, int size)
 	}
 }
 
-void	index_stack(t_stack *stack)
+void	index_stack(t_stack *stack, t_data *data)
 {
 	int		*tab;
 	t_stack	*ptr;
@@ -70,7 +70,10 @@ void	index_stack(t_stack *stack)
 	size = lstsize(stack);
 	tab = malloc(sizeof(int) * size);
 	if (!tab)
+	{
+		set_error(CREATE_STACK_FAIL, data);
 		return ;
+	}
 	ptr = stack;
 	i = 0;
 	while (ptr)
