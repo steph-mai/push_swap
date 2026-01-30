@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:36:44 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/30 11:11:53 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/30 11:14:44 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,6 @@ t_error	from_args_to_big_str(int argc, char **argv, t_data *data)
 			return (set_error(BIG_STR_FAIL, data));
 		i++;
 	}
-<<<<<<< HEAD
-	// free(temp);
-=======
->>>>>>> 966df5f8f0047db8850d4fdaf715f95e47b18f83
 	data->big_str = s;
 	return (NO_ERROR);
 }
