@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 12:03:57 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/22 16:51:24 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/30 11:47:00 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,36 @@ void	free_stack(t_stack **stack)
 	*stack = NULL;
 }
 
-t_stack	*free_if_error(t_stack **stack, char **tab)
+t_error	set_error(t_error id_of_error, t_data *data)
 {
-	ft_printf(2, "Error\n");
-	free_tab(tab);
-	free_stack(stack);
-	return (NULL);
+	if (!id_of_error)
+		return (-1);
+	data->error_id = id_of_error;
+	return (id_of_error);
+}
+
+static void	clean_and_exit(t_data *data, t_stack **a, t_stack **b, int code)
+{
+	if (data && data->big_str)
+		free(data->big_str);
+	if (data && data->tab)
+		free_tab(data->tab);
+	if (a && *a)
+		free_stack(a);
+	if (b && *b)
+		free_stack(b);
+	exit(code);
+}
+
+int	check_err(t_error err, t_data *data, t_stack **a, t_stack **b)
+{
+	if (err == NO_ERROR)
+		return (0);
+	if (err == NO_ARGS || err == NO_NUMBER)
+		exit(EXIT_SUCCESS);
+	if (err == ALREADY_SORTED)
+		clean_and_exit(data, a, b, EXIT_SUCCESS);
+	write(2, "Error\n", 6);
+	clean_and_exit(data, a, b, EXIT_FAILURE);
+	return (1);
 }

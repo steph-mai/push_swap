@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:26:35 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/23 17:09:55 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/01/30 11:41:10 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,19 @@
 # include <limits.h>
 
 //-------------------------------STRUCTURE-------------------------------
+typedef enum e_error
+{
+	NO_ERROR = 0,
+	NO_ARGS = 1,
+	BIG_STR_FAIL = 2,
+	FLAG_ERROR = 3,
+	NO_NUMBER = 4,
+	TRUNCATE_FAIL = 5,
+	TAB_FAIL = 6,
+	CREATE_STACK_FAIL = 7,
+	ALREADY_SORTED = 8
+}			t_error;
+
 typedef struct s_stack
 {
 	int					number;
@@ -46,11 +59,18 @@ typedef struct s_bench
 	int		rrr;	
 }			t_bench;
 
+typedef struct s_data
+{
+	char		**tab;
+	char		*big_str;
+	t_error		error_id;
+}			t_data;
+
 /* -------------------------------PARSING---------------------------------*/
 //***build***/
-char			*from_args_to_big_str(int argc, char **argv);
-char			**put_args_in_array(char *big_str);
-t_stack			*build_stack(char **tab);
+t_error			from_args_to_big_str(int argc, char **argv, t_data *data);
+char			**put_args_in_array(t_data *data);
+t_stack			*build_stack(t_data *data);
 
 //***check***/
 int				check_args_syntax(char **tab);
@@ -60,10 +80,11 @@ int				check_args_doubles(t_stack *node, int nb_to_check);
 //***free***/
 void			free_tab(char **tab);
 void			free_stack(t_stack **stack);
-t_stack			*free_if_error(t_stack **stack, char **tab);
+int				check_err(t_error err, t_data *data, t_stack **a, t_stack **b);
+t_error			set_error(t_error id_of_error, t_data *data);
 
 //***flags***/
-int				flag_selector(char *str);
+int				flag_selector(t_data *data);
 int				ft_strcmp(char *s1, char *s2);
 int				is_digit(char c);
 int				skip_valid_number(char *str, int *i);
@@ -73,8 +94,8 @@ int				is_flag(char *str, int start, int end);
 /* -----------------------------STACK_UTILS-------------------------------*/
 t_stack			*lstlast(t_stack *lst);
 int				lstsize(t_stack *lst);
-void			append_node(t_stack **stack, int nb);
-void			index_stack(t_stack *stack);
+void			append_node(t_stack **stack, int nb, t_data *data);
+void			index_stack(t_stack *stack, t_data *data);
 t_stack			*find_max(t_stack *stack);
 t_stack			*find_min(t_stack *stack);
 int				get_position(t_stack *stack, t_stack *target);

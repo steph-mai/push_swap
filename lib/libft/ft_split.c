@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marberge <marberge@student.42.fr>          +#+  +:+       +#+        */
+/*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 19:06:14 by marberge          #+#    #+#             */
-/*   Updated: 2025/11/22 18:43:53 by marberge         ###   ########.fr       */
+/*   Updated: 2026/01/30 11:41:55 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,10 @@ static char	**ft_sep_words(char const *s, char **array, char c)
 		}
 		array[row] = ft_substr(s, i, k);
 		if (!array[row])
-			return (ft_free_array(array, row), NULL);
+		{
+			ft_free_array(array, row);
+			return (NULL);
+		}
 		i += k + 1;
 		row++;
 	}
