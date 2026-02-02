@@ -6,7 +6,7 @@
 /*   By: stmaire <stmaire@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/31 12:03:57 by stmaire           #+#    #+#             */
-/*   Updated: 2026/01/30 11:47:00 by stmaire          ###   ########.fr       */
+/*   Updated: 2026/02/02 10:23:09 by stmaire          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	check_err(t_error err, t_data *data, t_stack **a, t_stack **b)
 {
 	if (err == NO_ERROR)
 		return (0);
-	if (err == NO_ARGS || err == NO_NUMBER)
+	if (err == NO_ARGS)
 		exit(EXIT_SUCCESS);
 	if (err == ALREADY_SORTED)
 		clean_and_exit(data, a, b, EXIT_SUCCESS);
